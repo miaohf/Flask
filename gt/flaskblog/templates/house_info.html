@@ -1,0 +1,158 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="row profile-page">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-home-outline"></i> {{ title }}</legend>
+                    <div class="profile-header text-white">
+                        <div class="d-flex justify-content-around">
+                            <div class="profile-info d-flex align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <ul class="nav tab-switch" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true"><i class="menu-icon mdi mdi-home-outline"></i> 房源资料</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity1" role="tab" aria-controls="user-profile-activity" aria-selected="false"><i class="menu-icon mdi mdi-image-filter"></i> 房源照片</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity2" role="tab" aria-controls="user-profile-activity" aria-selected="false"><i class="menu-icon mdi mdi-ribbon"></i> 历史租赁</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity3" role="tab" aria-controls="user-profile-activity" aria-selected="false"><i class="menu-icon mdi mdi-wrench"></i> 巡检维修</a>
+                            </li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tab-content tab-body" id="profile-log-switch">
+                                    <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+                                        <div class="row">
+                                            <div class="col-sm-12 grid-margin stretch-card">
+                                                <div class="card card-statistics">
+                                                    <div class="card-body">
+                                                        <table class="table table-borderless w-100 mt-4">
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 房源编号 :</b> {{ house.id }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 详细地址 :</b> {{ house.address }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 房源面积 :</b> {{ house.area }}㎡</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 资产编号 :</b><a href="{{ url_for('posts.resource_info', resource_id=house.resource_id) }}" > {{ house.resource_id }} </a></td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1 grid-margin stretch-card">
+                                            <div>
+                                                <a href="{{ url_for('posts.update_house', house_id=house.id) }}" class="btn btn-outline-primary float-right"></i>房源更新</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="user-profile-activity1" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="owl-carousel owl-theme full-width">
+                                                    {% for picture in pictures %}
+                                                    <div class="item">
+                                                        <div class="card text-white">
+                                                            <img class="card-img" src="{{ url_for('static', filename='uploads/' + picture) }}" alt="Card image">
+                                                            <div class="card-img-overlay d-flex">
+                                                                <div class="mt-auto text-center w-100">
+                                                                    <h3>Third Slide Label</h3>
+                                                                    <h6 class="card-text mb-4 font-weight-normal">Nulla vitae elit libero, a pharetra augue mollis interdum.</h6>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="user-profile-activity2" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="horizontal-timeline">
+                                                    <section class="time-frame">
+                                                        <div class="col-12">
+                                                            {% for contract in contracts %}
+                                                            <div class="d-flex align-items-start pb-3 border-bottom">
+                                                                <img src="{{ url_for('static', filename='assets/images/samples/profile_page/logo/user-logo.png') }}" alt="brand logo">
+                                                                <div class="wrapper pl-4">
+                                                                    <p><a href="{{ url_for('posts.customer_info', customer_id=contract.customer_id) }}" class="font-weight-bold mb-0">{{ contract.customer_name }}</a></p>
+                                                                    <small>{{ contract.id }},{{ contract.customer_phone }},{{ contract.annual_rent }},{{ contract.start_time.strftime('%Y-%m-%d') }},{{ contract.end_time.strftime('%Y-%m-%d') }}</small>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                            {% for contract_his in contracts_his %}
+                                                            <div class="d-flex align-items-start pb-3 border-bottom">
+                                                                <img src="{{ url_for('static', filename='assets/images/samples/profile_page/logo/user-logo-grey.png') }}" alt="brand logo">
+                                                                <div class="wrapper pl-4">
+                                                                    <p><a href="{{ url_for('posts.customer_info', customer_id=contract_his.customer_id) }}" class="font-weight-bold mb-0">{{ contract_his.customer_name }}</a></p>
+                                                                    <small>{{ contract_his.id }},{{ contract_his.customer_phone }},{{ contract_his.annual_rent }},{{ contract_his.start_time.strftime('%Y-%m-%d') }},{{ contract_his.end_time.strftime('%Y-%m-%d') }}</small>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="user-profile-activity3" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="horizontal-timeline">
+                                                    <section class="time-frame">
+                                                        <div class="col-12">
+                                                            {% for maintenancerec in maintenancerecs %}
+                                                            <div class="d-flex align-items-start pb-3 border-bottom">
+                                                                <div class="wrapper pl-4">
+                                                                    <small>
+                                                                    <td>{{ maintenancerec.maintenanceunit_id }}</td>
+                                                                    <td>{{ maintenancerec.maintenanceunit_name }}</td>
+                                                                    <td>{{ maintenancerec.maintenanceunit_phone }}</td>
+                                                                    <td>{{ maintenancerec.status }}</td>
+                                                                    <td>{{ maintenancerec.create_time.strftime('%Y-%m-%d') }}</td>
+                                                                    <td>{{ maintenancerec.update_time }}</td>
+                                                                    <td>{{ maintenancerec.note }}</td>
+                                                                    </small>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-9 grid-margin stretch-card"></div>
+                                        <div class="col-sm-1 grid-margin stretch-card">
+                                            <div>
+                                                <a href="{{ url_for('posts.new_maintenancerec', house_id=house.id) }}"  class="btn btn-outline-primary float-right mt-4"></i>维修登记</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

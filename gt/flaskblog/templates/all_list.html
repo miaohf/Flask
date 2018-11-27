@@ -1,0 +1,274 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-image-filter-none"></i> {{ title }}</legend>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table id="order-listing" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>所属单位</th>
+                                    <th>不动产证编号</th>
+                                    <th>房源地址</th>
+                                    <th>房源面积</th>
+                                    <th>状态</th>
+                                    <th>租户名称</th>
+                                    <th>联系电话</th>
+                                    <th>合同编号</th>
+                                    <th>类型</th>
+                                    <th>合同起止日期</th>
+                                    <th>账单编号</th>
+                                    <th>账单日期</th>
+                                    <th>年租金</th>
+                                    <th>缴费状态</th>
+                                    <th>缴费时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for allResult in allResults %}
+                                <tr role="row" class="odd">
+                                    <td>{{ allResult.resource_company }}</td>
+                                    <td>
+                                        <a href="{{ url_for('posts.resource_info', resource_id=allResult.resource_id) }}" >{{ allResult.resource_cardid }}</a></td>
+                                    <td><a href="{{ url_for('posts.house_info', house_id=allResult.house_id) }}" >{{ allResult.house_address }}</a></td>
+                                    <td>{{ allResult.house_area }}</td>
+                                    <td>
+                                        {% if allResult.house_status == 0%}
+                                        空置
+                                        {% elif allResult.house_status == 1%}
+                                        已租
+                                        {% endif %}</td>
+                                    <td>{% if allResult.customer_id %}
+                                        <a href="{{ url_for('posts.customer_info', customer_id=allResult.customer_id) }}" >{{ allResult.customer_name }}</a>
+                                        {% else %}
+                                        -
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if allResult.customer_phone %}
+                                        {{ allResult.customer_phone }}
+                                        {% else %}
+                                        -
+                                        {% endif %} </td>
+                                    <td>{% if allResult.contract_id %}
+                                        <a href="{{ url_for('posts.contract_info', contract_id=allResult.contract_id) }}" >{{ allResult.contract_id }}</a>
+                                        {% else %}
+                                        -
+                                        {% endif %} </td>
+                                    <td>{% if allResult.contract_type %}
+                                        {{ allResult.contract_type }}
+                                        {% else %}
+                                        -
+                                        {% endif %} </td>
+                                    <td>{% if allResult.contract_start %}
+                                        {{ allResult.contract_start.strftime("%Y-%m-%d")}},{{allResult.contract_end.strftime("%Y-%m-%d") }}
+                                        {% else %}
+                                        -
+                                        {% endif %} </td>
+                                    <td>{% if allResult.contractbill_id %}
+                                        <a href="{{ url_for('posts.pay_bill', bill_id=allResult.contractbill_id) }}" >{{ allResult.contractbill_id }}</a>
+                                        {% else %}
+                                        -
+                                        {% endif %} </td>
+                                    <td>{% if allResult.bill_date %}
+                                        {{ allResult.bill_date.strftime("%Y-%m-%d") }}
+                                        {% else %}
+                                        -
+                                        {% endif %} </td>
+                                    <td>{% if allResult.bill_amount %}
+                                        {{ allResult.bill_amount }}
+                                        {% else %}
+                                        -
+                                        {% endif %} </td>
+                                    </td>
+                                    <td>{% if allResult.bill_status == 0%}
+                                        待缴费
+                                        {% elif allResult.bill_status == 1%}
+                                        已缴
+                                        {% endif %}</td>
+                                    <td>{% if allResult.paid_date %}
+                                        {{allResult.paid_date.strftime("%Y-%m-%d %H:%M") }}
+                                        {% else %}
+                                        -
+                                        {% endif %}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>                     
+                    </div>
+                    <button id="exportButton" class="btn btn-outline-primary">导出记录</button>   <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- you need to include the shieldui css and js assets in order for the components to work -->
+<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css">
+<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous"></script>
+<script type="text/javascript">
+jQuery(function($) {
+    $("#exportButton").click(function() {
+        // parse the HTML table element having an id=order-listing
+        var dataSource = shield.DataSource.create({
+            data: "#order-listing",
+            schema: {
+                type: "table",
+                fields: {
+                    所属单位: { type: String },
+                    不动产证编号: { type: Number },
+                    房源地址: { type: String },
+                    房源面积: { type: String },
+                    状态: { type: String },
+                    租户名称: { type: String },
+                    联系电话: { type: String },
+                    合同编号: { type: String },
+                    类型: { type: String },
+                    合同起止日期: { type: String },
+                    账单编号: { type: String },
+                    年租金: { type: String },
+                    缴费状态: { type: String },
+                    缴费时间: { type: String }
+                }
+            }
+        });
+
+        // when parsing is done, export the data to Excel
+        dataSource.read().then(function(data) {
+            new shield.exp.OOXMLWorkbook({
+                author: "PrepBootstrap",
+                worksheets: [{
+                    name: "PrepBootstrap Table",
+                    rows: [{
+                        cells: [{
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "所属单位"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "不动产证编号"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "房源地址"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "房源面积"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "状态"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "租户名称"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "联系电话"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "合同编号"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "类型"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "合同起止日期"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "账单编号"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "年租金"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "缴费状态"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "缴费时间"
+                            }
+
+                        ]
+                    }].concat($.map(data, function(item) {
+                        return {
+                            cells: [
+                                { type: String, value: item.所属单位 },
+                                { type: Number, value: item.不动产证编号 },
+                                { type: String, value: item.房源地址 },
+                                { type: String, value: item.房源面积 },
+                                { type: String, value: item.状态 },
+                                { type: String, value: item.租户名称 },
+                                { type: String, value: item.联系电话 },
+                                { type: String, value: item.合同编号 },
+                                { type: String, value: item.类型 },
+                                { type: String, value: item.合同起止日期 },
+                                { type: String, value: item.账单编号 },
+                                { type: String, value: item.年租金 },
+                                { type: String, value: item.缴费状态 },
+                                { type: String, value: item.缴费时间 }
+                            ]
+                        };
+                    }))
+                }]
+            }).saveAs({
+                fileName: "PrepBootstrapExcel"
+            });
+        });
+    });
+});
+</script>
+{% endblock content %}

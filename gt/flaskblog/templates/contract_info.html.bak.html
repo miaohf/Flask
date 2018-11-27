@@ -1,0 +1,134 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="row profile-page">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-account-circle"></i> {{ title }}</legend>
+                    <div class="profile-header text-white">
+                        <div class="d-flex justify-content-around">
+                            <div class="profile-info d-flex align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <ul class="nav tab-switch" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true"><i class="menu-icon mdi mdi-image-filter-none"></i> 合同资料</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity" role="tab" aria-controls="user-profile-activity" aria-selected="false"><i class="menu-icon mdi mdi-image-filter"></i> 附件信息</a>
+                            </li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tab-content tab-body" id="profile-log-switch">
+                                    <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+                                        <div class="row">
+                                            {% for contract in contracts %}
+                                            <div class="col-sm-6 grid-margin stretch-card">
+                                                <div class="card card-statistics">
+                                                    <div class="card-body">
+                                                        <table class="table table-borderless w-100 mt-4">
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 合同编号 :</b> {{ contract.id }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 签订日期 :</b> {{ contract.contract_start_time.strftime('%Y-%m-%d') }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 结束日期 :</b> {{ contract.contract_end_time.strftime('%Y-%m-%d') }}</td>
+                                                            </tr>
+                                                        </table>
+                                                        <table class="table table-borderless w-100 mt-4">
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 房源编号 :</b> {{ contract.house_id }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 详细地址 :</b> {{ contract.house_address }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 结束日期 :</b> {{ contract.house_address }}</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 grid-margin stretch-card">
+                                                <div class="card card-statistics">
+                                                    <div class="card-body">
+                                                        <table class="table table-borderless w-100 mt-4">
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 租户编号 :</b> {{ contract.customer_id }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 租户姓名 :</b> {{ contract.customer_name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 证件号码 :</b> {{ contract.customer_cardid }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 联系电话 :</b> {{ contract.customer_phone }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 家庭住址 :</b> {{ contract.customer_address1 }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 单位名称 :</b> {{ contract.customer_company }}</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="{{ url_for('posts.contract_demo', contract_id=contract.id) }}" >合同打印{{ contract.contract_id }}</a>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="user-profile-activity1" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                                    <div class="owl-carousel owl-theme full-width">
+                                        <div class="item">
+                                            <div class="card text-white">
+                                                <img class="card-img" src="static/assets/images/contract02.jpg" alt="Card image">
+                                                <div class="card-img-overlay d-flex">
+                                                    <div class="mt-auto text-center w-100">
+                                                        <h3>Third Slide Label</h3>
+                                                        <h6 class="card-text mb-4 font-weight-normal">Nulla vitae elit libero, a pharetra augue mollis interdum.</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="card text-white">
+                                                <img class="card-img" src="static/assets/images/contract02.jpg" alt="Card image">
+                                                <div class="card-img-overlay d-flex">
+                                                    <div class="mt-auto text-center w-100">
+                                                        <h3>Third Slide Label</h3>
+                                                        <h6 class="card-text mb-4 font-weight-normal">Nulla vitae elit libero, a pharetra augue mollis interdum.</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

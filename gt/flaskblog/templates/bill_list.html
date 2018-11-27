@@ -1,0 +1,99 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-cash-100"></i> {{ title }}</legend>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive table-hover">
+                        <table id="order-listing" class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>帐单编号</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>帐单日期</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>租金(元/年)</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>缴费状态</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>合同编号</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>房源地址</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>房源面积</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>承租人</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>合同类型</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>合同起止</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>缴费日期</b></font>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for contractbill in contractbills %}
+                                <tr role="row" class="odd">
+                                    <td>
+                                        {% if contractbill.status == 0 %}
+                                        <a href="{{ url_for('posts.pay_bill', bill_id=contractbill.id) }}" >{{ contractbill.id }}</a>
+                                        {% elif contractbill.status == 1 %}
+                                        {{ contractbill.id }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ contractbill.bill_date.strftime("%Y-%m-%d") }}</td>
+                                    <td>{{ contractbill.bill_amount }}</td>
+                                    <td>
+                                        {% if contractbill.status == 0 %}
+                                        未缴费
+                                        {% elif contractbill.status == 1 %}
+                                        已缴
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('posts.contract_info', contract_id=contractbill.contract_id) }}" >{{ contractbill.contract_id }}</a>
+                                    </td>
+                                    <td>{{ contractbill.house_address }}</td>
+                                    <td>{{ contractbill.house_area }}</td>
+                                    <td>{{ contractbill.customer_name }}</td>
+                                    <td>{{ contractbill.contract_type }}</td>
+                                    <td>{{ contractbill.contract_start_time.strftime("%Y-%m-%d")}}:{{ contractbill.contract_end_time.strftime("%Y-%m-%d")}}</td>
+                                    <td>
+                                        {% if contractbill.update_time is none %}
+                                        {% else %}
+                                        {{ contractbill.update_time.strftime("%Y-%m-%d") }}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <form method="POST" action="">
+                        {{ form.hidden_tag() }}
+                        {{ form.csrf_token }}
+                        <fieldset class="form-group">
+                        </fieldset>
+                        <div class="form-group">
+                            {{ form.submit(class="btn btn-outline-primary ") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

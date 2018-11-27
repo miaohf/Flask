@@ -1,0 +1,51 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <div onresize="mapResize()">
+                <div class="form-group row">
+                    <div class="col-md-3">
+                        <div class="search map_search">
+                            <input class="form-control" id="localvalue" value="嘉善县" onfocus="foucs_(this,'请输入关键字进行搜索','')" onblur="blur_(this,'请输入关键字进行搜索','')" callback="beginsearch(l_local)" />
+                            <input type="checkbox" onfocus="this.blur()" id="pointLabel" />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" readonly id="pointInput" />
+                    </div>
+                </div>
+            </div>
+            <div class="result" id="resultNum">
+            </div>
+            <div id="wrapper">
+                <div id="MapHolder" style="overflow:hidden;"></div>
+                <!--右侧地图Info begin-->
+                <div id="MapInfo">
+                </div>
+                <!--右侧地图Info end-->
+                <div id="shad">
+                    <div id="shad_v"></div>
+                    <div id="shad_h"></div>
+                    <div class="l"><b id="curCity"></b></div>
+                    <div class="l"><b id="ZoomNum"></b></div>
+                    <div class="l">
+                        <p id="txtPanel"></p>
+                    </div>
+                    <span id="copyButton"></span>
+                    <span id="copyMessage"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=SyRux96r0i0Xue1Qqp0ZPb4uCc8BC6Aw"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/baidumap/js/clipboard.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/baidumap/js/tangram.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='assets/baidumap/js/public.js') }}"></script>
+<script type="text/javascript">
+DomReady.ready(localsearch);
+</script>
+<script>
+loadBody();
+</script>
+{% endblock content %}

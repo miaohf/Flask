@@ -1,0 +1,119 @@
+{% extends "layout.html" %} {% block content %}
+<!-- partial -->
+    <div class="content-wrapper">
+        <div class="row profile-page">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <!--x-editable starts-->
+                <div class="card">
+                    <div class="card-body">
+                        <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-ribbon"></i> {{ title }}</legend>
+                        <div class="profile-header text-white">
+                            <div class="d-flex justify-content-around">
+                                <div class="profile-info d-flex align-items-center">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-body">
+                            <!-- <h4 class="card-title"><strong>租户资料</strong></h4> -->
+                            <form method="POST" enctype="multipart/form-data">
+                                {{ form.hidden_tag() }}
+                                {{ form.csrf_token }}
+                                <fieldset class="form-group">
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.name.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.name.errors %} 
+                                            {{ form.name(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.name.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.name(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.address.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.address.errors %} 
+                                            {{ form.address(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.address.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.address(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.phone.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.phone.errors %} 
+                                            {{ form.phone(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.phone.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.phone(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.cardid.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.cardid.errors %} 
+                                            {{ form.cardid(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.cardid.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.cardid(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.pictures.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.pictures.errors %} 
+                                            {{ form.pictures(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.pictures.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.pictures(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.note.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.note.errors %} 
+                                            {{ form.note(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.note.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.note(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                </fieldset>
+                                <div class="form-group">
+                                    {{ form.submit(class="btn btn-outline-primary ") }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--x-editable ends-->
+        </div>
+    </div>
+
+
+<!-- content-wrapper ends -->
+<!-- partial -->
+<!-- main-panel ends -->
+<!-- page-body-wrapper ends -->
+<!-- container-scroller -->
+{% endblock content %}

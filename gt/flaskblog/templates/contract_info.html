@@ -1,0 +1,188 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="row profile-page">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-image-filter-none"></i> {{ title }}</legend>
+                    <div class="profile-header text-white">
+                        <div class="d-flex justify-content-around">
+                            <div class="profile-info d-flex align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <ul class="nav tab-switch" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true"><i class="menu-icon mdi mdi-image-filter-none"></i> 租赁合同资料</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity" role="tab" aria-controls="user-profile-activity" aria-selected="false"><i class="menu-icon mdi mdi-finance"></i> 合同帐单</a>
+                            </li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tab-content tab-body" id="profile-log-switch">
+                                    <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+                                        <div class="row">
+                                            <div class="col-sm-6 grid-margin stretch-card">
+                                                <div class="card card-statistics">
+                                                    <div class="card-body">
+                                                        <table class="table table-borderless w-100 mt-4">                                                            
+                                                            <tr>
+                                                                {% if contract.contract_status == 0  %}
+                                                                <td>
+                                                                    <b> 合同编号 :</b> {{ contract.id }} (正常)</td>
+                                                                {% else %}
+                                                                <td>
+                                                                    <b> 合同编号 :</b> {{ contract.id }} (终止)</td>
+                                                                {% endif %}                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 合同类型 :</b> {{ contract.contract_typename }} </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 首年租金 :</b> {{ contract.contract_annual_rent }} 元 </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 签订日期 :</b> {{ contract.contract_start_time.strftime('%Y-%m-%d') }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                {% if contract.contract_end_time < current_time %}
+                                                                <td>                                                                    
+                                                                    <b> 结束日期 :</b> <font color="red"> {{ contract.contract_end_time.strftime('%Y-%m-%d') }} </font></td>
+                                                                {% else %}
+                                                                <td>
+                                                                    <b> 结束日期 :</b> {{ contract.contract_end_time.strftime('%Y-%m-%d') }}</td>                                                                    
+                                                                {% endif %}                                                                
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 租户编号 :</b> <a href="{{ url_for('posts.customer_info', customer_id=contract.customer_id) }}" >{{ contract.customer_id }}</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 房源编号 :</b> <a href="{{ url_for('posts.house_info', house_id=contract.house_id) }}" >{{ contract.house_id }}</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 详细地址 :</b> {{ contract.house_address }}</td>
+                                                            </tr>                                                            
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 grid-margin stretch-card">
+                                                <div class="card card-statistics">
+                                                    <div class="card-body">
+                                                        <table class="table table-borderless w-100 mt-4">
+                                                            
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 租户姓名 :</b> {{ contract.customer_name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 证件号码 :</b> {{ contract.customer_cardid }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 联系电话 :</b> {{ contract.customer_phone }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 家庭住址 :</b> {{ contract.customer_address }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a href="{{ url_for('static', filename ='uploads/'+contract.approval_pics) }}"> <i class="menu-icon mdi mdi-image-filter"></i> 出租审批表  </a> </p>
+                                                                    <p><a href="{{ url_for('static', filename ='uploads/'+contract.auction_announcement) }}"><i class="menu-icon mdi mdi-image-filter"></i> 拍卖公告  </a> </p>
+                                                                    <p><a href="{{ url_for('static', filename ='uploads/'+contract.auction_confirmation) }}"><i class="menu-icon mdi mdi-image-filter"></i> 拍卖成交确认书  </a> </p>
+                                                                    {% for picture in contract_pics %}
+                                                                    <div>
+                                                                        <a href="{{ url_for('static', filename ='uploads/'+picture) }}"><i class="menu-icon mdi mdi-image-filter"></i> 合同附件</a>
+                                                                    </div>
+                                                                    {% endfor %}
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row col-lg-12">
+                                            <div>
+                                                {% if contract.contract_status == 0 %}
+                                                <a href="{{ url_for('posts.update_contract', contract_id=contract.id) }}" class="btn btn-outline-primary float-right"></i>合同变更</a>
+                                                {% endif %}
+                                            </div>
+                                            <div>
+                                                {% if contract.contract_status == 1 %}
+                                                <a href="{{ url_for('posts.renewal_contract', contract_id=contract.id) }}" class="btn btn-outline-primary float-right"></i>合同续签</a>
+                                                {% endif %}
+                                            </div>
+                                            <div>
+                                                {% if contract.contract_typename == '拍租' %}
+                                                <a href="{{ url_for('posts.print_contract', contract_id=contract.id) }}" class="btn btn-outline-primary float-right"></i>打印合同(拍租)</a>
+                                                {% elif contract.contract_typename == '协议' %}
+                                                <a href="{{ url_for('posts.print_contract', contract_id=contract.id) }}" class="btn btn-outline-primary float-right"></i>打印合同(协议)</a>
+                                                {% elif contract.contract_typename == '续租' %}
+                                                <a href="{{ url_for('posts.print_contract', contract_id=contract.id) }}" class="btn btn-outline-primary float-right"></i>打印合同(续租)</a>
+                                                {% endif %}
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="user-profile-activity" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="horizontal-timeline">
+                                                    <section class="time-frame">
+                                                        <div class="col-12">
+                                                            {% for contractbill in contractbills %}
+                                                            <div class="d-flex align-items-start pb-3 border-bottom">
+                                                                <div class="wrapper pl-4">
+                                                                    <td>
+                                                                        {% if contractbill.status == 0 %}
+                                                                        <a href="{{ url_for('posts.pay_bill', bill_id=contractbill.id) }}" >{{ contractbill.id }}</a>
+                                                                        {% else %}
+                                                                        {{ contractbill.id }}
+                                                                        {% endif %}
+                                                                    </td>
+                                                                    <td> 金额:{{ contractbill.bill_amount }}元</td>
+                                                                    <td>
+                                                                        {% if contractbill.status == 0 %}
+                                                                        未缴
+                                                                        {% elif contractbill.status == 1 %}
+                                                                        已缴
+                                                                        {% endif %}
+                                                                    </td>
+                                                                    <td>
+                                                                        {% if contractbill.update_time is none %}
+                                                                        {% else %}
+                                                                        {{ contractbill.update_time.strftime("%Y-%m-%d") }}
+                                                                        {% endif %}
+                                                                    </td>
+                                                                    <td>{{ contractbill.bill_date.strftime("%Y-%m-%d") }}</td>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

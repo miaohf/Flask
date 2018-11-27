@@ -1,0 +1,129 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="row profile-page">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-ribbon"></i> {{ title }}</legend>
+                    <div class="profile-header text-white">
+                        <div class="d-flex justify-content-around">
+                            <div class="profile-info d-flex align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <ul class="nav tab-switch" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true"><i class="menu-icon mdi mdi-ribbon"></i> 租户资料</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity1" role="tab" aria-controls="user-profile-activity" aria-selected="false"><i class="menu-icon mdi mdi-checkbox-multiple-blank"></i> 合约信息</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity2" role="tab" aria-controls="user-profile-activity" aria-selected="false"><i class="menu-icon mdi mdi-checkbox-multiple-blank-outline"></i> 历史合同</a>
+                            </li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tab-content tab-body" id="profile-log-switch">
+                                    <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+                                        <div class="row">
+                                            <div class="col-sm-6 grid-margin stretch-card">
+                                                <div class="card card-statistics">
+                                                    <div class="card-body">
+                                                        {% for customer in customers %}
+                                                        <table class="table table-borderless w-100 mt-4">
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 租户编号 :</b> {{ customer.id }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 租户姓名 :</b> {{ customer.name }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 联系电话 :</b> {{ customer.phone }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 详细地址 :</b> {{ customer.address }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 备注信息 :</b> {{ customer.note }}</td>
+                                                            </tr>
+                                                        </table>
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 grid-margin stretch-card">
+                                                <div class="card card-statistics">
+                                                    <div class="card-body">
+                                                        <div class="owl-carousel owl-theme full-width">
+                                                            <div class="item">
+                                                                <div class="card text-white">
+                                                                    {% for customer in customers %}
+                                                                    <img class="card-img" src="{{ url_for('static', filename='uploads/'+customer.pictures) }}" alt="Card image"></img>
+                                                                    {% endfor %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="user-profile-activity1" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="horizontal-timeline">
+                                                    <section class="time-frame">
+                                                        <div class="col-12">
+                                                            {% for contract in contracts %}
+                                                            <div class="d-flex align-items-start pb-3 border-bottom">
+                                                                <img src="{{ url_for('static', filename='assets/images/samples/profile_page/logo/house-logo.png') }} " alt="brand logo">
+                                                                <div class="wrapper pl-4">
+                                                                    <p class="font-weight-bold mb-0"><a href="{{ url_for('posts.contract_info', contract_id=contract.id) }}" >{{ contract.id }}</a></p>
+                                                                    <small>{{contract.name}},{{contract.create_time.strftime('%Y-%m-%d')}},{{contract.start_time.strftime('%Y-%m-%d')}},{{contract.end_time.strftime('%Y-%m-%d')}}{{contract.status}}{{contract.note}}</small>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="user-profile-activity2" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="horizontal-timeline">
+                                                    <section class="time-frame">
+                                                        <div class="col-12">
+                                                            {% for contract_his in contracts_his %}
+                                                            <div class="d-flex align-items-start pb-3 border-bottom">
+                                                                <img src="{{ url_for('static', filename='assets/images/samples/profile_page/logo/house-logo-grey.png') }} " alt="brand logo">
+                                                                <div class="wrapper pl-4">
+                                                                    <p class="font-weight-bold mb-0"><a href="{{ url_for('posts.contract_info', contract_id=contract_his.id) }}" >{{ contract_his.id }}</a></p>
+                                                                    <small>{{contract_his.name}},{{contract_his.create_time.strftime('%Y-%m-%d')}},{{contract_his.start_time.strftime('%Y-%m-%d')}},{{contract_his.end_time.strftime('%Y-%m-%d')}}{{contract_his.status}}{{contract_his.note}}</small>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

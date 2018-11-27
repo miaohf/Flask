@@ -1,0 +1,66 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="row profile-page">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-image-filter-none"></i> {{ title }}</legend>
+                    <div class="profile-header text-white">
+                        <div class="d-flex justify-content-around">
+                            <div class="profile-info d-flex align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tab-content tab-body" id="profile-log-switch">
+                                    <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+                                        <div class="row">
+                                            <div class="col-sm-6 grid-margin stretch-card">
+                                                <div class="card card-statistics">
+                                                    <div class="card-body">
+                                                        <table class="table table-borderless w-100 mt-4">
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 合同编号 :</b> {{ contract.id }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 签订日期 :</b> {{ contract.contract_start_time.strftime('%Y-%m-%d') }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 结束日期 :</b> {{ contract.contract_end_time.strftime('%Y-%m-%d') }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 房源编号 :</b> <a href="{{ url_for('posts.house_info', house_id=contract.house_id) }}" >{{ contract.house_id }}</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 详细地址 :</b> {{ contract.house_address }}</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-9 grid-margin stretch-card"></div>
+                                            <div class="col-sm-1 grid-margin stretch-card">
+                                                <div>
+                                                    <a href="{{ url_for('posts.contract_demo', contract_id=11111) }}" >缴费确认</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

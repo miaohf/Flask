@@ -1,0 +1,121 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="row profile-page">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-home-outline"></i> {{ title }}</legend>
+                    <div class="profile-header text-white">
+                        <div class="d-flex justify-content-around">
+                            <div class="profile-info d-flex align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <ul class="nav tab-switch" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true"><i class="menu-icon mdi mdi-bank"></i> 资产信息</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="user-profile-activity-tab" data-toggle="pill" href="#user-profile-activity" role="tab" aria-controls="user-profile-activity" aria-selected="false"><i class="menu-icon mdi mdi-home-outline"></i> 同证房源</a>
+                            </li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tab-content tab-body" id="profile-log-switch">
+                                    <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+                                        <div class="row">
+                                            <div class="col-sm-6 grid-margin stretch-card">
+                                                <div class="card card-statistics">
+                                                    <div class="card-body">
+                                                        <table class="table table-borderless w-100 mt-4">
+                                                            <tr>
+                                                                <td>
+                                                                    <b>资产编号 :</b> {{ resource.id }}</td>
+                                                            </tr>                                                            
+                                                            <tr>
+                                                                <td>
+                                                                    <b>详细地址 :</b> {{ resource.address }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b>建筑面积 :</b> {{ resource.area1 }}㎡</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>                                                                    
+                                                                    <b>土地使用权面积 :</b> {{ resource.area2 }}㎡</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b>市场估值 :</b> {{ resource.price }}万元</td>                                                                    
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 grid-margin stretch-card">
+                                                <div class="card card-statistics">
+                                                    <div class="card-body">
+                                                        <table class="table table-borderless w-100 mt-4">                                                            
+                                                            <tr>
+                                                                <td>
+                                                                    <b>所属单位 :</b> {{ resource.company }}</td>
+                                                            </tr>
+                                                             <tr>
+                                                                <td>
+                                                                    <b>不动产编号 :</b>{{ resource.cardid }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b>备注 :</b> {{ resource.note }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a href="{{ url_for('static', filename='uploads'+ resource.pictures) }}"><i class="menu-icon mdi mdi-image-filter"></i> 不动产证附件 </a> </p> </td>
+                                                            </tr>
+                                                             
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1 grid-margin stretch-card">
+                                            <div>
+                                                <a href="{{ url_for('posts.update_resource', resource_id=resource.id) }}" class="btn btn-primary float-right"></i>资产更新</a>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                    <div class="tab-pane fade" id="user-profile-activity" role="tabpanel" aria-labelledby="user-profile-activity-tab">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <!--     <div class="form-group col-sm-2">
+                                                    <a class="btn btn-primary btn-fw" href="{{ url_for('posts.new_house') }}" role="button"><i class="mdi mdi-home-outline"></i>增加房源</a>
+                                                </div> -->
+                                                <div class="horizontal-timeline">
+                                                    <section class="time-frame">
+                                                        <div class="col-12">
+                                                            {% for house in houses %}
+                                                            <div class="d-flex align-items-start pb-3 border-bottom">
+                                                                <img src="{{ url_for('static', filename='assets/images/samples/profile_page/logo/house-logo.png') }}" alt="brand logo">
+                                                                <div class="wrapper pl-4">
+                                                                    <p><a href="{{ url_for('posts.house_info',house_id=house.id) }}" class="font-weight-bold mb-0">{{house.id}}</a></p>
+                                                                    <small>{{house.address}},{{house.status}},{{house.note}},{{house.create_time}}</small>
+                                                                </div>
+                                                            </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

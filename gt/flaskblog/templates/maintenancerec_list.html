@@ -1,0 +1,84 @@
+{% extends "layout.html" %} {% block content %}
+<div class="col-12">
+    <div class="card">
+        <div class="card-body">
+            <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-ribbon"></i> {{ title }}</legend>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive table-hover">
+                        <table id="order-listing" class="table">
+                            <thead>
+                                <tr>                                    
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>维修单</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>维修单位</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>状态</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>房源编号</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>房源地址</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>报修日期</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>具体情况</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>维修结果</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>完成时间</b></font>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for maintenancerec in maintenancerecs %}
+                                <tr role="row" class="odd">                                    
+                                    <td>
+                                        <a href="{{ url_for('posts.update_maintenancerec', maintenancerec_id=maintenancerec.id) }}" >{{ maintenancerec.id }}</a>
+                                    </td>
+                                    <td>{{ maintenancerec.maintenanceunit_name }}:{{ maintenancerec.maintenanceunit_phone }}</td>
+                                    <td>{% if maintenancerec.status == 0 %}
+                                        未处理
+                                        {% elif maintenancerec.status == 1 %}
+                                        完成
+                                        {% endif %}
+                                    </td>
+                                    <td class="sorting_1">
+                                        <a href="{{ url_for('posts.house_info', house_id=maintenancerec.house_id) }}" >{{ maintenancerec.house_id }}</a>
+                                    </td>
+                                    <td>{{ maintenancerec.house_address }}</td>
+                                    <td>{{ maintenancerec.create_time.strftime("%Y-%m-%d") }}</td>
+                                    <td>{{ maintenancerec.note }}</td>
+                                    <td>
+                                        {% if maintenancerec.maintenance_note == 0 %}
+                                        ''
+                                        {% elif maintenancerec.status == 1 %}
+                                        {{ maintenancerec.maintenance_note }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if maintenancerec.update_time == 0 %}
+                                        ''
+                                        {% elif maintenancerec.status == 1 %}
+                                        {{ maintenancerec.update_time }}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

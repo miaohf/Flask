@@ -1,0 +1,65 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-bank"></i> {{ title }}</legend>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive table-hover">
+                        <table id="order-listing" class="table">
+                            <thead>
+                                <tr role="row">
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>小区名称</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>不动产证编号</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>房源编号</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>详细地址</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>出租状态</b></font>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for list in lists %}
+                                <tr role="row" class="odd">
+                                    <td>{{ list.garden_name }}</td>
+                                    <td>
+                                        {% if list.resource_id %}
+                                        <a href="{{ url_for('posts.resource_info', resource_id=list.resource_id) }}" >{{ list.resource_cardid }}</a>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if list.house_id %}
+                                        <a href="{{ url_for('posts.house_info', house_id=list.house_id) }}" >{{ list.house_id }}</a>
+                                        {% endif %}
+                                    </td>
+                                    <td>{% if list.house_address %}
+                                        {{ list.house_address }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{% if list.house_status == 0 %}
+                                        空置
+                                        {% elif list.house_status == 1 %}
+                                        已租
+                                        {% elif list.house_status == 2 %}
+                                        已释放
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

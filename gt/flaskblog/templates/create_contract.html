@@ -1,0 +1,262 @@
+{% extends "layout.html" %} {% block content %}
+<!-- partial -->
+    <div class="content-wrapper">
+        <div class="row profile-page">
+            <div class="col-lg-12 grid-margin stretch-card">
+                <!--x-editable starts-->
+                <div class="card">
+                    <div class="card-body">
+                        <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-image-filter-none"></i> {{ title }}</legend>
+                        <div class="profile-header text-white">
+                            <div class="d-flex justify-content-around">
+                                <div class="profile-info d-flex align-items-center">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-body">
+                            <!-- <h4 class="card-title"><strong>租户资料</strong></h4> -->
+                            <form method="POST" enctype="multipart/form-data">
+                                {{ form.hidden_tag() }}
+                                {{ form.csrf_token }}
+                                <fieldset class="form-group">
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.name.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.name.errors %} 
+                                            {{ form.name(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.name.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.name(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.house_id.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.house_id.errors %} 
+                                            {{ form.house_id(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.house_id.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.house_id(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.customer_id.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.customer_id.errors %} 
+                                            {{ form.customer_id(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.customer_id.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.customer_id(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.type.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.type.errors %} 
+                                            {{ form.type(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.type.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.type(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.auction_date.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.auction_date.errors %} 
+                                            {{ form.auction_date(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.auction_date.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.auction_date(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.start.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.start.errors %} 
+                                            {{ form.start(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.start.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.start(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.end.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.end.errors %} 
+                                            {{ form.end(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.end.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.end(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.security_deposit.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.security_deposit.errors %} 
+                                            {{ form.security_deposit(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.security_deposit.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.security_deposit(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.annual_rent.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.annual_rent.errors %} 
+                                            {{ form.annual_rent(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.annual_rent.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.annual_rent(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.useof.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.useof.errors %} 
+                                            {{ form.useof(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.useof.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.useof(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.contract_pics.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.contract_pics.errors %} 
+                                            {{ form.contract_pics(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.contract_pics.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.contract_pics(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div> 
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.approval_pics.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.approval_pics.errors %} 
+                                            {{ form.approval_pics(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.approval_pics.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.approval_pics(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.auction_announcement.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.auction_announcement.errors %} 
+                                            {{ form.auction_announcement(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.auction_announcement.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.auction_announcement(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.auction_confirmation.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.auction_confirmation.errors %} 
+                                            {{ form.auction_confirmation(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.auction_confirmation.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.auction_confirmation(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.note.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.note.errors %} 
+                                            {{ form.note(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.note.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.note(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
+                                        {{ form.reason.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.reason.errors %} 
+                                            {{ form.reason(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.reason.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.reason(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.status.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.status.errors %} 
+                                            {{ form.status(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.status.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.status }}
+                                        {% endif %}
+                                    </div>
+                                </fieldset>
+                                <div class="form-group">                                    
+                                    {{ form.submit(class="btn btn-outline-primary mt-4 ") }}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--x-editable ends-->
+        </div>
+    </div>
+
+<!-- content-wrapper ends -->
+<!-- partial -->
+<!-- main-panel ends -->
+<!-- page-body-wrapper ends -->
+<!-- container-scroller -->
+{% endblock content %}
