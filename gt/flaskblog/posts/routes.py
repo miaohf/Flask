@@ -5,7 +5,7 @@ from flask_login import current_user, login_required
 from flaskblog import db
 from flaskblog.models import Post, Garden, Resource, House, Customer, Contract, Contractype, Maintenanceunit, Maintenancerec, Contractbill, User, Contractype
 from flaskblog.posts.forms import PostForm, GardenForm, ResourceForm, UpdateResourceForm, HouseForm, UpdateHouseForm, CustomerForm,  ContractForm, ContractypeForm, UpdateContractForm, TerminateContractForm, MaintenanceunitForm, MaintenancerecForm, TerminateMaintenancerecForm, ContractbillForm, PaybillForm, RenewalContractForm
-from sqlalchemy import func, extract, desc
+from sqlalchemy import func, extract, desc, or_
 from datetime import datetime, timedelta
 from flask import current_app as app
 
@@ -45,19 +45,15 @@ def dashboard():
     billamounts_thismonth = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).\
     filter(extract('month', Contractbill.bill_date) == thisMonth).with_entities(Contractbill.bill_amount).all()
 
-    paid_billamounts_thismonth = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).\
-    filter(extract('month', Contractbill.bill_date) == thisMonth).\
-    filter(extract('year', Contractbill.update_time) == thisYear).\
-    filter(extract('month', Contractbill.update_time) == thisMonth).\
+    paid_billamounts_thismonth = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).filter(extract('month', Contractbill.bill_date) == thisMonth).\
+    filter(extract('year', Contractbill.update_time) == thisYear).filter(extract('month', Contractbill.update_time) == thisMonth).\
     filter_by(status=1).with_entities(Contractbill.bill_amount)
 
-    paid_billamounts_notthismonth = Contractbill.query.filter(or_(extract('year', Contractbill.bill_date) != thisYear),(extract('month', Contractbill.bill_date) != thisMonth).\
-    filter(extract('year', Contractbill.update_time) == thisYear).\
-    filter(extract('month', Contractbill.update_time) == thisMonth).\
+    paid_billamounts_notthismonth = Contractbill.query.filter(or_(extract('year', Contractbill.bill_date) != thisYear),(extract('month', Contractbill.bill_date) != thisMonth)) .\
+    filter(extract('year', Contractbill.update_time) == thisYear).filter(extract('month', Contractbill.update_time) == thisMonth).\
     filter_by(status=1).with_entities(Contractbill.bill_amount)
 
-    unpaid_billamounts_thismonth = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).\
-    filter(extract('month', Contractbill.bill_date) == thisMonth).\
+    unpaid_billamounts_thismonth = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).filter(extract('month', Contractbill.bill_date) == thisMonth).\
     filter_by(status=0).with_entities(Contractbill.bill_amount)
 
     maintenanceRecs = Maintenancerec.query.filter_by(status=0).count()
