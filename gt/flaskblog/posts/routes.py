@@ -45,12 +45,14 @@ def dashboard():
     billamounts_thismonth = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).\
     filter(extract('month', Contractbill.bill_date) == thisMonth).with_entities(Contractbill.bill_amount).all()
 
-    paid_billamounts_thismonth = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).filter(extract('month', Contractbill.bill_date) == thisMonth).\
+    paid_billamounts_thismonth = Contractbill.query.\
     filter(extract('year', Contractbill.update_time) == thisYear).filter(extract('month', Contractbill.update_time) == thisMonth).\
+    filter(extract('year', Contractbill.bill_date)+extract('month', Contractbill.bill_date) == thisYear+thisMonth).\
     filter_by(status=1).with_entities(Contractbill.bill_amount)
 
-    paid_billamounts_notthismonth = Contractbill.query.filter(or_(extract('year', Contractbill.bill_date) != thisYear),(extract('month', Contractbill.bill_date) != thisMonth)) .\
+    paid_billamounts_notthismonth = Contractbill.query.\
     filter(extract('year', Contractbill.update_time) == thisYear).filter(extract('month', Contractbill.update_time) == thisMonth).\
+    filter(extract('year', Contractbill.bill_date)+extract('month', Contractbill.bill_date) != thisYear+thisMonth).\
     filter_by(status=1).with_entities(Contractbill.bill_amount)
 
     unpaid_billamounts_thismonth = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).filter(extract('month', Contractbill.bill_date) == thisMonth).\
@@ -63,7 +65,7 @@ def dashboard():
     resourceArea1s = Resource.query.with_entities(Resource.area1).all() 
     resourceArea2s = Resource.query.with_entities(Resource.area2).all() 
     
-    # return str(resourcePrices)
+    # return str(paid_billamounts_notthismonth)
     
     return render_template('dashboard.html', contract_counts=contract_counts, 
         contract_expired_30d=contract_expired_30d,
@@ -84,7 +86,9 @@ def dashboard():
 
         billamounts_thismonth=str(sum([sum(i) for i in billamounts_thismonth])/10000), 
         paid_billamounts_thismonth=str(sum([sum(i) for i in paid_billamounts_thismonth])/10000),
+        paid_billamounts_notthismonth=str(sum([sum(i) for i in paid_billamounts_notthismonth])/10000),
         unpaid_billamounts_thismonth=str(sum([sum(i) for i in unpaid_billamounts_thismonth])/10000),
+
          
         security_deposits=str(sum([sum(i) for i in security_deposits])/10000), 
         users_recently_visited=users_recently_visited,
