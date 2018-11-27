@@ -799,7 +799,7 @@ def bills_thisyear():
                 i+=1
             contract.bill_status = '1'
             db.session.commit()
-        flash('帐单更新成功!', 'success')
+        flash('帐单已经更新!', 'success')
         return redirect(url_for('posts.bills_thisyear'))
     elif request.method == 'GET':
         return render_template('bill_list.html', contractbills=contractbills_thisyear, form=form, title='年度帐单')
@@ -809,6 +809,7 @@ def bills_thisyear():
 @login_required
 def bills_all():
     form = ContractbillForm()
+    contracts = Contract.query.filter_by(status=0).filter_by(bill_status=0)
     contractbills_all = Contractbill.query.join(Contractype, Contractype.id == Contractbill.contract_type).join(Contract, Contract.id==Contractbill.contract_id).\
     join(House, House.id==Contract.house_id).join(Customer, Customer.id==Contract.customer_id).\
         with_entities(Contractbill.id, \
@@ -827,7 +828,29 @@ def bills_all():
         House.area.label('house_area'),
         Customer.name.label('customer_name')
         )
-    return render_template('bill_list.html', contractbills=contractbills_all, form=form, title='所有帐单')
+    if form.validate_on_submit():
+        for contract in contracts:
+            i=0
+            while (contract.start_time + timedelta(367*i)).strftime("%Y-%m-%d") < contract.end_time.strftime("%Y-%m-%d"):
+                isXuzu = Contractype.query.filter_by(id=contract.type).filter_by(name='续租').first() is not None
+                if isXuzu:
+                    billamount = contract.annual_rent*(1.03)**i
+                else:
+                    billamount = contract.annual_rent
+                post = Contractbill(contract_id=contract.id, \
+                    contract_type=contract.type, \
+                    contract_create=contract.create_time, \
+                    bill_sequence=contract.id*10+i+1, \
+                    bill_date=contract.start_time + timedelta(365*i), \
+                    bill_amount=billamount)
+                db.session.add(post)
+                i+=1
+            contract.bill_status = '1'
+            db.session.commit()
+        flash('帐单已经更新!', 'success')
+        return redirect(url_for('posts.bills_all'))
+    elif request.method == 'GET':
+        return render_template('bill_list.html', contractbills=contractbills_all, form=form, title='所有帐单')
 
 
 @posts.route("/post/account_list")

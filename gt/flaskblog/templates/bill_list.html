@@ -74,7 +74,12 @@
                                     <td>{{ contractbill.customer_name }}</td>
                                     <td>{{ contractbill.contract_type }}</td>
                                     <td>{{ contractbill.contract_start_time.strftime("%Y-%m-%d")}}:{{ contractbill.contract_end_time.strftime("%Y-%m-%d")}}</td>
-                                    <td>{{ contractbill.note }}</td>
+                                    <td>
+                                        {% if contractbill.note %}
+                                        {{ contractbill.note }}
+                                        {% else %}                                        
+                                        {% endif %}
+                                    </td>
                                     <td>
                                         {% if contractbill.update_time is none %}
                                         {% else %}
