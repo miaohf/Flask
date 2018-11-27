@@ -51,8 +51,7 @@ def dashboard():
     filter(extract('month', Contractbill.update_time) == thisMonth).\
     filter_by(status=1).with_entities(Contractbill.bill_amount)
 
-    paid_billamounts_notthismonth = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).\
-    filter(extract('month', Contractbill.bill_date) == thisMonth).\
+    paid_billamounts_notthismonth = Contractbill.query.filter(or_(extract('year', Contractbill.bill_date) != thisYear),(extract('month', Contractbill.bill_date) != thisMonth).\
     filter(extract('year', Contractbill.update_time) == thisYear).\
     filter(extract('month', Contractbill.update_time) == thisMonth).\
     filter_by(status=1).with_entities(Contractbill.bill_amount)

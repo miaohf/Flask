@@ -1,0 +1,63 @@
+from flask import render_template, request, Blueprint
+from flaskblog.models import Post
+
+main = Blueprint('main', __name__)
+
+
+@main.route("/")
+@main.route("/login")
+def login():
+    return render_template('login.html', title='TuozhanRMS')
+
+@main.route("/about")
+def about():
+    return render_template('about.html', title='关于我们')
+
+@main.route("/dashboard")
+def dashboard():
+    return render_template('dashboard.html', title='仪表盘')
+
+
+@main.route("/house")
+def house():
+    return render_template('house.html', title='房源录入')
+
+@main.route("/hlist")
+def hlist():
+    return render_template('hlist.html', title='房源查询')
+
+@main.route("/hinfo")
+def houseinfo():
+    return render_template('hinfo.html', title='房源资料')
+
+@main.route("/clist")
+def clist():
+    return render_template('clist.html', title='租户列表')
+
+@main.route("/customer")
+def customer():
+    return render_template('customer.html', title='租户登记')
+
+@main.route("/cinfo")
+def customerinfo():
+    return render_template('cinfo.html', title='租户资料')
+
+@main.route("/map")
+def map():
+    return render_template('map.html', title='房源分布')
+
+@main.route("/lease")
+def lease():
+    return render_template('lease.html', title='租赁管理')
+
+@main.route("/contractlist")
+def contractlist():
+    return render_template('contractlist.html', title='合同管理')
+
+@main.route("/contractlhis")
+def contracthis():
+    return render_template('contracthis.html', title='历史合同')
+
+@main.route("/contractinfo")
+def contractinfo():
+    return render_template('contractinfo.html', title='合同明细')
