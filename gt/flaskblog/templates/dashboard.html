@@ -94,7 +94,7 @@
         <div class="col-lg-5 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h1 class="card-title text-primary mb-5">历年租金统计</h1>
+                    <h1 class="card-title text-primary mb-5">历年租金统计(万元)</h1>
                     <div class="wrapper d-flex justify-content-between">
                         <div class="side-left">
                             <p class="mb-2">总额</p>
@@ -135,7 +135,7 @@
                             <p class="mb-2 text-primary">0w</p>
                         </div>
                         <div class="progress">
-                            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 10%" aria-valuenow="56" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <div class="wrapper mt-4">
@@ -157,8 +157,8 @@
                         <div class="card-body d-flex align-items-center">
                             <div class="d-flex flex-grow">
                                 <div class="mr-auto">
-                                    <p> 本月应收 </p>
-                                    <p class="highlight-text mb-0"> {{billamounts_thisyear}} 万元</p>                                    
+                                    <p> 当月帐单 </p>
+                                    <a  class="highlight-text mb-0" href="{{ url_for('posts.bills_thismonth') }}" >{{billamounts_thismonth}} 万元</a>                                     
                                 </div>
                             </div>
                         </div>
@@ -169,31 +169,31 @@
                         <div class="card-body">
                             <div class="revenue-item d-flex">
                                 <div class="revenue-desc">
-                                    <h6>待缴</h6>
+                                    <h6>待缴(万元)</h6>
                                     <small>保持笑容，把美留住。 </small>
                                 </div>
                                 <div class="revenue-amount">
-                                    <p class="text-primary"> {{unpaid_billamounts_thismonth}} 万元</p>
+                                    <p class="text-primary"> {{unpaid_billamounts_thismonth}}</p>
                                 </div>
                             </div>
                             <div class="revenue-item d-flex">
                                 <div class="revenue-desc">
-                                    <h6>实收</h6>
+                                    <h6>实收(万元)</h6>
                                     <small>注：当月帐单收款总计</small>
                                 </div>
                                 <div class="revenue-amount">
-                                    <p class="text-primary"> + {{paid_billamounts_thismonth}} 万元</p>
+                                    <p class="text-primary"> + {{paid_billamounts_thismonth}}</p>
                                 </div>
                             </div>
                             <div class="revenue-item d-flex">
                                 <div class="revenue-desc">
-                                    <h6>其他</h6>
+                                    <h6>其他(万元)</h6>
                                     <small>注：本月补缴或提前预收金额总计</small>
                                 </div>
                                 <div class="revenue-amount">
                                     <p class="text-primary"> 
                                     {% if paid_billamounts_notthismonth %} 
-                                    + {{paid_billamounts_notthismonth}} 万元
+                                    + {{paid_billamounts_notthismonth}}
                                     {% else %}
                                     0
                                     {% endif%}</p>

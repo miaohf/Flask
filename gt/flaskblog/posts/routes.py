@@ -493,6 +493,7 @@ def update_contract(contract_id):
         form = UpdateContractForm()
     else:
         form = TerminateContractForm()
+        form.contract_pics.data = contract.contract_pics
     house = House.query.filter(House.id == contract.house_id).first()
     choices = [("0", "------请选择------ ")]
     for s in Contractype.query.with_entities(Contractype.id, Contractype.name).all():
@@ -757,6 +758,54 @@ def maintenancerec_list():
     return render_template('maintenancerec_list.html', maintenancerecs=maintenancerecs, title='维修记录')
 
 
+@posts.route("/post/bills/thisMonth", methods=['GET', 'POST'])
+@login_required
+def bills_thismonth():
+    form = ContractbillForm()
+    contracts = Contract.query.filter_by(status=0).filter_by(bill_status=0)
+    contractbills_thisyear = Contractbill.query.filter(extract('year', Contractbill.bill_date) == datetime.today().year).filter(extract('month', Contractbill.bill_date) == datetime.today().month).join(Contractype, Contractype.id == Contractbill.contract_type).join(Contract, Contract.id==Contractbill.contract_id).join(House, House.id==Contract.house_id).join(Customer, Customer.id==Contract.customer_id).\
+        with_entities(Contractbill.id, \
+        Contractbill.contract_id, \
+        Contractype.name.label('contract_type'), \
+        Contractbill.bill_sequence, \
+        Contractbill.bill_date, \
+        Contractbill.bill_amount, \
+        Contractbill.status, \
+        Contractbill.note, \
+        Contractbill.create_time, \
+        Contractbill.update_time, \
+        Contract.start_time.label('contract_start_time'), \
+        Contract.end_time.label('contract_end_time'), \
+        House.address.label('house_address'),
+        House.area.label('house_area'),
+        Customer.name.label('customer_name')
+        )
+   
+    if form.validate_on_submit():
+        for contract in contracts:
+            i=0
+            while (contract.start_time + timedelta(367*i)).strftime("%Y-%m-%d") < contract.end_time.strftime("%Y-%m-%d"):
+                isXuzu = Contractype.query.filter_by(id=contract.type).filter_by(name='续租').first() is not None
+                if isXuzu:
+                    billamount = contract.annual_rent*(1.03)**i
+                else:
+                    billamount = contract.annual_rent
+                post = Contractbill(contract_id=contract.id, \
+                    contract_type=contract.type, \
+                    contract_create=contract.create_time, \
+                    bill_sequence=contract.id*10+i+1, \
+                    bill_date=contract.start_time + timedelta(365*i), \
+                    bill_amount=billamount)
+                db.session.add(post)
+                i+=1
+            contract.bill_status = '1'
+            db.session.commit()
+        flash('帐单已经更新!', 'success')
+        return redirect(url_for('posts.bills_thisyear'))
+    elif request.method == 'GET':
+        return render_template('bill_list.html', contractbills=contractbills_thisyear, form=form, title='当月帐单')
+
+
 @posts.route("/post/bills/thisYear", methods=['GET', 'POST'])
 @login_required
 def bills_thisyear():
@@ -831,7 +880,7 @@ def bills_all():
     if form.validate_on_submit():
         for contract in contracts:
             i=0
-            while (contract.start_time + timedelta(367*i)).strftime("%Y-%m-%d") < contract.end_time.strftime("%Y-%m-%d"):
+            while (contract.start_time + timedelta(365*i)).strftime("%Y-%m-%d") < contract.end_time.strftime("%Y-%m-%d"):
                 isXuzu = Contractype.query.filter_by(id=contract.type).filter_by(name='续租').first() is not None
                 if isXuzu:
                     billamount = contract.annual_rent*(1.03)**i
