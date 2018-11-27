@@ -42,6 +42,10 @@ def dashboard():
     unpaid_thisyear = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).filter_by(status=0).with_entities(Contractbill.bill_amount).all()
     paid_thisyear = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).filter_by(status=1).with_entities(Contractbill.bill_amount).all()
 
+    # reference=billamounts_lastyear*20
+    # lastYearpecent=billamounts_lastyear/reference
+    # thisYearpecent=billamounts_thisyear/reference
+
     billamounts_thismonth = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).\
     filter(extract('month', Contractbill.bill_date) == thisMonth).with_entities(Contractbill.bill_amount).all()
 
@@ -82,6 +86,9 @@ def dashboard():
         billamounts_lastyear=str(sum([sum(i) for i in billamounts_lastyear])/10000),
         unpaid_thisyear=str(sum([sum(i) for i in unpaid_thisyear])/10000),
         paid_thisyear=str(sum([sum(i) for i in paid_thisyear])/10000),
+
+        # lastYearpecent=str(billamounts_lastyear/reference),
+        # thisYearpecent=str(billamounts_thisyear/reference),
 
 
         billamounts_thismonth=str(sum([sum(i) for i in billamounts_thismonth])/10000), 
