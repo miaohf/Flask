@@ -742,11 +742,11 @@ def contract_isTerminated():
 @posts.route("/post/all_list")
 @login_required
 def all_list():
-    allResults = Resource.query.outerjoin(House,House.resource_id==Resource.id).outerjoin(Contract,Contract.house_id==House.id).outerjoin(Customer,Customer.id==Contract.customer_id).\
+    allResults = Resource.query.outerjoin(House,House.resource_id==Resource.id).outerjoin(Contract,Contract.house_id==House.id).outerjoin(Customer,Customer.id==Contract.customer_id).outerjoin(Landlord,Landlord.id==Resource.landlord_id).\
     outerjoin(Contractbill,Contractbill.contract_id==Contract.id).outerjoin(Contractype,Contractype.id==Contract.type).\
     with_entities(Resource.id.label('resource_id'), \
-        Resource.company.label('resource_company'), \
         Resource.cardid.label('resource_cardid'), \
+        Landlord.name.label('landlord_name'), \
         House.id.label('house_id'), \
         House.address.label('house_address'), \
         House.area.label('house_area'), \

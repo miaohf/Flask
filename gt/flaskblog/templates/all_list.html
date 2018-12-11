@@ -29,7 +29,7 @@
                             <tbody>
                                 {% for allResult in allResults %}
                                 <tr role="row" class="odd">
-                                    <td>{{ allResult.resource_company }}</td>
+                                    <td>{{ allResult.landlord_name }}</td>
                                     <td>
                                         <a href="{{ url_for('posts.resource_info', resource_id=allResult.resource_id) }}" >{{ allResult.resource_cardid }}</a></td>
                                     <td><a href="{{ url_for('posts.house_info', house_id=allResult.house_id) }}" >{{ allResult.house_address }}</a></td>
