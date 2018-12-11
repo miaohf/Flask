@@ -1119,7 +1119,7 @@ def print_contract(contract_id):
     security_deposit_CN = number_to_chinese(contract.security_deposit)
 
     if contract.is_xuzu == 1:
-        return render_template('contract_xz.html', title='合同打印', 
+        return render_template('contract_xz.html', title='.', footer='.', 
         contract=contract, 
         TopayFirst=TopayFirst,
         TopaySecond=TopaySecond,
@@ -1134,7 +1134,7 @@ def print_contract(contract_id):
         totalamount_CN = totalamount_CN)
 
     elif contract.type_name == '拍租':
-        return render_template('contract_pz.html', title='合同打印', 
+        return render_template('contract_pz.html', title='.', footer='.', 
         contract=contract, 
         TopayFirst=TopayFirst,
         TopaySecond=TopaySecond,
@@ -1149,7 +1149,7 @@ def print_contract(contract_id):
         totalamount_CN = totalamount_CN)
 
     elif contract.type_name == '协议':
-        return render_template('contract_xy.html', title='合同打印', 
+        return render_template('contract_xy.html', title='.', footer='.', 
         contract=contract, 
         TopayFirst=TopayFirst,
         TopaySecond=TopaySecond,
