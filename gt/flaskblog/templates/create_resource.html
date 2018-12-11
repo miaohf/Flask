@@ -34,6 +34,19 @@
                                         {% endif %}
                                     </div>
                                     <div class="form-group row col-md-6"">
+                                        {{ form.landlord_id.label(class="col-sm-3 col-form-label") }} 
+                                        {% if form.landlord_id.errors %} 
+                                            {{ form.landlord_id(class="form-control is-invalid") }}
+                                            <div class="invalid-feedback">
+                                            {% for error in form.landlord_id.errors %}
+                                                <span>{{ error }}</span> 
+                                            {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            {{ form.landlord_id(class="col-md-6 form-control") }}
+                                        {% endif %}
+                                    </div>
+                                    <div class="form-group row col-md-6"">
                                         {{ form.cardid.label(class="col-sm-3 col-form-label") }} 
                                         {% if form.cardid.errors %} 
                                             {{ form.cardid(class="form-control is-invalid") }}
@@ -44,19 +57,6 @@
                                             </div>
                                         {% else %}
                                             {{ form.cardid(class="col-md-6 form-control") }}
-                                        {% endif %}
-                                    </div>
-                                    <div class="form-group row col-md-6"">
-                                        {{ form.company.label(class="col-sm-3 col-form-label") }} 
-                                        {% if form.company.errors %} 
-                                            {{ form.company(class="form-control is-invalid") }}
-                                            <div class="invalid-feedback">
-                                            {% for error in form.company.errors %}
-                                                <span>{{ error }}</span> 
-                                            {% endfor %}
-                                            </div>
-                                        {% else %}
-                                            {{ form.company(class="col-md-6 form-control") }}
                                         {% endif %}
                                     </div>
                                     <div class="form-group row col-md-6"">

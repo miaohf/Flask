@@ -1,0 +1,394 @@
+﻿<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+<meta name=Generator content="Microsoft Word 14 (filtered)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:宋体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:宋体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:"\@宋体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	font-size:10.5pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-link:"页眉 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	layout-grid-mode:char;
+	border:none;
+	padding:0cm;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-link:"页脚 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	layout-grid-mode:char;
+	font-size:9.0pt;
+
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:21.0pt;
+	font-size:10.5pt;
+	font-family:"Calibri","sans-serif";}
+span.Char
+	{mso-style-name:"页眉 Char";
+	mso-style-link:页眉;}
+span.Char0
+	{mso-style-name:"页脚 Char";
+	mso-style-link:页脚;}
+.MsoChpDefault
+	{font-size:10.0pt;
+	font-family:"Calibri","sans-serif";}
+ /* Page Definitions */
+ @page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	layout-grid:15.6pt;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+
+</head>
+
+<body lang=ZH-CN style='text-justify-trim:punctuation'>
+
+<div class=WordSection1 style='layout-grid:15.6pt'>
+
+<p class=MsoNormal align=center style='text-align:center;line-height:25.0pt'><b><span style='font-size:16.0pt;font-family:宋体'>房屋租赁合同(pz)</span></b></p>
+
+<p class=MsoNormal align=right style='text-align:right;line-height:25.0pt;word-break:break-all'><span style='font-family:宋体'>编号：<b><span style='color:blue'>{{contract.contract_id}}</span></b></span></p>
+
+<p class=MsoNormal align=right style='text-align:right;line-height:25.0pt'><span lang=EN-US style='font-family:宋体'>&nbsp;</span></p>
+
+<p class=MsoNormal style='line-height:25.0pt'><b><span style='font-family:宋体'>出租方(以下简称甲方)：<span style='color:blue'>{{contract.landlord_name}}</span></span></b></p>
+
+<p class=MsoNormal style='line-height:25.0pt'><span style='font-family:宋体'>证件号码：<b><span style='color:blue'>{{contract.landlord_cardid}}</span></b></span></p>
+
+<p class=MsoNormal style='line-height:25.0pt'><span style='font-family:宋体'>联系地址：<b><span style='color:blue'>{{contract.landlord_address}}</span></b></span></p>
+
+<p class=MsoNormal style='line-height:25.0pt'><span style='font-family:宋体'>邮编：<span lang=EN-US>314100</span></span></p>
+
+<p class=MsoNormal style='line-height:25.0pt'><span style='font-family:宋体'>联系号码：<b><span style='color:blue'>{{contract.customer_phone}}</span></b></span></p>
+
+<p class=MsoNormal style='line-height:25.0pt'><b><span style='font-family:宋体'>承租方（以下简称乙方）：<span style='color:blue'>{{contract.customer_name}}</span></span></b></p>
+
+<p class=MsoNormal style='line-height:25.0pt'><span style='font-family:宋体'>证件号码：<b><span style='color:blue'>{{contract.customer_cardid}}</span></b></span></p>
+
+<p class=MsoNormal style='line-height:25.0pt'><span style='font-family:宋体'>联系地址：<b><span style='color:blue'>{{contract.customer_address}}</span></b></span></p>
+
+<p class=MsoNormal style='line-height:25.0pt'><span style='font-family:宋体'>邮编：<b><span style='color:blue'>{{contract.customer_postcode}}</span></b></span></p>
+
+<p class=MsoNormal style='line-height:25.0pt'><span style='font-family:宋体'>联系电话：<b><span style='color:blue'>{{contract.customer_phone}}</span></b></span></p>
+
+<p class=MsoNormal style='line-height:15.0pt'><span lang=EN-US
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal style='line-height:15.0pt'><span lang=EN-US
+style='font-size:12.0pt'>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>根据《中华人民共和国合同法》、《嘉善县县级国有企业资产出租管理办法（试行）》及其他有关规定，甲、乙双方在平</span><span style='font-family:宋体'>等、自愿、诚实信用原则的基础上，就房屋租赁事项达成如下协议：</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第一条<span lang=EN-US>&nbsp; </span>房屋基本情况 </span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>房屋坐落于浙江省嘉兴市嘉善县<b><span style='color:blue'>{{contract.house_address}}</span></b>，建筑面积约为<b><span style='color:blue'>{{contract.house_area}}</span></b>平方米<span lang=EN-US>,</span>房屋用途为<b><span style='color:blue'>{{contract.useof}}</span></b>。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><span style='font-family:宋体'>乙方向甲方承诺，</span><span style='font-family:宋体'>遵守国家有关房屋使用和物业管理的规定，在租赁期内未征得甲方书面同意以及有关部门审批核准前，不得擅自改变约定的使用用途，不得擅自改动房屋承重结构和拆改室内设施，不得损害其他业主和使用人的合法权益。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>3.</span><span style='font-family:宋体'>该房屋现有装修及设施、设备情况以实物为准。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第二条<span lang=EN-US>&nbsp; </span>房屋租赁证明文件</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>甲方应乙方需求，可提供房产证（或具有出租权的有效证明）。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><span style='font-family:宋体'>乙方应提供身份证明文件。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>3.</span><span style='font-family:宋体'>双方验证后可复印对方文件备存，所有复印件仅供本次租赁使用。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>4.</span><span style='font-family:宋体'>自本合同签订之日起60日内，由甲方向租赁房屋所在地的区房产行政主管部门申请办理房屋租赁登记备案手续。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第三条<span lang=EN-US>&nbsp; </span>租赁期限</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>租期共叁年，自<b><span style='color:blue'>{{contract.start_time.strftime("%Y年%m月%d日")}}</span></b>至<b><span style='color:blue'>{{contract.end_time.strftime("%Y年%m月%d日")}}</span></b>。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第四条<span lang=EN-US>&nbsp; </span>租金、支付期限</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>第一期租金￥<b><span style='color:blue'>{{firstbillamount}}</span></b>元，于<b><span style='color:blue'>{{TopayFirst}}</span></b>前支付；</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>第二期租金￥<b><span style='color:blue'>{{secondbillamount}}</span></b>元，于<b><span style='color:blue'>{{TopaySecond}}</span></b>前支付；</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>第三期租金￥<b><span style='color:blue'>{{thirdbillamount}}</span></b>元，于<b><span style='color:blue'>{{TopayThird}}</span></b>前支付；</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>租金总额共计￥<b><span style='color:blue'>{{totalamount}}</span></b>>元（大写：人民币<b><span style='color:blue'>{{totalamount_CN}}</span></b>元整）</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第五条<span lang=EN-US>&nbsp; </span>租赁保证金</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>乙方在签订本合同前，须向甲方交纳房屋租赁无息保证金￥<b><span style='color:blue'>{{contract.security_deposit}}</span></b>元（大写：人民币<b><span style='color:blue'>{{security_deposit_CN}}</span></b>元整）。保证金在乙方未违约的前提下，甲方验收房屋后，乙方凭租赁到期当月的水电费已缴单据，甲方一次性退还给乙方，且保证金不计息。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第六条<span lang=EN-US>&nbsp; </span>房屋的附属设施及费用的承担</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>租赁期内，承租区域内设施的使用，如物业管理费、卫生费、治安费、水费、电费、电话费及其他产生的直接费用，由乙方自行承担。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><span style='font-family:宋体'>使用该房屋进行商业活动产生的其他各项费用均由乙方缴纳，其中包括乙方自己申请安装电话、宽带、有线电视等设备的费用。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第七条<span lang=EN-US>&nbsp; </span>房屋修缮与使用 </span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>在租赁期内，甲方应保证出租房屋的使用安全。甲方维修范围是指对<b><i>房屋结构部分</i></b>进行维修，其他维修需经乙方向甲方提出书面维修申请，经甲方审核、考察后，对房屋进行维修。审核、考察期最长为十四日。对乙方的装修、装饰部分甲方不负有修缮的义务。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><b><i><span style='font-family:宋体'>甲方在巡视过程中发现的问题，不视为乙方对甲方的书面申请。</span></i></b><span style='font-family:宋体'>甲方主动维修，乙方应积极协助配合。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>3.</span><span style='font-family:宋体'>因台风、暴雨、大雪等异常天气导致的房屋结构性毁损，在有维修可能的情况下甲方应承担维修义务与费用，也可终止合同。对因此乙方所形成的货物毁损及停产停业损失等，甲方不负责。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>4.</span><span style='font-family:宋体'>乙方应合理使用其所承租的房屋及其附属设施。租赁期间，由乙方导致租赁房屋的质量或房屋内外部设施损毁，包括房内外防水、门窗、水电等，乙方应立即负责修复或经济赔偿。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>5.</span><span style='font-family:宋体'>乙方如改变房屋的内部结构、装修或设置对房屋结构有影响的设备，设计规模、范围、工艺、用料等方案均须事先征得甲方的书面同意后方可施工。租赁期满后或因乙方责任导致退租的，除双方另有约定外，依附于房屋的装修归甲方所有。若因乙方装修，导致与出租时房屋样貌有巨大变化，可要求乙方恢复原状。若乙方不恢复原状，甲方在进行恢复工程后，可向乙方收取恢复工程实际发生的费用。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第八条 房屋的转让与转租 </span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>租赁期间，甲方有权依照法定程序转让该出租的房屋，转让后，本合同对新的房屋所有人和乙方继续有效。甲方应及时告知乙方，形式为书面、传真、微信、短信。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><span style='font-family:宋体'>租赁期间，<b><i>乙方不得转租、转借承租房屋</i></b>。乙方在承租期内擅自转租、转借给第三人，乙方或第三人造成甲方损失的，应当由乙方承担。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>3.</span><span style='font-family:宋体'>若甲方有意出售部分或全部租赁物业给除国有资产背景的实体外的任何第三方，在同等条件下乙方有优先购买权。<b><i>若甲方将部分或全部租赁物业转让给国有资产背景的实体的，在同等条件下乙方放弃优先购买权。</i></b></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第九条 合同的变更、解除与终止 </span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>双方可以协商变更或终止本合同。但在双方未达成变更或终止本合同前双方仍应按本合同履行各自的合同义务。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><span style='font-family:宋体'>甲方有以下行为之一的，乙方有权解除合同：
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-indent:21.0pt;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>1</span>）不能提供房屋或所提供房屋不符合约定条件，严重影响使用。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-indent:21.0pt;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>2</span>）甲方未尽房屋修缮义务，严重影响使用的。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>3.</span><span style='font-family:宋体'>房屋租赁期间，乙方有下列行为之一的，甲方有权解除合同，收回出租房屋；
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-indent:21.0pt;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>1</span>）未经甲方书面同意，转租、转借承租房屋。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-indent:21.0pt;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>2</span>）未经甲方书面同意，拆改变动房屋结构。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-indent:21.0pt;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>3</span>）损坏承租房屋，在甲方提出的合理期限内仍未修复的。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-indent:21.0pt;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>4</span>）未经甲方书面同意，改变本合同约定的房屋租赁用途。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-indent:21.0pt;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>5</span>）利用承租房屋存放危险物品或进行违法活动。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-indent:21.0pt;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>6</span>）逾期未交纳按约定应当由乙方交纳的各项费用，已经给甲方造成严重损害的。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;text-indent:21.0pt;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>7</span>）拖欠房租累计</span><b><i><span style='font-family:宋体'>两个月</span></i></b><span style='font-family:宋体'>以上。 </span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>5.</span><span style='font-family:宋体'>租赁期届满合同自然终止。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>6.</span><span style='font-family:宋体'>因不可抗力因素导致合同无法履行的，合同终止。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>7.</span><span style='font-family:宋体'>合同的解除或终止之后，甲乙双方应当及时计算实际承租期限，按天计算，租金多退少补。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第十条<span lang=EN-US>&nbsp; </span>房屋交付、收回及验收</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>甲方应保证租赁房屋本身及附属设施、设备处于能够正常使用状态。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><span style='font-family:宋体'>甲方应当在租赁期开始前交付钥匙。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>3.</span><span style='font-family:宋体'>租赁合同期满前<span lang=EN-US>15</span>日内，乙方应做好归还出租房的准备，并将其承租的房屋恢复原样，租赁期限届满时乙方应即交还租赁房屋。租赁合同期满前<span lang=EN-US>45</span>日内至前<span lang=EN-US>15</span>日内，甲方将口头通知乙方。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>4.</span><span style='font-family:宋体'>乙方交还甲方房屋应当保持房屋及设施、设备的完好状态，不得留存物品或影响房屋的正常使用。对未经同意留存的物品，甲方有权处置。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>5.</span><span style='font-family:宋体'>验收时双方共同参与，如对装修、器物等硬件设施、设备有异议应当场提出。当场难以检测判断的，应于</span><span lang=EN-US style='font-family:宋体'>30</span><span style='font-family:宋体'>日内向对方主张。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第十一条<span lang=EN-US>&nbsp; </span>甲方的权利和义务</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（一）有权按本合同规定向乙方收取租金及其他各项费用或逾期违约金。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（二）监督乙方正确使用房屋、并保证房屋内外各类设施在乙方进场时能正常使用。若发现乙方在承租期间有安全问题，有权要求限期整改。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（三）甲方不承担乙方的经营风险及责任。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（四）在乙方有以下行为时：擅自将房屋整修转租、转让或转借；利用承租房进行违规及违章经营和非法活动时，损害公共利益或甲方利益时；拖欠租金的行为。甲方有权提前终止合同，并提出赔偿。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（五）在乙方没有违反使用水、电且不存在不可抗力的情况下，甲方应保证租赁房屋正常用水用电。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（六）如房屋确实因结构的自然损坏（不包括不可抗力）需要维修时，甲方应履行维修责任，乙方应积极协助并配合。甲方房屋维修责任不包括乙方自行装修的部分和易耗性生活设施（如门窗、卫生设施、低压内线设施等）。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第十二条<span lang=EN-US>&nbsp; </span>乙方的权利和义务</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（一）按照本合同及《拍卖须知》使用标的物，开展正常经营活动，不得将房屋另作他用。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（二）确保消防安全，如果因乙方使用房屋或经乙方装修房屋出现并造成人身财产损害时，均由乙方承担全部赔偿责任。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（三）乙方在承租期间须自行办理房产租赁许可证、营业执照等相关证照；相关办证费用均由乙方承担。如因乙方怠于办理相关证照而产生的法律责任，均由乙方自行承担。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（四）按照交纳房屋租金及其他费用。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（五）不得擅自拆改房屋构造，不在租赁房屋内从事违法活动。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（六）乙方在承租期间须守法经营，其安全责任由乙方承担。做好出租房前屋后的卫生工作。乙方必须做好安全保卫工作，发生被盗或火灾事故，如给毗邻其他建筑和住户造成损失的，应承担相应的民事责任。为防止电气火灾事故，乙方必须根据甲方已敷设的内线额定容量用电，因超载用电和其它违章用电造成事故的由乙方承担责任。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（七）乙方需要使用电话和有线电视的应自行向有关部门办理报装手续及负担相关费用，承租结束时，由乙方负责注销。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（八）乙方须遵守拍卖行《拍卖公告》、《拍卖规则》、《拍卖须知》的规定。若存在不一致的地方，以本合同为准。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第十三条<span lang=EN-US>&nbsp; </span>续租申请</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>租期届满前<span lang=EN-US>90</span>日至前<span lang=EN-US>60</span>日内，乙方若需续租，应书面向甲方提出书面续租申请，申请书上应标明租金明细。在原租金价格每年递增<span lang=EN-US>3%</span>的基础上、且无拖欠租金等违约行为的条件下，经甲方同意，乙方可续租一次，最长不得超过叁年。<b><i>房屋经一次续租后，租赁期届满，乙方不再享有优先地位。</i></b></span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第十四条<span lang=EN-US>&nbsp; </span>土地征收</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>租赁期间，如遇政府有新的规划，需要征用土地动迁厂房时，双方应配合新的规划执行，甲方须及时通知乙方。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><span style='font-family:宋体'>租赁房屋若遇到土地征收情形，乙方需配合甲方及征收主体，及时做好房屋腾空及其他相关工作。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>3.</span><span style='font-family:宋体'>若政府规划动迁所涉及的<b><i>搬迁费、停产停业损失</i></b>归属于乙方，其余归属甲方。遇有争议，甲、乙双方可协商解决。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第十五条<span lang=EN-US>&nbsp; </span>甲方违约责任</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>由于甲方怠于履行维修义务或情况紧急，乙方组织维修的，甲方应支付乙方费用或折抵租金，但乙方应提供有效凭证。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><span style='font-family:宋体'>甲方违反本合同约定，无故提前收回房屋的，应按照合同当期租金的百分之十向乙方支付违约金，若支付的违约金不足弥补乙方损失的，甲方还应该承担赔偿责任。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>3.</span><span style='font-family:宋体'>甲方因房屋权属瑕疵或非法出租房屋而导致本合同无效时，甲方应赔偿乙方相应损失。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第十六条<span lang=EN-US>&nbsp; </span>乙方违约责任 </span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>租赁期间，乙方有下列行为之一的，甲方有权终止合同，收回该房屋，乙方应按照<b><i>合同当期租金的百分之二十</i></b>向甲方支付违约金。若支付的违约金不足弥补甲方损失的，乙方还应负责赔偿直至达到弥补全部损失为止。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>1</span>）未经甲方书面同意，将房屋<b><i>转租、转借</i></b>给他人使用的；
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>2</span>）未经甲方书面同意，拆改变动房屋结构或损坏房屋； </span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>3</span>）改变本合同规定的租赁用途或利用该房屋进行违法活动的； </span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>（<span lang=EN-US>4</span>）拖欠房租累计</span><b><i><span style='font-family:宋体'>两个月</span></i></b><span style='font-family:宋体'> 以上的。 </span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><span style='font-family:宋体'>在租赁期内，乙方逾期交纳本合同第六条的相关费用的，每逾期一天，则应按费用总额的</span><b><i><span style='font-family:宋体'>百分之五</span></i></b><span style='font-family:宋体'>支付甲方违约金。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>3.</span><span style='font-family:宋体'>在租赁期内，中途擅自退租的，乙方应该按<b><i>合同当期租金的</i></b></span><b><i><span style='font-family:宋体'>百分之十五</span></i></b><span style='font-family:宋体'>向甲方支付违约金。若支付的违约金不足弥补甲方损失的，乙方还应承担赔偿责任。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>4.</span><span style='font-family:宋体'>乙方如逾期支付租金<span lang=EN-US>,</span>每逾期一日<span lang=EN-US>,</span>则乙方须按<b><i>日租金的百分之二十</i></b>支付违约金。
+</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>5.</span><span style='font-family:宋体'>租赁期满，乙方应如期交还该房屋。乙方逾期归还，则每逾期一日应向甲方支付原<b><i>日租金</i></b></span><b><i><span style='font-family:宋体'>百分之二十</span></i></b><span style='font-family:宋体'>的违约金。若违约金不足以弥补甲方的损失，乙方还应承担因逾期归还给甲方造成的损失。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第十七条<span lang=EN-US>&nbsp; </span>免责条件 </span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>因不可抗力原因致使本合同不能继续履行或造成的损失，甲、乙双方互不承担责任。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><span style='font-family:宋体'>因国家政策需要拆除或改造已租赁的房屋，使甲、乙双方造成损失的，互不承担责任。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>3.</span><span style='font-family:宋体'>因上述原因而终止合同的，租金按照实际使用时间计算，不足整月的按天数计算，多退少补。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>4.</span><span style='font-family:宋体'>不可抗力系指“不能预见、不能避免并不能克服的客观情况”。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第十八条<span lang=EN-US>&nbsp; </span>补充协议</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>本合同未尽事宜，经甲、乙双方协商一致，可订立补充协议。补充协议及附件均为本合同组成部分，与本合同具有同等法律效力。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第十九条<span lang=EN-US>&nbsp; </span>争议解决 </span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>凡因本合同发生的或与本合同有关的一切争议，由双方当事人协商，协商解决不成的，双方当事人一致同意提交不动产所在地诉讼。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><b><span style='font-family:宋体'>第二十条<span lang=EN-US>&nbsp; </span>其他事项</span></b></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>1.</span><span style='font-family:宋体'>本合同所涉及的日，无特殊情况下，均指自然日。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>2.</span><span style='font-family:宋体'>本合同手写体与打印体具同等效力。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>3.</span><span style='font-family:宋体'>双方确认，本合同头部的地址、联系方式为双方履行本合同而发送相关文件、通知的送达地，任何一方按该地址寄送文件或通知，一经付邮即视同送达对方。双方同意使用电子方式联系，甲方电子联系方式为<span lang=EN-US>___&shy;&shy;_______</span>，乙方电子联系方式为<span lang=EN-US>___________</span>。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>4.</span><span style='font-family:宋体'>本合同共四页，一式四份，甲方执三份，乙方执一份，自双方签字或盖章后生效。同时签订安全责任书，作为合同附件，与本合同具有同等法律效力。</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US style='font-family:宋体'>5.</span><span style='font-family:宋体'>若其他相关文件与本合同存在不一致的地方，以本合同为准。</span></p>
+
+<p class=MsoNormal style='text-indent:21.0pt;line-height:15.0pt'><span style='font-family:宋体'>（本页以下无正文）</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>【本页为签署页】</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>甲方（盖章）：</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>法定代表人</span><span lang=EN-US>/</span><span style='font-family:宋体'>授权人：</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>乙方（签字或盖章）：</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span style='font-family:宋体'>法定代表人</span><span lang=EN-US>/</span><span style='font-family:宋体'>授权人（若有）：</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=left style='text-align:left;line-height:22.0pt'><span lang=EN-US>&nbsp;</span></p>
+
+<p class=MsoNormal align=right style='text-align:right;line-height:22.0pt;
+word-break:break-all'><span style='font-family:宋体'>签署日期：</span><span lang=EN-US>&nbsp;&nbsp;&nbsp; </span><span style='font-family:宋体'>年</span><span lang=EN-US>&nbsp; </span><span style='font-family:宋体'>月</span><span lang=EN-US>&nbsp;
+</span><span style='font-family:宋体'>日</span></p>
+
+</div>
+
+</body>
+
+</html>

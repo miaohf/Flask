@@ -85,19 +85,6 @@
                                         {% endif %}
                                     </div>
                                     <div class="form-group row col-md-6"">
-                                        {{ form.postcode.label(class="col-sm-3 col-form-label") }} 
-                                        {% if form.postcode.errors %} 
-                                            {{ form.postcode(class="form-control is-invalid") }}
-                                            <div class="invalid-feedback">
-                                            {% for error in form.postcode.errors %}
-                                                <span>{{ error }}</span> 
-                                            {% endfor %}
-                                            </div>
-                                        {% else %}
-                                            {{ form.postcode(class="col-md-6 form-control") }}
-                                        {% endif %}
-                                    </div>
-                                    <div class="form-group row col-md-6"">
                                         {{ form.note.label(class="col-sm-3 col-form-label") }} 
                                         {% if form.note.errors %} 
                                             {{ form.note(class="form-control is-invalid") }}

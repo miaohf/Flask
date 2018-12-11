@@ -81,15 +81,15 @@ class Garden(db.Model):
 
 class Resource(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    status = db.Column(db.Integer, nullable=False, default=0)
-    company = db.Column(db.String(200),  nullable=False)
-    garden_id = db.Column(db.String(200),  nullable=False)
+    landlord_id = db.Column(db.Integer,  nullable=False)
+    garden_id = db.Column(db.Integer,  nullable=False)
     address = db.Column(db.String(200), unique=True, nullable=False)
     price = db.Column(db.Integer,  nullable=False)
     pictures = db.Column(db.String(200),  nullable=False)
     area1 = db.Column(db.NUMERIC(8,2),  nullable=False)
     area2 = db.Column(db.NUMERIC(8,2),  nullable=False)
     cardid = db.Column(db.String(200), unique=True, nullable=False)
+    status = db.Column(db.Integer, nullable=False, default=0)
     note = db.Column(db.String(200))
     create_time = db.Column(db.DateTime, nullable=False, default=datetime.now)
     update_time = db.Column(db.DateTime, onupdate=datetime.now)
@@ -125,6 +125,7 @@ class Customer(db.Model):
     cardid = db.Column(db.String(200),  unique=True, nullable=False)
     pictures = db.Column(db.String(200), nullable=False)
     address = db.Column(db.String(200), unique=True, nullable=False)
+    postcode = db.Column(db.Integer, nullable=False)
     note = db.Column(db.String(200))
     create_time = db.Column(db.DateTime, nullable=False, default=datetime.now)
     update_time = db.Column(db.DateTime, onupdate=datetime.now)
@@ -134,6 +135,22 @@ class Customer(db.Model):
         return f"Post('{self.title}', '{self.date_posted}')"
 
 
+class Landlord(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200), unique=True, nullable=False)
+    status = db.Column(db.Integer, nullable=False, default=0)
+    phone = db.Column(db.String(200), nullable=False)
+    cardid = db.Column(db.String(200),  unique=True, nullable=False)
+    pictures = db.Column(db.String(200), nullable=False)
+    address = db.Column(db.String(200), nullable=False)
+    note = db.Column(db.String(200))
+    create_time = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    update_time = db.Column(db.DateTime, onupdate=datetime.now)
+    
+
+    def __repr__(self):
+        return f"Post('{self.title}', '{self.date_posted}')"
+
 
 class Contract(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -142,6 +159,7 @@ class Contract(db.Model):
     bill_status = db.Column(db.Integer, nullable=False, default=0)
     customer_id = db.Column(db.Integer, nullable=False)
     type = db.Column(db.Integer, nullable=False)
+    is_xuzu = db.Column(db.Integer, nullable=False, default=0)
     auction_date = db.Column(db.DateTime)
     start_time = db.Column(db.DateTime, nullable=False)
     end_time = db.Column(db.DateTime, nullable=False)

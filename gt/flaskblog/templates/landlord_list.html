@@ -1,0 +1,51 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-ribbon"></i> {{ title }}</legend>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive table-hover">
+                        <table id="order-listing" class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>客户编号</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>客户姓名</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>证件号码</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>电话号码</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>详细地址</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>备注信息</b></font>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for landlord in landlords %}
+                                <tr role="row" class="odd">
+                                    <td>{{ landlord.id }}</td>
+                                    <td>{{ landlord.name }}</td>
+                                    <td>{{ landlord.cardid }}</td>
+                                    <td>{{ landlord.phone }}</td>
+                                    <td>{{ landlord.address }}</td>
+                                    <td>{{ landlord.note }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

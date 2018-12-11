@@ -61,7 +61,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <b> 租户编号 :</b> <a href="{{ url_for('posts.customer_info', customer_id=contract.customer_id) }}" >{{ contract.customer_id }}</a></td>
+                                                                    <b> 租户编号 :</b> <a href="{{ url_for('posts.customer_info', customer_id=contract.customer_id) }}" >{{ contract.customer_name }}</a></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
@@ -70,7 +70,11 @@
                                                             <tr>
                                                                 <td>
                                                                     <b> 详细地址 :</b> {{ contract.house_address }}</td>
-                                                            </tr>                                                            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 邮政编码 :</b> {{ contract.customer_postcode }}</td>
+                                                            </tr>                                                           
                                                         </table>
                                                     </div>
                                                 </div>
@@ -120,20 +124,13 @@
                                                 {% endif %}
                                             </div>
                                             <div>
-                                                {% if contract.contract_status == 1 %}
+                                                {% if contract.contract_status == 1 and contract.contract_typename == '拍租' %}
                                                 <a href="{{ url_for('posts.renewal_contract', contract_id=contract.id) }}" class="btn btn-outline-primary float-right"></i>合同续签</a>
                                                 {% endif %}
                                             </div>
                                             <div>
-                                                {% if contract.contract_typename == '拍租' %}
-                                                <a href="{{ url_for('posts.print_contract', contract_id=contract.id) }}" class="btn btn-outline-primary float-right"></i>打印合同(拍租)</a>
-                                                {% elif contract.contract_typename == '协议' %}
-                                                <a href="{{ url_for('posts.print_contract', contract_id=contract.id) }}" class="btn btn-outline-primary float-right"></i>打印合同(协议)</a>
-                                                {% elif contract.contract_typename == '续租' %}
-                                                <a href="{{ url_for('posts.print_contract', contract_id=contract.id) }}" class="btn btn-outline-primary float-right"></i>打印合同(续租)</a>
-                                                {% endif %}
-                                            </div>
-                                            
+                                                <a href="{{ url_for('posts.print_contract', contract_id=contract.id) }}" class="btn btn-outline-primary float-right"></i>打印合同</a>
+                                            </div>                                            
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="user-profile-activity" role="tabpanel" aria-labelledby="user-profile-activity-tab">

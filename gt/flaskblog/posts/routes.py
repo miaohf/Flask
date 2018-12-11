@@ -3,8 +3,8 @@ from flask import (render_template, url_for, flash,
                    redirect, request, abort, Blueprint, Response) 
 from flask_login import current_user, login_required
 from flaskblog import db
-from flaskblog.models import Post, Garden, Resource, House, Customer, Contract, Contractype, Maintenanceunit, Maintenancerec, Contractbill, User, Contractype
-from flaskblog.posts.forms import PostForm, GardenForm, ResourceForm, UpdateResourceForm, HouseForm, UpdateHouseForm, CustomerForm,  ContractForm, ContractypeForm, UpdateContractForm, TerminateContractForm, MaintenanceunitForm, MaintenancerecForm, TerminateMaintenancerecForm, ContractbillForm, PaybillForm, RenewalContractForm
+from flaskblog.models import Post, Garden, Resource, House, Customer, Landlord, Contract, Contractype, Maintenanceunit, Maintenancerec, Contractbill, User, Contractype
+from flaskblog.posts.forms import PostForm, GardenForm, ResourceForm, UpdateResourceForm, HouseForm, UpdateHouseForm, CustomerForm, LandlordForm, ContractForm, ContractypeForm, UpdateContractForm, TerminateContractForm, MaintenanceunitForm, MaintenancerecForm, TerminateMaintenancerecForm, ContractbillForm, PaybillForm, RenewalContractForm
 from sqlalchemy import func, extract, desc, or_
 from datetime import datetime, timedelta
 from flask import current_app as app
@@ -16,7 +16,7 @@ posts = Blueprint('posts', __name__)
 
 
 
-@posts.route("/posts/dashboard")
+@posts.route("/post/dashboard")
 @login_required
 def dashboard():
     thisYear = datetime.today().year    
@@ -42,10 +42,6 @@ def dashboard():
     unpaid_thisyear = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).filter_by(status=0).with_entities(Contractbill.bill_amount).all()
     paid_thisyear = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).filter_by(status=1).with_entities(Contractbill.bill_amount).all()
 
-    # reference=billamounts_lastyear*20
-    # lastYearpecent=billamounts_lastyear/reference
-    # thisYearpecent=billamounts_thisyear/reference
-
     billamounts_thismonth = Contractbill.query.filter(extract('year', Contractbill.bill_date) == thisYear).\
     filter(extract('month', Contractbill.bill_date) == thisMonth).with_entities(Contractbill.bill_amount).all()
 
@@ -68,9 +64,7 @@ def dashboard():
     resourcePrices = Resource.query.with_entities(Resource.price).all() 
     resourceArea1s = Resource.query.with_entities(Resource.area1).all() 
     resourceArea2s = Resource.query.with_entities(Resource.area2).all() 
-    
-    # return str(paid_billamounts_notthismonth)
-    
+        
     return render_template('dashboard.html', contract_counts=contract_counts, 
         contract_expired_30d=contract_expired_30d,
         contract_expired_7d=contract_expired_7d,
@@ -87,15 +81,10 @@ def dashboard():
         unpaid_thisyear=str(sum([sum(i) for i in unpaid_thisyear])/10000),
         paid_thisyear=str(sum([sum(i) for i in paid_thisyear])/10000),
 
-        # lastYearpecent=str(billamounts_lastyear/reference),
-        # thisYearpecent=str(billamounts_thisyear/reference),
-
-
         billamounts_thismonth=str(sum([sum(i) for i in billamounts_thismonth])/10000), 
         paid_billamounts_thismonth=str(sum([sum(i) for i in paid_billamounts_thismonth])/10000),
         paid_billamounts_notthismonth=str(sum([sum(i) for i in paid_billamounts_notthismonth])/10000),
         unpaid_billamounts_thismonth=str(sum([sum(i) for i in unpaid_billamounts_thismonth])/10000),
-
          
         security_deposits=str(sum([sum(i) for i in security_deposits])/10000), 
         users_recently_visited=users_recently_visited,
@@ -113,7 +102,7 @@ def dashboard():
         title='我的黑板')
 
 
-@posts.route("/posts/position")
+@posts.route("/post/position")
 @login_required
 def position():
     return render_template('position.html', title='获取坐标')
@@ -192,17 +181,24 @@ def new_garden():
 @login_required
 def new_resource():
     form = ResourceForm()
-    choices = [("0", "------请选择------ ")]
+
+    choicesgarden = [("0", "------请选择------ ")]
     for s in Garden.query.with_entities(Garden.id, Garden.name).all():
-        choices.append((s[0], s[1])) 
-    form.garden_id.choices = choices
+        choicesgarden.append((s[0], s[1])) 
+    form.garden_id.choices = choicesgarden
+
+    choiceslandlord = [("0", "------请选择------ ")]
+    for s in Landlord.query.with_entities(Landlord.id, Landlord.name).all():
+        choiceslandlord.append((s[0], s[1])) 
+    form.landlord_id.choices = choiceslandlord
+
     # form.garden_id.choices = db.session.query(Garden.id, Garden.name)
     if form.validate_on_submit():
         # single file upload
         f = form.pictures.data
         filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
         f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-        post = Resource(company=form.company.data, \
+        post = Resource(landlord_id = form.landlord_id.data, \
             garden_id = form.garden_id.data, \
             address = form.address.data, \
             price = form.price.data, \
@@ -227,7 +223,7 @@ def update_resource(resource_id):
         f = form.pictures.data
         filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
         f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-        resource.company=form.company.data
+        resource.company = form.company.data
         resource.address = form.address.data
         resource.price = form.price.data
         resource.pictures = filename
@@ -335,12 +331,34 @@ def new_customer():
             address=form.address.data, \
             cardid=form.cardid.data, \
             pictures=filename, \
+            postcode=form.postcode.data, \
             note=form.note.data)
         db.session.add(post)
         db.session.commit()
         flash('新的租户登记完成!', 'success')
         return redirect(url_for('posts.customer_list'))
     return render_template('create_customer.html', title='租户登记', form=form)
+
+
+@posts.route("/post/create_landlord", methods=['GET', 'POST'])
+@login_required
+def new_landlord():
+    form = LandlordForm()
+    if form.validate_on_submit():
+        f = form.pictures.data
+        filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+        f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+        post = Landlord(name=form.name.data, \
+            phone=form.phone.data, \
+            address=form.address.data, \
+            cardid=form.cardid.data, \
+            pictures=filename, \
+            note=form.note.data)
+        db.session.add(post)
+        db.session.commit()
+        flash('产权人登记完成!', 'success')
+        return redirect(url_for('posts.landlord_list'))
+    return render_template('create_landlord.html', title='产权持有人登记', form=form)
 
 
 @posts.route("/post/create_contract", methods=['GET', 'POST'])
@@ -358,7 +376,7 @@ def new_contract():
     form.customer_id.choices = choicesCustomerid
 
     choicesType = [("0", "------请选择------ ")]
-    for s in Contractype.query.with_entities(Contractype.id, Contractype.name).all():
+    for s in Contractype.query.filter(Contractype.name!='续租').with_entities(Contractype.id, Contractype.name).all():
         choicesType.append((s[0], s[1])) 
     form.type.choices = choicesType
 
@@ -458,6 +476,7 @@ def renewal_contract(contract_id):
             house_id=form.house_id.data, \
             customer_id=form.customer_id.data, \
             type= contractype_renewal.id, \
+            is_xuzu=1,\
             auction_date=form.auction_date.data, \
             start_time=form.start.data, \
             end_time=form.end.data, \
@@ -471,6 +490,9 @@ def renewal_contract(contract_id):
             origin_contract_id = contract_id, \
             note=form.note.data,\
             user_id=current_user.id)
+        #修改House.status
+        house = House.query.filter(House.id == form.house_id.data).first()
+        house.status = '1'
         db.session.add(post)
         db.session.commit()
         flash('续签合同创建完成!', 'success')
@@ -518,19 +540,19 @@ def update_contract(contract_id):
                 f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
                 filenames.append(filename)
             for i in filenames:
-                all_pictures_name=all_pictures_name +'|' + i 
+                all_pictures_name = all_pictures_name +'|' + i 
             contract.contract_pics = all_pictures_name        
-        contract.status=form.status.data                  
-        contract.name=form.name.data
-        contract.house_id=form.house_id.data
-        contract.customer_id=form.customer_id.data
-        contract.type=form.type.data
-        contract.auction_date=form.auction_date.data
-        contract.start_time=form.start.data
-        contract.end_time=form.end.data
-        contract.annual_rent=form.annual_rent.data
-        contract.note=form.note.data
-        contract.user_id=current_user.id
+        contract.status = form.status.data                  
+        contract.name = form.name.data
+        contract.house_id = form.house_id.data
+        contract.customer_id = form.customer_id.data
+        contract.type = form.type.data
+        contract.auction_date = form.auction_date.data
+        contract.start_time = form.start.data
+        contract.end_time = form.end.data
+        contract.annual_rent = form.annual_rent.data
+        contract.note = form.note.data
+        contract.user_id = current_user.id
         db.session.commit()
         flash('合同已经更新!', 'success')
         return redirect(url_for('posts.contract_normal'))
@@ -549,7 +571,7 @@ def update_contract(contract_id):
         form.auction_announcement.data = contract.auction_announcement
         form.auction_confirmation.data = contract.auction_confirmation
         form.note.data = contract.note
-        return render_template('create_contract.html', title='合同变更', form=form)
+        return render_template('update_contract.html', title='合同变更', form=form)
 
 
 @posts.route("/post/contractype", methods=['GET', 'POST'])
@@ -594,6 +616,7 @@ def new_maintenancerec(house_id):
         return redirect(url_for('posts.new_maintenancerec', house_id=house_id) )
         # return redirect(url_for('posts.maintenanceunit_list'))
     return render_template('create_maintenancerec.html', title='维修登记', house_id=house_id, form=form)
+
 
 @posts.route("/post/maintenancerec/<int:maintenancerec_id>/update", methods=['GET', 'POST'])
 @login_required
@@ -671,6 +694,13 @@ def resource_list():
 def customer_list():
     customers = Customer.query.all()
     return render_template('customer_list.html', customers=customers, title='客户查询')
+
+
+@posts.route("/post/landlord_list")
+@login_required
+def landlord_list():
+    landlords = Landlord.query.all()
+    return render_template('landlord_list.html', landlords=landlords, title='产权持有人查询')
 
 
 @posts.route("/post/normal_contract")
@@ -1006,6 +1036,7 @@ def contract_info(contract_id):
         Customer.phone.label('customer_phone'), \
         Customer.cardid.label('customer_cardid'), \
         Customer.address.label('customer_address') , \
+        Customer.postcode.label('customer_postcode') , \
         House.id.label('house_id') , \
         House.address.label('house_address') , \
         House.pictures.label('house_pictures') 
@@ -1040,29 +1071,44 @@ def pay_bill(bill_id):
 @posts.route("/posts/contract/<int:contract_id>/print")
 @login_required
 def print_contract(contract_id):
-    contract = Contract.query.filter_by(id=contract_id).join(Customer, Customer.id==Contract.customer_id).join(House, House.id==Contract.house_id).\
+    contract = Contract.query.filter_by(id=contract_id).join(Customer, Customer.id==Contract.customer_id).join(House, House.id==Contract.house_id).join(Resource, Resource.id==House.resource_id).join(Contractype, Contractype.id==Contract.type).join(Landlord, Landlord.id==Resource.landlord_id).\
     with_entities(Contract.id.label('contract_id'), \
         Contract.name.label('contract_name'), \
+        Contractype.name.label('type_name'), \
+        Contract.is_xuzu.label('is_xuzu'), \
         Contract.start_time.label('start_time'), \
         Contract.end_time.label('end_time'), \
         Contract.annual_rent.label('annual_rent'), \
         Contract.useof.label('useof'), \
         Contract.security_deposit.label('security_deposit'), \
-        # (contract.end_time-contract.start_time).years
         Contract.contract_pics.label('contract_pics'), \
-        # (Contract.start_time + timedelta(hours=24)).label('firstpay_time'), \
-        # (Contract.start_time + timedelta(hours=48)).label('secondpay_time'), \
-        # (Contract.start_time + timedelta(hours=72)).label('thirdpay_time'), \
+        Contract.note.label('note'), \
         Customer.id.label('customer_id'), \
         Customer.name.label('customer_name'), \
-        Customer.id.label('customer_id'), \
         Customer.phone.label('customer_phone'), \
         Customer.cardid.label('customer_cardid'), \
         Customer.address.label('customer_address') , \
+        Customer.postcode.label('customer_postcode') , \
         House.address.label('house_address') , \
         House.area.label('house_area') , \
-        House.pictures.label('house_pictures') 
-        ).first()
+        House.pictures.label('house_pictures'), \
+        Landlord.name.label('landlord_name'), \
+        Landlord.cardid.label('landlord_cardid'), \
+        Landlord.phone.label('landlord_phone'), \
+        Landlord.address.label('landlord_address')
+        ).first()    
+
+    if contract.is_xuzu == 1:
+        firstbillamount = contract.annual_rent
+        secondbillamount = round(contract.annual_rent*1.03)
+        thirdbillamount = round(contract.annual_rent*1.03**2)
+    else:
+        firstbillamount = contract.annual_rent
+        secondbillamount = contract.annual_rent
+        thirdbillamount = contract.annual_rent
+
+    totalamount = firstbillamount + secondbillamount + thirdbillamount
+    totalamount_CN = number_to_chinese(totalamount)
 
     TopayFirst = contract.start_time.strftime("%Y年%m月%d日")
     TopaySecond= (contract.start_time + timedelta(days=365*1)).strftime("%Y年%m月%d日")
@@ -1072,14 +1118,53 @@ def print_contract(contract_id):
     annual_rentin_CN = number_to_chinese(contract.annual_rent)
     security_deposit_CN = number_to_chinese(contract.security_deposit)
 
-    return render_template('contract_demo.html', title='合同打印', 
+    if contract.is_xuzu == 1:
+        return render_template('contract_xz.html', title='合同打印', 
         contract=contract, 
         TopayFirst=TopayFirst,
         TopaySecond=TopaySecond,
         TopayThird=TopayThird,
         durationYear=durationYear, 
         annual_rentin_CN=annual_rentin_CN, 
-        security_deposit_CN=security_deposit_CN)
+        security_deposit_CN=security_deposit_CN,
+        firstbillamount = firstbillamount,
+        secondbillamount = secondbillamount,
+        thirdbillamount = thirdbillamount,
+        totalamount = totalamount,
+        totalamount_CN = totalamount_CN)
+
+    elif contract.type_name == '拍租':
+        return render_template('contract_pz.html', title='合同打印', 
+        contract=contract, 
+        TopayFirst=TopayFirst,
+        TopaySecond=TopaySecond,
+        TopayThird=TopayThird,
+        durationYear=durationYear, 
+        annual_rentin_CN=annual_rentin_CN, 
+        security_deposit_CN=security_deposit_CN,
+        firstbillamount = contract.annual_rent,
+        secondbillamount = contract.annual_rent,
+        thirdbillamount = contract.annual_rent,
+        totalamount = totalamount,
+        totalamount_CN = totalamount_CN)
+
+    elif contract.type_name == '协议':
+        return render_template('contract_xy.html', title='合同打印', 
+        contract=contract, 
+        TopayFirst=TopayFirst,
+        TopaySecond=TopaySecond,
+        TopayThird=TopayThird,
+        durationYear=durationYear, 
+        annual_rentin_CN=annual_rentin_CN, 
+        security_deposit_CN=security_deposit_CN,
+        firstbillamount = contract.annual_rent,
+        secondbillamount = contract.annual_rent,
+        thirdbillamount = contract.annual_rent,
+        totalamount = totalamount,
+        totalamount_CN = totalamount_CN)
+
+    
+
 
 
 @posts.route("/posts/map")
