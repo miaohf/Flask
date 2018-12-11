@@ -21,7 +21,7 @@ class ResourceForm(FlaskForm):
     landlord_id=SelectField('产权持有人', choices=[], coerce=int, validators=[DataRequired(message=u"小区编号不能为空")])
     garden_id=SelectField('所在小区', choices=[], coerce=int, validators=[DataRequired(message=u"小区编号不能为空")])
     cardid = StringField('产证编号', validators=[DataRequired(), Length(7)], render_kw={"placeholder": '浙(2017)嘉善县不动产权第0049447号'})
-    address = StringField('产证地址', validators=[DataRequired(), Length(min=4, max=20)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
+    address = StringField('产证地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
     price = StringField('市场估值(万元)', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '308'})
     pictures = FileField('产证照片', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'pdf'])], render_kw={'multiple': True})
     area1 = StringField('建筑面积㎡', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '168.4'})
@@ -33,7 +33,7 @@ class ResourceForm(FlaskForm):
 class UpdateResourceForm(FlaskForm):
     company = StringField('所属单位', validators=[DataRequired(), Length(min=4, max=20)], render_kw={"placeholder": '嘉善九色鹿科技有限公司'})
     garden_id=StringField('小区编号',render_kw={'readonly': True})
-    address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=20)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
+    address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
     price = StringField('市场估值(万元)', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '308'})
     pictures = FileField('不动产证', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
     area1 = StringField('建筑面积(㎡)', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '168.4'})
@@ -44,7 +44,7 @@ class UpdateResourceForm(FlaskForm):
 
 
 class HouseForm(FlaskForm):
-    address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=30)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
+    address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
     resource_id=SelectField('资产编号', choices=[], coerce=int, validators=[DataRequired(message=u"资产编号不能为空")])
     # resource_id=SelectField('资产编号', choices=[], coerce=int, validators=[DataRequired(message=u"资产编号不能为空")], default=(0,'80400002'))
     area =StringField('房源面积(㎡)', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '178'})
@@ -66,7 +66,7 @@ class CustomerForm(FlaskForm):
     name = StringField('租户名称', validators=[DataRequired(), Length(min=2, max=20)], render_kw={"placeholder": '九色神鹿/嘉善九色鹿科技有限公司'})
     # phone = StringField('联系电话', validators=[DataRequired(), Length(11)], render_kw={"data-inputmask": "'alias': 'phonebe'"})
     phone = StringField('联系电话', validators=[DataRequired(), Length(11)], render_kw={"placeholder": '13858003606'})
-    address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=20)], render_kw={"placeholder": '九色鹿庄园88幢1-401#'})
+    address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '九色鹿庄园88幢1-401#'})
     cardid = StringField('证件号码', validators=[DataRequired(), Length(17)], render_kw={"placeholder": '33042119780716153Y'})
     pictures = FileField('证件照片', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
     postcode = StringField('邮政编码', validators=[DataRequired(), Length(6)], render_kw={"placeholder": '314100'})
@@ -77,8 +77,8 @@ class CustomerForm(FlaskForm):
 class LandlordForm(FlaskForm):
     name = StringField('产证持有人', validators=[DataRequired(), Length(min=2, max=20)], render_kw={"placeholder": '嘉善国有资产投资有限公司'})
     # phone = StringField('联系电话', validators=[DataRequired(), Length(11)], render_kw={"data-inputmask": "'alias': 'phonebe'"})
-    phone = StringField('联系电话', validators=[DataRequired(), Length(11)], render_kw={"placeholder": '13858003606'})
-    address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=20)], render_kw={"placeholder": '嘉善县地址魏塘镇解放东路318号'})
+    phone = StringField('联系电话', validators=[DataRequired(), Length(8,12)], render_kw={"placeholder": '13858003606/057384055550'})
+    address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善县地址魏塘镇解放东路318号'})
     cardid = StringField('证件号码', validators=[DataRequired(), Length(17)], render_kw={"placeholder": '91330421730907405U'})
     pictures = FileField('证件照片', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
     note = StringField('备注信息', render_kw={"placeholder": '无特殊情况'})
