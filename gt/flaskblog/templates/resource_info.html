@@ -31,23 +31,23 @@
                                                         <table class="table table-borderless w-100 mt-4">
                                                             <tr>
                                                                 <td>
-                                                                    <b>资产编号 :</b> {{ resource.id }}</td>
+                                                                    <b>资产编号 :</b> {{ resource.resource_id }}</td>
                                                             </tr>                                                            
                                                             <tr>
                                                                 <td>
-                                                                    <b>详细地址 :</b> {{ resource.address }}</td>
+                                                                    <b>详细地址 :</b> {{ resource.resource_address }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <b>建筑面积 :</b> {{ resource.area1 }}㎡</td>
+                                                                    <b>建筑面积 :</b> {{ resource.resource_area1 }}㎡</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>                                                                    
-                                                                    <b>土地使用权面积 :</b> {{ resource.area2 }}㎡</td>
+                                                                    <b>土地使用权面积 :</b> {{ resource.resource_area2 }}㎡</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <b>市场估值 :</b> {{ resource.price }}万元</td>                                                                    
+                                                                    <b>市场估值 :</b> {{ resource.resource_price }}万元</td>                                                                    
                                                             </tr>
                                                         </table>
                                                     </div>
@@ -59,21 +59,20 @@
                                                         <table class="table table-borderless w-100 mt-4">                                                            
                                                             <tr>
                                                                 <td>
-                                                                    <b>所属单位 :</b> {{ resource.company }}</td>
+                                                                    <b>所属单位 :</b> {{ resource.landlord_name }}</td>
                                                             </tr>
                                                              <tr>
                                                                 <td>
-                                                                    <b>不动产编号 :</b>{{ resource.cardid }}</td>
+                                                                    <b>不动产编号 :</b> {{ resource.resource_cardid }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <b>备注 :</b> {{ resource.note }}</td>
+                                                                    <b>备注 :</b> {{ resource.resource_note }}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <p><a href="{{ url_for('static', filename='uploads'+ resource.pictures) }}"><i class="menu-icon mdi mdi-image-filter"></i> 不动产证附件 </a> </p> </td>
-                                                            </tr>
-                                                             
+                                                                    <p><a href="{{ url_for('static', filename='uploads/'+ resource.resource_pictures) }}"><i class="menu-icon mdi mdi-image-filter"></i> 不动产证附件 </a> </p> </td>
+                                                            </tr>                                                             
                                                         </table>
                                                     </div>
                                                 </div>
@@ -81,7 +80,7 @@
                                         </div>
                                         <div class="col-sm-1 grid-margin stretch-card">
                                             <div>
-                                                <a href="{{ url_for('posts.update_resource', resource_id=resource.id) }}" class="btn btn-primary float-right"></i>资产更新</a>
+                                                <a href="{{ url_for('posts.update_resource', resource_id=resource.resource_id) }}" class="btn btn-primary float-right"></i>资产更新</a>
                                             </div>
                                         </div>
                                     </div>                                    

@@ -218,12 +218,17 @@ def new_resource():
 @login_required
 def update_resource(resource_id):
     form = UpdateResourceForm()
+    choiceslandlord = [("0", "------请选择------ ")]
+    for s in Landlord.query.with_entities(Landlord.id, Landlord.name).all():
+        choiceslandlord.append((s[0], s[1])) 
+    form.landlord_id.choices = choiceslandlord
     resource = Resource.query.filter_by(id=resource_id).first()
     if form.validate_on_submit():
-        f = form.pictures.data
-        filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
-        f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-        resource.company = form.company.data
+        if form.pictures.data:
+            f = form.pictures.data
+            filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+            f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+        resource.landlord_id = form.landlord_id.data
         resource.address = form.address.data
         resource.price = form.price.data
         resource.pictures = filename
@@ -235,7 +240,7 @@ def update_resource(resource_id):
         flash('资产信息已经更新，请继续登记房源!', 'success')
         return redirect(url_for('posts.resource_info', resource_id=resource.id))       
     elif request.method == 'GET':
-        form.company.data = resource.company
+        form.landlord_id.data = resource.landlord_id
         form.garden_id.data = resource.garden_id
         form.address.data = resource.address
         form.price.data = resource.price
@@ -283,7 +288,7 @@ def new_house():
         db.session.commit()
         flash('新房源登记成功!', 'success')
 
-        return redirect(url_for('posts.resource_list'))
+        return redirect(url_for('posts.house_list'))
     return render_template('create_house.html', form=form, title='房源登记')
 
 
@@ -308,7 +313,7 @@ def update_house(house_id):
         house.note=form.note.data
         db.session.commit()
         flash('房源信息已更新!', 'success')
-        return redirect(url_for('posts.resource_list'))
+        return redirect(url_for('posts.house_list'))
     elif request.method == 'GET':
         form.resource_id.data = house.resource_id
         form.address.data = house.address
@@ -451,7 +456,14 @@ def new_contract():
 def renewal_contract(contract_id):
     form = RenewalContractForm()
     contract = Contract.query.filter(Contract.id == contract_id).first()
-    yearsCovered= round((datetime.now()-contract.start_time).days/365)
+    contractype = Contractype.query.filter(Contractype.id ==contract.type).with_entities(Contractype.name).first()
+    
+    if contractype.name == '拍租':
+        yearsCovered = 1
+    elif contractype.name == '续租':
+        # yearsCovered= round((datetime.now()-contract.start_time).days/365)
+        yearsCovered = 3
+    
     contractype_renewal = Contractype.query.filter(Contractype.name == '续租').with_entities(Contractype.id, Contractype.name).first()
 
     choices = [("0", "------请选择------ ")]
@@ -673,9 +685,9 @@ def new_contractbill():
     return render_template('create_contractbill.html', form=form, title='生成帐单' )
 
 
-@posts.route("/post/resource_list")
+@posts.route("/post/house_list")
 @login_required
-def resource_list():
+def house_list():
     lists = Garden.query.outerjoin(Resource,Resource.garden_id==Garden.id).outerjoin(House,House.resource_id==Resource.id).\
     with_entities(Garden.id.label('garden_id'), \
         Garden.name.label('garden_name'), \
@@ -685,6 +697,22 @@ def resource_list():
         House.address.label('house_address'), \
         Resource.area1.label('resource_area'),\
         House.status.label('house_status')
+        )
+    return render_template('house_list.html', lists=lists, title='房源查询')
+
+
+@posts.route("/post/resource_list")
+@login_required
+def resource_list():
+    lists = Garden.query.outerjoin(Resource,Resource.garden_id==Garden.id).outerjoin(Landlord,Landlord.id==Resource.landlord_id).\
+    with_entities(Garden.id.label('garden_id'), \
+        Garden.name.label('garden_name'), \
+        Landlord.name.label('landlord_name'), \
+        Resource.id.label('resource_id'), \
+        Resource.cardid, \
+        Resource.address, \
+        Resource.area1, \
+        Resource.area2
         )
     return render_template('resource_list.html', lists=lists, title='资产查询')
 
@@ -743,7 +771,7 @@ def contract_isTerminated():
 @login_required
 def all_list():
     allResults = Resource.query.outerjoin(House,House.resource_id==Resource.id).outerjoin(Contract,Contract.house_id==House.id).outerjoin(Customer,Customer.id==Contract.customer_id).outerjoin(Landlord,Landlord.id==Resource.landlord_id).\
-    outerjoin(Contractbill,Contractbill.contract_id==Contract.id).outerjoin(Contractype,Contractype.id==Contract.type).\
+    outerjoin(Contractbill,Contractbill.contract_id==Contract.id).outerjoin(Contractype,Contractype.id==Contract.type).filter(Contract.status==0).\
     with_entities(Resource.id.label('resource_id'), \
         Resource.cardid.label('resource_cardid'), \
         Landlord.name.label('landlord_name'), \
@@ -957,8 +985,20 @@ def contractype_list():
 @login_required
 def resource_info(resource_id):
     exist_or_not = Resource.query.get_or_404(resource_id)
-    resource = Resource.query.filter_by(id=resource_id).first()
+    resource = Resource.query.filter_by(id=resource_id).join(Landlord,Landlord.id==Resource.landlord_id).\
+    with_entities(Resource.id.label('resource_id'), \
+        Resource.address.label('resource_address'), \
+        Resource.area1.label('resource_area1'), \
+        Resource.area2.label('resource_area2'), \
+        Resource.price.label('resource_price'), \
+        Resource.pictures.label('resource_pictures'), \
+        Resource.cardid.label('resource_cardid'), \
+        Resource.note.label('resource_note'), \
+        Landlord.id.label('landlord_id'), \
+        Landlord.name.label('landlord_name')
+        ).first()
     houses = House.query.filter_by(resource_id=resource_id)
+    # return str(resource)
     return render_template('resource_info.html', resource=resource, houses=houses, title='资产信息' )
 
 
@@ -1109,6 +1149,7 @@ def print_contract(contract_id):
 
     totalamount = firstbillamount + secondbillamount + thirdbillamount
     totalamount_CN = number_to_chinese(totalamount)
+    firstbillamount_CN = number_to_chinese(firstbillamount)
 
     TopayFirst = contract.start_time.strftime("%Y年%m月%d日")
     TopaySecond= (contract.start_time + timedelta(days=365*1)).strftime("%Y年%m月%d日")
@@ -1131,7 +1172,8 @@ def print_contract(contract_id):
         secondbillamount = secondbillamount,
         thirdbillamount = thirdbillamount,
         totalamount = totalamount,
-        totalamount_CN = totalamount_CN)
+        totalamount_CN = totalamount_CN,
+        firstbillamount_CN = firstbillamount_CN)
 
     elif contract.type_name == '拍租':
         return render_template('contract_pz.html', title='.', footer='.', 
@@ -1146,7 +1188,8 @@ def print_contract(contract_id):
         secondbillamount = contract.annual_rent,
         thirdbillamount = contract.annual_rent,
         totalamount = totalamount,
-        totalamount_CN = totalamount_CN)
+        totalamount_CN = totalamount_CN,
+        firstbillamount_CN = firstbillamount_CN)
 
     elif contract.type_name == '协议':
         return render_template('contract_xy.html', title='.', footer='.', 
@@ -1161,10 +1204,10 @@ def print_contract(contract_id):
         secondbillamount = contract.annual_rent,
         thirdbillamount = contract.annual_rent,
         totalamount = totalamount,
-        totalamount_CN = totalamount_CN)
+        totalamount_CN = totalamount_CN,
+        firstbillamount_CN = firstbillamount_CN)
 
     
-
 
 
 @posts.route("/posts/map")

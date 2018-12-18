@@ -13,22 +13,16 @@
                                         <font size="2" color="#4f565d"><b>小区名称</b></font>
                                     </th>
                                     <th>
-                                        <font size="2" color="#4f565d"><b>产权持有人</b></font>
+                                        <font size="2" color="#4f565d"><b>不动产证编号</b></font>
                                     </th>
                                     <th>
-                                        <font size="2" color="#4f565d"><b>产证编号</b></font>
+                                        <font size="2" color="#4f565d"><b>房源编号</b></font>
                                     </th>
                                     <th>
                                         <font size="2" color="#4f565d"><b>详细地址</b></font>
                                     </th>
                                     <th>
-                                        <font size="2" color="#4f565d"><b>建筑面积</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>土地面积</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>备注信息</b></font>
+                                        <font size="2" color="#4f565d"><b>出租状态</b></font>
                                     </th>
                                 </tr>
                             </thead>
@@ -36,16 +30,28 @@
                                 {% for list in lists %}
                                 <tr role="row" class="odd">
                                     <td>{{ list.garden_name }}</td>
-                                    <td>{{ list.landlord_name }}</td>
                                     <td>
                                         {% if list.resource_id %}
-                                        <a href="{{ url_for('posts.resource_info', resource_id=list.resource_id) }}" >{{ list.cardid }}</a>
+                                        <a href="{{ url_for('posts.resource_info', resource_id=list.resource_id) }}" >{{ list.resource_cardid }}</a>
                                         {% endif %}
                                     </td>
-                                    <td>{{ list.address }}</td>
-                                    <td>{{ list.area1 }}</td>
-                                    <td>{{ list.area2 }}</td>
-                                    <td>{{ list.note }}</td>
+                                    <td>
+                                        {% if list.house_id %}
+                                        <a href="{{ url_for('posts.house_info', house_id=list.house_id) }}" >{{ list.house_id }}</a>
+                                        {% endif %}
+                                    </td>
+                                    <td>{% if list.house_address %}
+                                        {{ list.house_address }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{% if list.house_status == 0 %}
+                                        空置
+                                        {% elif list.house_status == 1 %}
+                                        已租
+                                        {% elif list.house_status == 2 %}
+                                        已释放
+                                        {% endif %}
+                                    </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -57,27 +63,3 @@
     </div>
 </div>
 {% endblock content %}
-
-
-所在小区
-
-产权持有人
-
-产证编号
-
-浙(2017)嘉善县不动产权第0049447号
-产证地址
-
-嘉善九色鹿大道888号
-市场估值(万元)
-
-308
-产证照片
-
-建筑面积㎡
-
-168.4
-土地使用权面积㎡
-
-75
-备注信息

@@ -18,7 +18,7 @@ class GardenForm(FlaskForm):
 
 
 class ResourceForm(FlaskForm):
-    landlord_id=SelectField('产权持有人', choices=[], coerce=int, validators=[DataRequired(message=u"小区编号不能为空")])
+    landlord_id=SelectField('产权持有人', choices=[], coerce=int, validators=[DataRequired(message=u"产权所有人不能为空")])
     garden_id=SelectField('所在小区', choices=[], coerce=int, validators=[DataRequired(message=u"小区编号不能为空")])
     cardid = StringField('产证编号', validators=[DataRequired(), Length(7)], render_kw={"placeholder": '浙(2017)嘉善县不动产权第0049447号'})
     address = StringField('产证地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
@@ -31,8 +31,8 @@ class ResourceForm(FlaskForm):
 
 
 class UpdateResourceForm(FlaskForm):
-    company = StringField('所属单位', validators=[DataRequired(), Length(min=4, max=20)], render_kw={"placeholder": '嘉善九色鹿科技有限公司'})
-    garden_id=StringField('小区编号',render_kw={'readonly': True})
+    landlord_id=SelectField('产权持有人', choices=[], coerce=int, validators=[DataRequired(message=u"产权所有人不能为空")])
+    garden_id=StringField('所在小区',render_kw={'readonly': True})
     address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
     price = StringField('市场估值(万元)', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '308'})
     pictures = FileField('不动产证', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
@@ -94,7 +94,7 @@ class ContractForm(FlaskForm):
     end = DateField('合同结束', id="end-datepicker", format='%m/%d/%Y', validators=[DataRequired()]) 
     useof = StringField('用途', render_kw={"placeholder": '办公用途'}, validators=[DataRequired(), Length(min=2, max=20)])
     security_deposit = StringField('保证金', render_kw={"placeholder": '50000'}, validators=[DataRequired(), Length(min=4, max=20)])
-    annual_rent = StringField('年租金', render_kw={"placeholder": '50000'}, validators=[DataRequired(), Length(min=4, max=20)])
+    annual_rent = StringField('首年租金', render_kw={"placeholder": '50000'}, validators=[DataRequired(), Length(min=4, max=20)])
     contract_pics = FileField('合同附件', validators=[FileAllowed(['jpg', 'png', 'pdf'])], render_kw={'multiple': True})
     approval_pics = FileField('出租审批表', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
     auction_announcement = FileField('拍卖公告', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
@@ -115,7 +115,7 @@ class UpdateContractForm(FlaskForm):
     end = DateField('结束日期', id="inline-datepicker", format='%m/%d/%Y', validators=[DataRequired()]) 
     useof = StringField('用途', render_kw={"placeholder": '办公用途'}, validators=[DataRequired(), Length(min=2, max=20)])
     security_deposit = StringField('保证金', render_kw={"placeholder": '50000'}, validators=[DataRequired(), Length(min=4, max=20)])
-    annual_rent = StringField('年租金', render_kw={"placeholder": '50000'}, validators=[DataRequired(), Length(min=4, max=20)])
+    annual_rent = StringField('首年租金', render_kw={"placeholder": '50000'}, validators=[DataRequired(), Length(min=4, max=20)])
     # contract_pics = FileField('合同附件', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'pdf'])], render_kw={'multiple': True})
     contract_pics = FileField('合同附件', validators=[FileAllowed(['jpg', 'png', 'pdf'])], render_kw={'multiple': True})
     approval_pics = StringField('出租审批表', render_kw={'readonly': True})

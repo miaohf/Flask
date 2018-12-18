@@ -31,9 +31,21 @@
                                 <tr role="row" class="odd">
                                     <td>{{ allResult.landlord_name }}</td>
                                     <td>
-                                        <a href="{{ url_for('posts.resource_info', resource_id=allResult.resource_id) }}" >{{ allResult.resource_cardid }}</a></td>
-                                    <td><a href="{{ url_for('posts.house_info', house_id=allResult.house_id) }}" >{{ allResult.house_address }}</a></td>
-                                    <td>{{ allResult.house_area }}</td>
+                                        <a href="{{ url_for('posts.resource_info', resource_id=allResult.resource_id) }}" >{{ allResult.resource_cardid }}</a>
+                                    </td>
+                                    <td>
+                                        {% if allResult.house_id %}
+                                        <a href="{{ url_for('posts.house_info', house_id=allResult.house_id) }}" >{{ allResult.house_address }}</a>
+                                        {% else %}
+                                        -
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if allResult.house_id %}
+                                        {{ allResult.house_area }}
+                                        {% else %}
+                                        -
+                                        {% endif %}</td>
                                     <td>
                                         {% if allResult.house_status == 0%}
                                         空置
@@ -96,9 +108,10 @@
                                 </tr>
                                 {% endfor %}
                             </tbody>
-                        </table>                     
+                        </table>
                     </div>
-                    <button id="exportButton" class="btn btn-outline-primary">导出记录</button>   <div></div>
+                    <button id="exportButton" class="btn btn-outline-primary">导出记录</button>
+                    <div></div>
                 </div>
             </div>
         </div>

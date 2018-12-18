@@ -124,7 +124,7 @@
                                                 {% endif %}
                                             </div>
                                             <div>
-                                                {% if contract.contract_status == 1 and contract.contract_typename == '拍租' %}
+                                                {% if contract.contract_status == 1 and contract.contract_typename != '协议' %}
                                                 <a href="{{ url_for('posts.renewal_contract', contract_id=contract.id) }}" class="btn btn-outline-primary float-right"></i>合同续签</a>
                                                 {% endif %}
                                             </div>
