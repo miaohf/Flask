@@ -710,6 +710,7 @@ def resource_list():
         Landlord.name.label('landlord_name'), \
         Resource.id.label('resource_id'), \
         Resource.cardid, \
+        Resource.price, \
         Resource.address, \
         Resource.area1, \
         Resource.area2

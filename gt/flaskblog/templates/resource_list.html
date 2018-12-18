@@ -15,6 +15,7 @@
                                     <th>详细地址</th>
                                     <th>建筑面积</th>
                                     <th>土地面积</th>
+                                    <th>资产评估</th>
                                     <th>备注信息</th>
                                 </tr>
                             </thead>
@@ -31,6 +32,7 @@
                                     <td>{{ list.address }}</td>
                                     <td>{{ list.area1 }}</td>
                                     <td>{{ list.area2 }}</td>
+                                    <td>{{ list.price }}</td>
                                     <td>{{ list.note }}</td>
                                 </tr>
                                 {% endfor %}
@@ -61,6 +63,7 @@ jQuery(function($) {
                     详细地址: { type: String },
                     建筑面积: { type: String },
                     土地面积: { type: String },
+                    资产评估: { type: String },
                     备注信息: { type: String }
                 }
             }
@@ -120,6 +123,13 @@ jQuery(function($) {
                                     bold: true
                                 },
                                 type: String,
+                                value: "资产评估"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
                                 value: "备注信息"
                             }
                         ]
@@ -132,6 +142,7 @@ jQuery(function($) {
                                 { type: String, value: item.详细地址 },
                                 { type: String, value: item.建筑面积 },
                                 { type: String, value: item.土地面积 },
+                                { type: String, value: item.资产评估 },
                                 { type: String, value: item.备注信息 }
                             ]
                         };
