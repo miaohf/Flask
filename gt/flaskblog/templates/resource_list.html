@@ -5,31 +5,17 @@
             <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-bank"></i> {{ title }}</legend>
             <div class="row">
                 <div class="col-12">
-                    <div class="table-responsive table-hover">
-                        <table id="order-listing" class="table">
+                    <div class="table-responsive">
+                        <table id="order-listing" class="table table-hover">
                             <thead>
-                                <tr role="row">
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>小区名称</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>产权持有人</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>产证编号</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>详细地址</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>建筑面积</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>土地面积</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>备注信息</b></font>
-                                    </th>
+                                <tr>
+                                    <th>小区名称</th>
+                                    <th>产权持有人</th>
+                                    <th>产证编号</th>
+                                    <th>详细地址</th>
+                                    <th>建筑面积</th>
+                                    <th>土地面积</th>
+                                    <th>备注信息</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,33 +37,112 @@
                             </tbody>
                         </table>
                     </div>
+                    <button id="exportButton" class="btn btn-outline-primary">导出记录</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="{{ url_for('static', filename='assets/js/exportcsv/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/exportcsv/jszip.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/exportcsv/shieldui-all.min.js') }}"></script>
+<script type="text/javascript">
+jQuery(function($) {
+    $("#exportButton").click(function() {
+        // parse the HTML table element having an id=order-listing
+        var dataSource = shield.DataSource.create({
+            data: "#order-listing",
+            schema: {
+                type: "table",
+                fields: {
+                    小区名称: { type: String },
+                    产权持有人: { type: String },
+                    产证编号: { type: String },
+                    详细地址: { type: String },
+                    建筑面积: { type: String },
+                    土地面积: { type: String },
+                    备注信息: { type: String }
+                }
+            }
+        });
+
+        // when parsing is done, export the data to Excel
+        dataSource.read().then(function(data) {
+            new shield.exp.OOXMLWorkbook({
+                author: "PrepBootstrap",
+                worksheets: [{
+                    name: "PrepBootstrap Table",
+                    rows: [{
+                        cells: [{
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "小区名称"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "产权持有人"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "产证编号"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "详细地址"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "建筑面积"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "土地面积"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "备注信息"
+                            }
+                        ]
+                    }].concat($.map(data, function(item) {
+                        return {
+                            cells: [
+                                { type: String, value: item.小区名称 },
+                                { type: Number, value: item.产权持有人 },
+                                { type: String, value: item.产证编号 },
+                                { type: String, value: item.详细地址 },
+                                { type: String, value: item.建筑面积 },
+                                { type: String, value: item.土地面积 },
+                                { type: String, value: item.备注信息 }
+                            ]
+                        };
+                    }))
+                }]
+            }).saveAs({
+                fileName: "资产列表"
+            });
+        });
+    });
+});
+</script>
 {% endblock content %}
 
-
-所在小区
-
-产权持有人
-
-产证编号
-
-浙(2017)嘉善县不动产权第0049447号
-产证地址
-
-嘉善九色鹿大道888号
-市场估值(万元)
-
-308
-产证照片
-
-建筑面积㎡
-
-168.4
-土地使用权面积㎡
-
-75
-备注信息

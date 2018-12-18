@@ -5,28 +5,16 @@
             <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-ribbon"></i> {{ title }}</legend>
             <div class="row">
                 <div class="col-12">
-                    <div class="table-responsive table-hover">
-                        <table id="order-listing" class="table">
+                    <div class="table-responsive">
+                        <table id="order-listing" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>客户编号</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>客户姓名</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>证件号码</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>电话号码</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>详细地址</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>备注信息</b></font>
-                                    </th>
+                                    <th>客户编号</th>
+                                    <th>客户姓名</th>
+                                    <th>证件号码</th>
+                                    <th>电话号码</th>
+                                    <th>详细地址</th>
+                                    <th>备注信息</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,9 +33,102 @@
                             </tbody>
                         </table>
                     </div>
+                    <button id="exportButton" class="btn btn-outline-primary">导出记录</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script src="{{ url_for('static', filename='assets/js/exportcsv/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/exportcsv/jszip.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/exportcsv/shieldui-all.min.js') }}"></script>
+<script type="text/javascript">
+jQuery(function($) {
+    $("#exportButton").click(function() {
+        // parse the HTML table element having an id=order-listing
+        var dataSource = shield.DataSource.create({
+            data: "#order-listing",
+            schema: {
+                type: "table",
+                fields: {
+                    客户编号: { type: String },
+                    客户姓名: { type: String },
+                    证件号码: { type: String },
+                    电话号码: { type: String },
+                    详细地址: { type: String },
+                    备注信息: { type: String }
+                }
+            }
+        });
+
+        // when parsing is done, export the data to Excel
+        dataSource.read().then(function(data) {
+            new shield.exp.OOXMLWorkbook({
+                author: "PrepBootstrap",
+                worksheets: [{
+                    name: "PrepBootstrap Table",
+                    rows: [{
+                        cells: [{
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "客户编号"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "客户姓名"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "证件号码"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "电话号码"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "详细地址"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "备注信息"
+                            }
+                        ]
+                    }].concat($.map(data, function(item) {
+                        return {
+                            cells: [
+                                { type: String, value: item.客户编号 },
+                                { type: Number, value: item.客户姓名 },
+                                { type: String, value: item.证件号码 },
+                                { type: String, value: item.电话号码 },
+                                { type: String, value: item.详细地址 },
+                                { type: String, value: item.备注信息 }
+                            ]
+                        };
+                    }))
+                }]
+            }).saveAs({
+                fileName: "租户列表"
+            });
+        });
+    });
+});
+</script>
 {% endblock content %}

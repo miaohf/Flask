@@ -132,7 +132,7 @@ jQuery(function($) {
                 type: "table",
                 fields: {
                     所属单位: { type: String },
-                    不动产证编号: { type: Number },
+                    不动产证编号: { type: String },
                     房源地址: { type: String },
                     房源面积: { type: String },
                     状态: { type: String },
@@ -260,7 +260,7 @@ jQuery(function($) {
                         return {
                             cells: [
                                 { type: String, value: item.所属单位 },
-                                { type: Number, value: item.不动产证编号 },
+                                { type: String, value: item.不动产证编号 },
                                 { type: String, value: item.房源地址 },
                                 { type: String, value: item.房源面积 },
                                 { type: String, value: item.状态 },
@@ -278,7 +278,7 @@ jQuery(function($) {
                     }))
                 }]
             }).saveAs({
-                fileName: "PrepBootstrapExcel"
+                fileName: "综合查询列表"
             });
         });
     });

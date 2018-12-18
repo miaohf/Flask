@@ -252,7 +252,7 @@ def update_resource(resource_id):
         return render_template('create_resource.html', title='资产更新', form=form)
 
 
-@posts.route("/post/house", methods=['GET', 'POST'])
+@posts.route("/post/create_house", methods=['GET', 'POST'])
 @login_required
 def new_house():
     form = HouseForm()
@@ -721,7 +721,7 @@ def resource_list():
 @login_required
 def customer_list():
     customers = Customer.query.all()
-    return render_template('customer_list.html', customers=customers, title='客户查询')
+    return render_template('customer_list.html', customers=customers, title='租户查询')
 
 
 @posts.route("/post/landlord_list")
