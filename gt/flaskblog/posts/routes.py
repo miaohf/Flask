@@ -1236,7 +1236,7 @@ def contract_demo1():
 CHINESE_NEGATIVE = '负'
 CHINESE_ZERO = '零'
 CHINESE_DIGITS = ['', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖']
-CHINESE_UNITS = ['', '拾', '百', '千']
+CHINESE_UNITS = ['', '拾', '佰', '仟']
 CHINESE_GROUP_UNITS = ['', '万', '亿', '兆']
 
 def _enumerate_digits(number):
