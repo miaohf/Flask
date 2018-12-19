@@ -51,10 +51,10 @@ jQuery(function($) {
             schema: {
                 type: "table",
                 fields: {
-                    客户编号: { type: String },
-                    客户姓名: { type: String },
+                    租户编号: { type: String },
+                    租户名称: { type: String },
                     证件号码: { type: String },
-                    电话号码: { type: String },
+                    联系电话: { type: String },
                     联系地址: { type: String },
                     备注信息: { type: String }
                 }
@@ -73,14 +73,14 @@ jQuery(function($) {
                                     bold: true
                                 },
                                 type: String,
-                                value: "客户编号"
+                                value: "租户编号"
                             },
                             {
                                 style: {
                                     bold: true
                                 },
                                 type: String,
-                                value: "客户姓名"
+                                value: "租户名称"
                             },
                             {
                                 style: {
@@ -94,7 +94,7 @@ jQuery(function($) {
                                     bold: true
                                 },
                                 type: String,
-                                value: "电话号码"
+                                value: "联系电话"
                             },
                             {
                                 style: {
@@ -114,10 +114,10 @@ jQuery(function($) {
                     }].concat($.map(data, function(item) {
                         return {
                             cells: [
-                                { type: String, value: item.客户编号 },
-                                { type: Number, value: item.客户姓名 },
+                                { type: String, value: item.租户编号 },
+                                { type: Number, value: item.租户名称 },
                                 { type: String, value: item.证件号码 },
-                                { type: String, value: item.电话号码 },
+                                { type: String, value: item.联系电话 },
                                 { type: String, value: item.联系地址 },
                                 { type: String, value: item.备注信息 }
                             ]

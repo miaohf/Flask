@@ -1,18 +1,24 @@
 ﻿<html>
 
 <head>
-<meta http-equiv=Content-Type content="text/html; charset=x-cp20936">
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
 <meta name=Generator content="Microsoft Word 14 (filtered)">
 <title>{{title}}</title>
 <style>
 <!--
  /* Font Definitions */
- @font-face
+@font-face
 	{font-family:宋体;
 	panose-1:2 1 6 0 3 1 1 1 1 1;}
 @font-face
 	{font-family:宋体;
 	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
 @font-face
 	{font-family:"\@宋体";
 	panose-1:2 1 6 0 3 1 1 1 1 1;}
@@ -23,26 +29,46 @@
 	text-align:justify;
 	text-justify:inter-ideograph;
 	font-size:10.5pt;
-	font-family:"Times New Roman","serif";}
+	font-family:"Calibri","sans-serif";}
 p.MsoHeader, li.MsoHeader, div.MsoHeader
-	{margin:0cm;
+	{mso-style-link:"页眉 Char";
+	margin:0cm;
 	margin-bottom:.0001pt;
 	text-align:center;
 	layout-grid-mode:char;
 	border:none;
 	padding:0cm;
 	font-size:9.0pt;
-	font-family:"Times New Roman","serif";}
+	font-family:"Calibri","sans-serif";}
 p.MsoFooter, li.MsoFooter, div.MsoFooter
-	{margin:0cm;
+	{mso-style-link:"页脚 Char";
+	margin:0cm;
 	margin-bottom:.0001pt;
 	layout-grid-mode:char;
 	font-size:9.0pt;
-	font-family:"Times New Roman","serif";}
+
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:21.0pt;
+	font-size:10.5pt;
+	font-family:"Calibri","sans-serif";}
+span.Char
+	{mso-style-name:"页眉 Char";
+	mso-style-link:页眉;}
+span.Char0
+	{mso-style-name:"页脚 Char";
+	mso-style-link:页脚;}
+.MsoChpDefault
+	{font-size:10.0pt;
+	font-family:"Calibri","sans-serif";}
  /* Page Definitions */
  @page WordSection1
-	{size:21.0cm 842.0pt;
-	margin:72.0pt 89.85pt 72.0pt 89.85pt;
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
 	layout-grid:15.6pt;}
 div.WordSection1
 	{page:WordSection1;}
@@ -62,15 +88,15 @@ div.WordSection1
 
 <div class=WordSection1 style='layout-grid:15.6pt'>
 
-<p class=MsoNormal align=center style='text-align:center'><b><span style='font-size:16.0pt;font-family:宋体'>房屋租赁合同</span></b></p>
+<p class=MsoNormal align=center style='text-align:center;line-height:25.0pt'><b><span style='font-size:16.0pt;font-family:宋体'>房屋租赁合同</span></b></p>
 
 <p class=MsoNormal align=right style='text-align:right;line-height:25.0pt;word-break:break-all'><span style='font-family:宋体'>编号：<b><span style='color:blue'><u>  {{contract.contract_id}}  </u></span></b></span></p>
 
-<p class=MsoNormal style='line-height:20.0pt'><b><span lang=EN-US style='font-size:14.0pt;font-family:宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b></p>
+<p class=MsoNormal style='line-height:25.0pt'><b><span lang=EN-US style='font-size:16.0pt;font-family:宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b></p>
 
-<p class=MsoNormal style='line-height:25.0pt'><b><span style='font-family:宋体'>出租方(以下简称甲方) ：</span></b><b><span style='color:blue'><u>  {{contract.landlord_name}}  </u></span></b></span></p>
+<p class=MsoNormal style='line-height:25.0pt'><b><span style='font-family:宋体'>出租方(以下简称甲方)：<span style='color:blue'><u>  {{contract.landlord_name}}  </u></span></b></span></p>
 
-<p class=MsoNormal style='line-height:25.0pt'><b><span style='font-family:宋体'>承租方(以下简称乙方) ：</span></b><b><span style='color:blue'><u>  {{contract.customer_name}}  </u></span></b></span></p>
+<p class=MsoNormal style='line-height:25.0pt'><b><span style='font-family:宋体'>承租方(以下简称乙方)：<span style='color:blue'><u>  {{contract.customer_name}}  </u></span></b></span></p>
 
 <p class=MsoNormal style='text-indent:31.5pt;line-height:25.0pt'><span lang=EN-US style='font-family:宋体'>&nbsp;</span></p>
 
@@ -171,15 +197,15 @@ div.WordSection1
 <p class=MsoNormal style='text-indent:21.0pt;line-height:25.0pt'><span lang=EN-US style='font-family:宋体'>&nbsp;</span></p>
 
 <p class=MsoNormal align=left style='text-align:left;line-height:25.0pt;background:white'>
-	<b><span style='font-family:宋体'>出租方\甲方(盖章)：<u><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></u>&nbsp;&nbsp;</span></span></b><b><span style='font-family:宋体'>承租方\乙方(盖章)：<u><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></u></span></b></p>
+	<b><span style='font-family:宋体'>出租方\甲方(盖章)：<u><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></u>&nbsp;&nbsp;</span></span></b><b><span style='font-family:宋体'>&nbsp;承租方\乙方(盖章)：<u><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></u></span></b></p>
 
-<p class=MsoNormal align=left style='text-align:left;line-height:25.0pt;background:white'><b><span style='font-family:宋体'>法定代表人：<span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>法定代表人：</span></b></p>
+<p class=MsoNormal align=left style='text-align:left;line-height:25.0pt;background:white'><b><span style='font-family:宋体'>法定代表人：<span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;法定代表人：</span></b></p>
 
-<p class=MsoNormal align=left style='text-align:left;line-height:25.0pt;background:white'><b><span style='font-family:宋体'>或负责人(签字)：<u><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></u><span lang=EN-US>&nbsp;&nbsp;&nbsp;</span>或负责人(签字)：<u><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></u></span></b></p>
+<p class=MsoNormal align=left style='text-align:left;line-height:25.0pt;background:white'><b><span style='font-family:宋体'>或负责人(签字)：<u><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></u><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;或负责人(签字)：<u><span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></u></span></b></p>
 
 <p class=MsoNormal align=left style='text-align:left;background:white'><b> <span lang=EN-US style='font-family:宋体'><span style='text-decoration:none'>&nbsp;</span></span></b></p>
 
-<p class=MsoNormal align=left style='text-align:left;text-indent:25pt;line-height:25.0pt;background:white'><b><u><span lang=EN-US style='font-family:宋体'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></u></b><b><span style='font-family:宋体'>年<u><span lang=EN-US>&nbsp; </span></u>月<u><span lang=EN-US>&nbsp;&nbsp;&nbsp; </span></u>日<span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></span>年<u><span lang=EN-US>&nbsp;&nbsp;&nbsp;</span></u>月<u><span lang=EN-US>&nbsp;&nbsp;&nbsp; </span></u>日</span></b></p>
+<p class=MsoNormal align=left style='text-align:left;text-indent:25pt;line-height:25.0pt;background:white'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><u><span lang=EN-US style='font-family:宋体'>&nbsp;&nbsp;&nbsp;&nbsp; </span></u></b><b><span style='font-family:宋体'>年<u><span lang=EN-US>&nbsp;&nbsp; </span></u>月<u><span lang=EN-US>&nbsp;&nbsp;</span></u>日<span lang=EN-US>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>&nbsp;&nbsp;&nbsp;&nbsp;</u></span>年<u><span lang=EN-US>&nbsp;&nbsp;</span></u>月<u><span lang=EN-US>&nbsp;&nbsp; </span></u>日</span></b></p>
 
 </div>
 
