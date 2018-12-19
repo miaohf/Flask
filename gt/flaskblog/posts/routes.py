@@ -172,7 +172,7 @@ def new_garden():
             note=form.note.data)
         db.session.add(post)
         db.session.commit()
-        flash('新小区创建完成,请继续新增资产!', 'success')
+        flash('新小区节点创建完成,请继续新增资产!', 'success')
         return redirect(url_for('posts.new_resource'))
     return render_template('create_garden.html', title='小区录入', form=form)
 
@@ -363,7 +363,7 @@ def new_landlord():
         db.session.commit()
         flash('产权人登记完成!', 'success')
         return redirect(url_for('posts.landlord_list'))
-    return render_template('create_landlord.html', title='产权持有人登记', form=form)
+    return render_template('create_landlord.html', title='权利人登记', form=form)
 
 
 @posts.route("/post/create_contract", methods=['GET', 'POST'])
@@ -1007,7 +1007,7 @@ def resource_info(resource_id):
 @login_required
 def house_info(house_id):
     exist_or_not = House.query.get_or_404(house_id)
-    house = House.query.filter_by(id=house_id).first()
+    house = House.query.filter_by(id=house_id).join(Resource,Resource.id==House.resource_id).first()
     # contracts = Contract.query.filter_by(house_id=house_id)
     contracts = Contract.query.filter_by(house_id=house_id).filter_by(status=0).join(House,Contract.house_id==House.id).join(Customer,Contract.customer_id==Customer.id).\
     with_entities(Contract.id, \

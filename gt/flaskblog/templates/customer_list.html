@@ -9,11 +9,11 @@
                         <table id="order-listing" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>客户编号</th>
-                                    <th>客户姓名</th>
+                                    <th>租户编号</th>
+                                    <th>租户姓名</th>
                                     <th>证件号码</th>
-                                    <th>电话号码</th>
-                                    <th>详细地址</th>
+                                    <th>联系电话</th>
+                                    <th>联系地址</th>
                                     <th>备注信息</th>
                                 </tr>
                             </thead>
@@ -55,7 +55,7 @@ jQuery(function($) {
                     客户姓名: { type: String },
                     证件号码: { type: String },
                     电话号码: { type: String },
-                    详细地址: { type: String },
+                    联系地址: { type: String },
                     备注信息: { type: String }
                 }
             }
@@ -101,7 +101,7 @@ jQuery(function($) {
                                     bold: true
                                 },
                                 type: String,
-                                value: "详细地址"
+                                value: "联系地址"
                             },
                             {
                                 style: {
@@ -118,7 +118,7 @@ jQuery(function($) {
                                 { type: Number, value: item.客户姓名 },
                                 { type: String, value: item.证件号码 },
                                 { type: String, value: item.电话号码 },
-                                { type: String, value: item.详细地址 },
+                                { type: String, value: item.联系地址 },
                                 { type: String, value: item.备注信息 }
                             ]
                         };

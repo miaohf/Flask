@@ -18,11 +18,11 @@ class GardenForm(FlaskForm):
 
 
 class ResourceForm(FlaskForm):
-    landlord_id=SelectField('产权持有人', choices=[], coerce=int, validators=[DataRequired(message=u"产权所有人不能为空")])
     garden_id=SelectField('所在小区', choices=[], coerce=int, validators=[DataRequired(message=u"小区编号不能为空")])
-    cardid = StringField('产证编号', validators=[DataRequired(), Length(7)], render_kw={"placeholder": '浙(2017)嘉善县不动产权第0049447号'})
-    address = StringField('产证地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
-    price = StringField('市场估值(万元)', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '308'})
+    landlord_id=SelectField('权利人', choices=[], coerce=int, validators=[DataRequired(message=u"产权所有人不能为空")])
+    cardid = StringField('不动产权证号', validators=[DataRequired(), Length(7)], render_kw={"placeholder": '浙(2017)嘉善县不动产权第0049447号'})
+    address = StringField('坐落', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
+    price = StringField('评估值(万元)', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '308'})
     pictures = FileField('产证照片', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'pdf'])], render_kw={'multiple': True})
     area1 = StringField('建筑面积㎡', validators=[DataRequired(), Length(min=2, max=9)], render_kw={"placeholder": '168.4'})
     area2 = StringField('土地使用权面积㎡', validators=[DataRequired(), Length(min=2, max=9)], render_kw={"placeholder": '75'})
@@ -33,7 +33,7 @@ class ResourceForm(FlaskForm):
 class UpdateResourceForm(FlaskForm):
     landlord_id=SelectField('产权持有人', choices=[], coerce=int, validators=[DataRequired(message=u"产权所有人不能为空")])
     garden_id=StringField('所在小区',render_kw={'readonly': True})
-    address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
+    address = StringField('坐落', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
     price = StringField('市场估值(万元)', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '308'})
     pictures = FileField('不动产证', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
     area1 = StringField('建筑面积(㎡)', validators=[DataRequired(), Length(min=2, max=9)], render_kw={"placeholder": '168.4'})
@@ -44,18 +44,18 @@ class UpdateResourceForm(FlaskForm):
 
 
 class HouseForm(FlaskForm):
-    address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
-    resource_id=SelectField('资产编号', choices=[], coerce=int, validators=[DataRequired(message=u"资产编号不能为空")])
-    area =StringField('房源面积(㎡)', validators=[DataRequired(), Length(min=2, max=9)], render_kw={"placeholder": '178'})
+    resource_id = SelectField('不动产权证号', choices=[], coerce=int, validators=[DataRequired(message=u"不动产权证号不能为空")])
+    address = StringField('房源地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
+    area =StringField('房源面积', validators=[DataRequired(), Length(min=2, max=9)], render_kw={"placeholder": '178'})
     pictures = FileField('现场照片', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
     # pictures = FileField('现场照片', validators=[FileRequired(u'文件未选择！'), FileAllowed(photos, u'只能上传图片！')], render_kw={'multiple': True})
     note = StringField('备注信息', render_kw={"placeholder": '九色鹿网络技术'})
     submit = SubmitField('确定')
 
 class UpdateHouseForm(FlaskForm):
-    address = StringField('详细地址', render_kw={'readonly': True})
     resource_id = StringField('资产编号', render_kw={'readonly': True})
-    area =StringField('房源面积(㎡)', validators=[DataRequired(), Length(min=2, max=9)], render_kw={"placeholder": '178'})
+    address = StringField('房源地址', render_kw={'readonly': True})
+    area =StringField('房源面积', validators=[DataRequired(), Length(min=2, max=9)], render_kw={"placeholder": '178'})
     pictures = FileField('新增照片', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
     note = StringField('备注信息', render_kw={"placeholder": '九色鹿网络技术'})
     submit = SubmitField('确定')
@@ -65,7 +65,7 @@ class CustomerForm(FlaskForm):
     name = StringField('租户名称', validators=[DataRequired(), Length(min=2, max=20)], render_kw={"placeholder": '九色神鹿/嘉善九色鹿科技有限公司'})
     # phone = StringField('联系电话', validators=[DataRequired(), Length(11)], render_kw={"data-inputmask": "'alias': 'phonebe'"})
     phone = StringField('联系电话', validators=[DataRequired(), Length(11)], render_kw={"placeholder": '13858003606'})
-    address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '九色鹿庄园88幢1-401#'})
+    address = StringField('联系地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '九色鹿庄园88幢1-401#'})
     cardid = StringField('证件号码', validators=[DataRequired(), Length(17)], render_kw={"placeholder": '33042119780716153Y'})
     pictures = FileField('证件照片', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
     postcode = StringField('邮政编码', validators=[DataRequired(), Length(6)], render_kw={"placeholder": '314100'})
@@ -74,7 +74,7 @@ class CustomerForm(FlaskForm):
 
 
 class LandlordForm(FlaskForm):
-    name = StringField('产证持有人', validators=[DataRequired(), Length(min=2, max=20)], render_kw={"placeholder": '嘉善国有资产投资有限公司'})
+    name = StringField('权利人', validators=[DataRequired(), Length(min=2, max=20)], render_kw={"placeholder": '嘉善国有资产投资有限公司'})
     # phone = StringField('联系电话', validators=[DataRequired(), Length(11)], render_kw={"data-inputmask": "'alias': 'phonebe'"})
     phone = StringField('联系电话', validators=[DataRequired(), Length(8,12)], render_kw={"placeholder": '13858003606/057384055550'})
     address = StringField('详细地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善县地址魏塘镇解放东路318号'})
@@ -88,7 +88,7 @@ class ContractForm(FlaskForm):
     name = StringField('合同名称', validators=[DataRequired(), Length(min=4, max=20)], render_kw={"placeholder": 'XXXX合同'})
     house_id=SelectField('选择房源', choices=[], coerce=int, validators=[DataRequired(message=u"房源编号不能为空")])
     customer_id=SelectField('租户编号', choices=[], coerce=int, validators=[DataRequired(message=u"租户编号不能为空")])
-    type=SelectField('选择类型', choices=[], coerce=int, validators=[DataRequired(message=u"合同类型不能为空")])
+    type=SelectField('合同类型', choices=[], coerce=int, validators=[DataRequired(message=u"合同类型不能为空")])
     auction_date = DateField('拍卖日期', id="auction-datepicker", format='%m/%d/%Y', validators=(validators.Optional(),)) 
     start = DateField('合同开始', id="start-datepicker", format='%m/%d/%Y', validators=[DataRequired()]) 
     end = DateField('合同结束', id="end-datepicker", format='%m/%d/%Y', validators=[DataRequired()]) 

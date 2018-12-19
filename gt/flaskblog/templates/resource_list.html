@@ -10,12 +10,12 @@
                             <thead>
                                 <tr>
                                     <th>小区名称</th>
-                                    <th>产权持有人</th>
-                                    <th>产证编号</th>
-                                    <th>详细地址</th>
+                                    <th>权利人</th>
+                                    <th>不动产证号</th>
+                                    <th>坐落</th>
                                     <th>建筑面积</th>
                                     <th>土地面积</th>
-                                    <th>资产评估</th>
+                                    <th>评估值</th>
                                     <th>备注信息</th>
                                 </tr>
                             </thead>
@@ -40,6 +40,7 @@
                         </table>
                     </div>
                     <button id="exportButton" class="btn btn-outline-primary">导出记录</button>
+                    <p><br><small>注: 上面列表中"建筑面积"和"土地面积"单位均为"㎡"，"评估值"单位为"万元"<small></p>
                 </div>
             </div>
         </div>
@@ -58,12 +59,12 @@ jQuery(function($) {
                 type: "table",
                 fields: {
                     小区名称: { type: String },
-                    产权持有人: { type: String },
-                    产证编号: { type: String },
-                    详细地址: { type: String },
+                    权利人: { type: String },
+                    不动产证号: { type: String },
+                    坐落: { type: String },
                     建筑面积: { type: String },
                     土地面积: { type: String },
-                    资产评估: { type: String },
+                    评估值: { type: String },
                     备注信息: { type: String }
                 }
             }
@@ -88,21 +89,21 @@ jQuery(function($) {
                                     bold: true
                                 },
                                 type: String,
-                                value: "产权持有人"
+                                value: "权利人"
                             },
                             {
                                 style: {
                                     bold: true
                                 },
                                 type: String,
-                                value: "产证编号"
+                                value: "不动产权证号"
                             },
                             {
                                 style: {
                                     bold: true
                                 },
                                 type: String,
-                                value: "详细地址"
+                                value: "坐落"
                             },
                             {
                                 style: {
@@ -123,7 +124,7 @@ jQuery(function($) {
                                     bold: true
                                 },
                                 type: String,
-                                value: "资产评估"
+                                value: "评估值"
                             },
                             {
                                 style: {
@@ -137,12 +138,12 @@ jQuery(function($) {
                         return {
                             cells: [
                                 { type: String, value: item.小区名称 },
-                                { type: Number, value: item.产权持有人 },
-                                { type: String, value: item.产证编号 },
-                                { type: String, value: item.详细地址 },
+                                { type: Number, value: item.权利人 },
+                                { type: String, value: item.不动产权证号 },
+                                { type: String, value: item.坐落 },
                                 { type: String, value: item.建筑面积 },
                                 { type: String, value: item.土地面积 },
-                                { type: String, value: item.资产评估 },
+                                { type: String, value: item.评估值 },
                                 { type: String, value: item.备注信息 }
                             ]
                         };
