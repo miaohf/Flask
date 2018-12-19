@@ -1007,7 +1007,7 @@ def resource_info(resource_id):
 @login_required
 def house_info(house_id):
     exist_or_not = House.query.get_or_404(house_id)
-    house = House.query.filter_by(id=house_id).join(Resource,Resource.id==House.resource_id).first()
+    house = House.query.filter_by(id=house_id).first()
     # contracts = Contract.query.filter_by(house_id=house_id)
     contracts = Contract.query.filter_by(house_id=house_id).filter_by(status=0).join(House,Contract.house_id==House.id).join(Customer,Contract.customer_id==Customer.id).\
     with_entities(Contract.id, \
