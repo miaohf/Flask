@@ -60,6 +60,7 @@ def dashboard():
 
     maintenanceRecs = Maintenancerec.query.filter_by(status=0).count()
     maintenancedRecs = Maintenancerec.query.filter_by(status=1).count()
+    maintenancedRecFee = Maintenancerec.query.filter_by(status=1).with_entities(Maintenancerec.price).all()
 
     resourcePrices = Resource.query.with_entities(Resource.price).all() 
     resourceArea1s = Resource.query.with_entities(Resource.area1).all() 
@@ -88,8 +89,10 @@ def dashboard():
          
         security_deposits=str(sum([sum(i) for i in security_deposits])/10000), 
         users_recently_visited=users_recently_visited,
+        
         maintenanceRecs=maintenanceRecs,
         maintenancedRecs=maintenancedRecs,
+        maintenancedRecFee=str(sum([sum(i) for i in maintenancedRecFee])),
 
         thisYear = thisYear,
         thisMonth = thisMonth,
@@ -621,6 +624,7 @@ def new_maintenancerec(house_id):
     if form.validate_on_submit():
         post = Maintenancerec(house_id = form.house_id.data, \
             maintenanceunit_id = form.maintenanceunit_id.data, \
+            price = form.price.data, \
             note = form.note.data)
         db.session.add(post)
         db.session.commit()
@@ -816,6 +820,7 @@ def maintenancerec_list():
         Maintenanceunit.phone.label('maintenanceunit_phone'), \
         Maintenancerec.id, \
         Maintenancerec.status, \
+        Maintenancerec.price, \
         Maintenancerec.note, \
         Maintenancerec.maintenance_note, \
         Maintenancerec.create_time, \

@@ -186,6 +186,7 @@ class MaintenanceunitForm(FlaskForm):
 class MaintenancerecForm(FlaskForm):
     house_id = StringField('房源编号', render_kw={'readonly': True})
     maintenanceunit_id = SelectField('维修单位', choices=[], coerce=int, validators=[DataRequired(message=u"维修单位不能为空")])
+    price = StringField('维修费用', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '2000'})
     note = StringField('具体情况', validators=[DataRequired(message=u"处理结果不能为空")], render_kw={"placeholder": '屋顶漏水'})
     maintenance_note = StringField('处理结果', render_kw={'readonly': True})
     submit = SubmitField('确定')
@@ -194,6 +195,7 @@ class MaintenancerecForm(FlaskForm):
 class TerminateMaintenancerecForm(FlaskForm):
     house_id = StringField('房源编号', render_kw={'readonly': True})
     maintenanceunit_id = SelectField('维修单位', choices=[], coerce=int, validators=[DataRequired(message=u"维修单位不能为空")])
+    price = StringField('维修费用', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '2000'})
     note = StringField('具体情况', render_kw={"placeholder": '屋顶漏水'})
     maintenance_note = StringField('处理结果', validators=[DataRequired(message=u"处理结果不能为空")], render_kw={"placeholder": '填入维修结果'})
     submit = SubmitField('结单')

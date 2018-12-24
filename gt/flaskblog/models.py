@@ -183,7 +183,6 @@ class Contract(db.Model):
         return f"Post('{self.title}', '{self.date_posted}')"
 
 
-
 class Contractype(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), unique=True, nullable=False)
@@ -210,10 +209,12 @@ class Maintenanceunit(db.Model):
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
 
+
 class Maintenancerec(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     house_id = db.Column(db.Integer, nullable=False)
     maintenanceunit_id = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Integer,  nullable=False)
     status = db.Column(db.Integer, nullable=False, default=0)
     note = db.Column(db.String(200))
     maintenance_note = db.Column(db.String(200))
@@ -242,6 +243,7 @@ class Contractbill(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+        
 
 event.listen(
     User.__table__, 

@@ -16,8 +16,11 @@
                                         <font size="2" color="#4f565d"><b>维修单位</b></font>
                                     </th>
                                     <th>
-                                        <font size="2" color="#4f565d"><b>状态</b></font>
+                                        <font size="2" color="#4f565d"><b>维修费用</b></font>
                                     </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>状态</b></font>
+                                    </th>                                    
                                     <th>
                                         <font size="2" color="#4f565d"><b>房源编号</b></font>
                                     </th>
@@ -45,6 +48,7 @@
                                         <a href="{{ url_for('posts.update_maintenancerec', maintenancerec_id=maintenancerec.id) }}" >{{ maintenancerec.id }}</a>
                                     </td>
                                     <td>{{ maintenancerec.maintenanceunit_name }}:{{ maintenancerec.maintenanceunit_phone }}</td>
+                                    <td>{{ maintenancerec.price }}</td>
                                     <td>{% if maintenancerec.status == 0 %}
                                         未处理
                                         {% elif maintenancerec.status == 1 %}
