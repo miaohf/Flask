@@ -1,34 +1,45 @@
 {% extends "base.html" %} {% block content %}
-<form method="POST" action="">
-    {{ form.hidden_tag() }}
-    <fieldset class="form-group">
-        <div class="form-group">
-            {{ form.email.label(class="form-control-label") }} {% if form.email.errors %} {{ form.email(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.email.errors %}
-                <span>{{ error }}</span> {% endfor %}
-            </div>
-            {% else %} {{ form.email(class="form-control form-control-lg") }} {% endif %}
-        </div>
-        <div class="form-group">
-            {{ form.password.label(class="form-control-label") }} {% if form.password.errors %} {{ form.password(class="form-control form-control-lg is-invalid") }}
-            <div class="invalid-feedback">
-                {% for error in form.password.errors %}
-                <span>{{ error }}</span> {% endfor %}
-            </div>
-            {% else %} {{ form.password(class="form-control form-control-lg") }} {% endif %}
-        </div>
-    </fieldset>
-    <div class="form-group">
-        {{ form.submit(class="btn btn-primary submit-btn btn-block") }}
+<div class="auto-form-wrapper">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">
+        {{ message }}
     </div>
-    <div class="form-group d-flex justify-content-between">
-        <small class="text-muted ml-2">
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="form-group">
+                {{ form.email.label(class="form-control-label") }} {% if form.email.errors %} {{ form.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span> {% endfor %}
+                </div>
+                {% else %} {{ form.email(class="form-control form-control-lg") }} {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(class="form-control-label") }} {% if form.password.errors %} {{ form.password(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{ error }}</span> {% endfor %}
+                </div>
+                {% else %} {{ form.password(class="form-control form-control-lg") }} {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary submit-btn btn-block") }}
+        </div>
+        <div class="form-group d-flex justify-content-between">
+            <small class="text-muted ml-2">
                     <a href="{{ url_for('users.reset_request') }}">忘记密码?</a>
                                 </div>
                                 <div class="text-block text-center my-3">
                                     没有账户? <a class="ml-2" href="{{ url_for('users.register') }}">创建新账户</a>
                                 </div>
         </small>
-</form>
+    </form>
+</div>
 {% endblock content %}

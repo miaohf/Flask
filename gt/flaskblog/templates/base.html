@@ -28,18 +28,9 @@
                     <div class="col-lg-4 mx-auto">
                         <h3 style="color:#bfcdd4;text-align:center"> 嘉善国投资产管理系统 </h3>
                         <p style="color:#0aa5f3;text-align:center">Tuozhan RMS</p>
-                        <div class="auto-form-wrapper">
-                            {% with messages = get_flashed_messages(with_categories=true) %}
-                            {% if messages %}
-                            {% for category, message in messages %}
-                            <div class="alert alert-{{ category }}">
-                                {{ message }}
-                            </div>
-                            {% endfor %}
-                            {% endif %}
-                            {% endwith %}
+
                             {% block content %}{% endblock %}
-                        </div>
+                        
                         <ul class="auth-footer">
                             <li>
                                 <a href="#"> 高效工作 </a>
