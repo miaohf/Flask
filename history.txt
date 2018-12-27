@@ -1,0 +1,21 @@
+yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+yum update
+yum remove mariadb*
+yum install -y mariadb101u-server.x86_64  mariadb101u-devel
+yum install -y python36u python36u-libs python36u-devel python36u-pip
+yum install -y gcc gcc-c++ unixODBC-devel git
+pip install -r r.txt
+pip install --upgrade pip
+useradd miaohf
+passwd miaohf
+vi /etc/ssh/sshd_config 
+service sshd restart
+
+#for speed up git clone
+echo "151.101.72.249 global-ssl.fastly.Net
+192.30.253.112 github.com" >>/etc/passwd 
+
+#service network restart
+
+echo "alias pip='pip3.6'; alias python='python3.6'" >> /root/.bash_profile
+echo "alias pip='pip3.6'; alias python='python3.6'" >> /home/miaohf/.bash_profile
