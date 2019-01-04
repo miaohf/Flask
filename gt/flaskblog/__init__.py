@@ -28,7 +28,7 @@ def create_app(config_class=Config):
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/tuozhanrms'
 
     #app.config['WTF_I18N_ENABLED'] = False 
-    app.config['MAX_CONTENT_LENGTH'] = 5 * 1024 * 1024
+    app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
 
     app.config['UPLOAD_PATH'] = os.path.join(app.root_path, 'static/uploads')
     # app.config['UPLOADED_PHOTOS_DEST'] = os.path.join(app.root_path, 'static/upload_path/photos')
