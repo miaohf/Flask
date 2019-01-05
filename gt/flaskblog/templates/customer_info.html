@@ -31,7 +31,6 @@
                                             <div class="col-sm-6 grid-margin stretch-card">
                                                 <div class="card card-statistics">
                                                     <div class="card-body">
-                                                        {% for customer in customers %}
                                                         <table class="table table-borderless w-100 mt-4">
                                                             <tr>
                                                                 <td>
@@ -54,7 +53,6 @@
                                                                     <b> 备注信息 :</b> {{ customer.note }}</td>
                                                             </tr>
                                                         </table>
-                                                        {% endfor %}
                                                     </div>
                                                 </div>
                                             </div>
@@ -64,14 +62,17 @@
                                                         <div class="owl-carousel owl-theme full-width">
                                                             <div class="item">
                                                                 <div class="card text-white">
-                                                                    {% for customer in customers %}
                                                                     <img class="card-img" src="{{ url_for('static', filename='uploads/'+customer.pictures) }}" alt="Card image"></img>
-                                                                    {% endfor %}
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1 grid-margin stretch-card">
+                                            <div>
+                                                <a href="{{ url_for('posts.update_customer', customer_id=customer.id) }}" class="btn btn-outline-primary float-right"></i>租户信息更新</a>
                                             </div>
                                         </div>
                                     </div>

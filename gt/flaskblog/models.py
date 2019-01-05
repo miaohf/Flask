@@ -84,7 +84,7 @@ class Resource(db.Model):
     landlord_id = db.Column(db.Integer,  nullable=False)
     garden_id = db.Column(db.Integer,  nullable=False)
     address = db.Column(db.String(200), nullable=False)
-    price = db.Column(db.Integer,  nullable=False)
+    price = db.Column(db.NUMERIC(8,2),  nullable=False)
     pictures = db.Column(db.String(200),  nullable=False)
     area1 = db.Column(db.NUMERIC(8,2),  nullable=False)
     area2 = db.Column(db.NUMERIC(8,2),  nullable=False)

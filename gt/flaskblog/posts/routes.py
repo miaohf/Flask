@@ -348,6 +348,36 @@ def new_customer():
     return render_template('create_customer.html', title='租户登记', form=form)
 
 
+@posts.route("/post/customer/<int:customer_id>update", methods=['GET', 'POST'])
+@login_required
+def update_customer(customer_id):
+    form = CustomerForm()
+    customer = Customer.query.filter_by(id=customer_id).first()
+    if form.validate_on_submit():
+        f = form.pictures.data
+        filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+        f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+        customer.name=form.name.data
+        customer.phone=form.phone.data
+        customer.address=form.address.data
+        customer.cardid=form.cardid.data
+        customer.pictures=filename
+        customer.postcode=form.postcode.data
+        customer.note=form.note.data
+        db.session.commit()
+        flash('租户信息已更新!', 'success')
+        return redirect(url_for('posts.customer_list'))
+    elif request.method == 'GET':
+        form.name.data = customer.name
+        form.phone.data = customer.phone
+        form.address.data = customer.address
+        form.cardid.data = customer.cardid
+        form.postcode.data = customer.postcode
+        form.note.data = customer.note
+    return render_template('create_customer.html', title='租户登记', form=form)
+
+
+
 @posts.route("/post/create_landlord", methods=['GET', 'POST'])
 @login_required
 def new_landlord():
@@ -1054,10 +1084,10 @@ def house_info(house_id):
 @login_required
 def customer_info(customer_id):
     exist_or_not = Customer.query.get_or_404(customer_id)
-    customers = Customer.query.filter_by(id=customer_id)
+    customer = Customer.query.filter_by(id=customer_id).first()
     contracts = Contract.query.filter_by(customer_id=customer_id).filter_by(status=0)
     contracts_his = Contract.query.filter_by(customer_id=customer_id).filter_by(status=1)
-    return render_template('customer_info.html', title='租户资料', customers=customers, contracts=contracts, contracts_his=contracts_his)
+    return render_template('customer_info.html', title='租户资料', customer=customer, contracts=contracts, contracts_his=contracts_his)
 
 
 @posts.route("/post/contract_info/<int:contract_id>")
