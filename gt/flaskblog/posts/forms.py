@@ -33,7 +33,7 @@ class ResourceForm(FlaskForm):
 class UpdateResourceForm(FlaskForm):
     landlord_id=SelectField('产权持有人', choices=[], coerce=int, validators=[DataRequired(message=u"产权所有人不能为空")])
     garden_id=StringField('所在小区',render_kw={'readonly': True})
-    address = StringField('坐落', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
+    address = StringField('坐落', validators=[DataRequired(), Length(min=4, max=80)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
     price = StringField('市场估值(万元)', validators=[DataRequired(), Length(min=2, max=8)], render_kw={"placeholder": '308'})
     pictures = FileField('不动产证', validators=[FileRequired(), FileAllowed(['jpg', 'png', 'pdf'])], render_kw={'multiple': True})
     area1 = StringField('建筑面积(㎡)', validators=[DataRequired(), Length(min=2, max=9)], render_kw={"placeholder": '168.4'})
