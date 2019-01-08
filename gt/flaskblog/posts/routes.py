@@ -449,14 +449,22 @@ def new_contract():
             f = form.approval_pics.data
             filename2 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
             f.save(os.path.join(app.config['UPLOAD_PATH'], filename2))
+        else:
+            filename2 = 'default_contract.jpg'
+
         if form.auction_announcement.data:
             f = form.auction_announcement.data
             filename3 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
             f.save(os.path.join(app.config['UPLOAD_PATH'], filename3))
+        else:
+            filename3 = 'default_contract.jpg'
+
         if form.auction_confirmation.data:
             f = form.auction_confirmation.data
             filename4 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
             f.save(os.path.join(app.config['UPLOAD_PATH'], filename4))
+        else:
+            filename4 = 'default_contract.jpg'
 
         post = Contract(name=form.name.data, \
             house_id=form.house_id.data, \
@@ -593,9 +601,11 @@ def update_contract(contract_id):
         contract.customer_id = form.customer_id.data
         contract.type = form.type.data
         contract.auction_date = form.auction_date.data
+        contract.security_deposit = form.security_deposit.data
         contract.start_time = form.start.data
         contract.end_time = form.end.data
         contract.annual_rent = form.annual_rent.data
+        contract.useof = form.useof.data 
         contract.note = form.note.data
         contract.user_id = current_user.id
         db.session.commit()
