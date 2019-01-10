@@ -8,7 +8,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-  <link rel="dns-prefetch" href="https://assets-cdn.github.com">
+  <link rel="dns-prefetch" href="https://github.githubassets.com">
   <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com">
   <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com">
   <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com">
@@ -18,16 +18,17 @@
 
 
 
-  <link crossorigin="anonymous" media="all" integrity="sha512-FCg44VGg5ax/5MpZ8otwiPE+/tG1/Sq67mKkl6agbqgoScZtJyXhQSFQMIJfOHMZZ+yXDINb8nEiws60SiLohg==" rel="stylesheet" href="https://assets-cdn.github.com/assets/frameworks-5aa6d9885579bb2359f66266aee26f3b.css" />
-  <link crossorigin="anonymous" media="all" integrity="sha512-7j4LVYeYSjq7Il+lAz2YmgIdh1yZseGZInIyLEgtZiWTttnprn5+JEKrgObqOcqvW5+OCSbnA8NpZI/qDa3ZGA==" rel="stylesheet" href="https://assets-cdn.github.com/assets/github-2b01a1367b91dfcbff5f1f644cbc7dcd.css" />
+  <link crossorigin="anonymous" media="all" integrity="sha512-pWLt6abkYhNeAHaDrPVG0yXCtIGRuCkwSUqQpsyN6smAIpIt+Iuq2IZKmoH9l3Cy/9ZnjvVrFZnvFFjGiqE3EA==" rel="stylesheet" href="https://github.githubassets.com/assets/frameworks-a3b8a10d4a9e37a78f033ef4a4f525f5.css" />
+  <link crossorigin="anonymous" media="all" integrity="sha512-iTD7uDoTrW9K3aka+zCn4U//GPoD0qLAQqCULQwNHJbgkEFV5m6azo+Dwe74K6HxM/G31N0FVcEPDbpzt2mEsw==" rel="stylesheet" href="https://github.githubassets.com/assets/github-830431b0cd318a9f99dd1392a6c54cda.css" />
   
   
-  <link crossorigin="anonymous" media="all" integrity="sha512-MCkY7xCBVn707mk61oFcP8d+7twmv0QJIlpv5KvZtBwC7/SBwK0E8KEo1CcC8nxnRkiBtZFrdxhb+ovgrFdTiQ==" rel="stylesheet" href="https://assets-cdn.github.com/assets/site-a9e4b9870c7285a07575dc12a3f5eb9a.css" />
+  
+  
   
 
   <meta name="viewport" content="width=device-width">
   
-  <title>bootstrap-autohidingnavbar/jquery.bootstrap-autohidingnavbar.js at master · istvan-ujjmeszaros/bootstrap-autohidingnavbar · GitHub</title>
+  <title>bootstrap-autohidingnavbar/jquery.bootstrap-autohidingnavbar.js at master · istvan-ujjmeszaros/bootstrap-autohidingnavbar</title>
     <meta name="description" content="An extension for Bootstrap&#39;s fixed navbar which hides the navbar while the page is scrolling downwards and shows it the other way. - istvan-ujjmeszaros/bootstrap-autohidingnavbar">
     <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="GitHub">
   <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
@@ -36,11 +37,11 @@
     
     <meta property="og:image" content="https://avatars1.githubusercontent.com/u/1273763?s=400&amp;v=4" /><meta property="og:site_name" content="GitHub" /><meta property="og:type" content="object" /><meta property="og:title" content="istvan-ujjmeszaros/bootstrap-autohidingnavbar" /><meta property="og:url" content="https://github.com/istvan-ujjmeszaros/bootstrap-autohidingnavbar" /><meta property="og:description" content="An extension for Bootstrap&#39;s fixed navbar which hides the navbar while the page is scrolling downwards and shows it the other way. - istvan-ujjmeszaros/bootstrap-autohidingnavbar" />
 
-  <link rel="assets" href="https://assets-cdn.github.com/">
-  
+  <link rel="assets" href="https://github.githubassets.com/">
+  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6MzU5NzA4NzM4OjBiNWMzZDEwZjY4NjJkYjRkYzJlNTZkZGM5MWQ0ZmY4M2MxM2M2ZWRjYzVjODE0MGUyNTgxM2RlNzg2ZDgxOTE=--7d00bc3e70004f13c5a5656947db646a00321d39">
   <meta name="pjax-timeout" content="1000">
-  
-  <meta name="request-id" content="B246:5A42:23EC90:443196:5BBD54E0" data-pjax-transient>
+  <link rel="sudo-modal" href="/sessions/sudo_modal">
+  <meta name="request-id" content="A083:1A4A:42D36CC:640D903:5C36F549" data-pjax-transient>
 
 
   
@@ -51,31 +52,32 @@
     <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
     <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
 
-  <meta name="octolytics-host" content="collector.githubapp.com" /><meta name="octolytics-app-id" content="github" /><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event" /><meta name="octolytics-dimension-request_id" content="B246:5A42:23EC90:443196:5BBD54E0" /><meta name="octolytics-dimension-region_edge" content="iad" /><meta name="octolytics-dimension-region_render" content="iad" />
+  <meta name="octolytics-host" content="collector.githubapp.com" /><meta name="octolytics-app-id" content="github" /><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event" /><meta name="octolytics-dimension-request_id" content="A083:1A4A:42D36CC:640D903:5C36F549" /><meta name="octolytics-dimension-region_edge" content="sea" /><meta name="octolytics-dimension-region_render" content="iad" /><meta name="octolytics-actor-id" content="10840733" /><meta name="octolytics-actor-login" content="miaohf" /><meta name="octolytics-actor-hash" content="843b374d8d6a2f94cef09016222ad8cf8d8395081d01af01730c1538ebbee96d" />
 <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/blob/show" data-pjax-transient="true" />
 
 
 
     <meta name="google-analytics" content="UA-3769691-2">
 
+  <meta class="js-ga-set" name="userId" content="58b2234f8a1e14df122fa44dec334a89" %>
 
-<meta class="js-ga-set" name="dimension1" content="Logged Out">
+<meta class="js-ga-set" name="dimension1" content="Logged In">
 
 
 
   
 
       <meta name="hostname" content="github.com">
-    <meta name="user-login" content="">
+    <meta name="user-login" content="miaohf">
 
       <meta name="expected-hostname" content="github.com">
-    <meta name="js-proxy-site-detection-payload" content="MTllNDNlNTkzNTIzODAxNTI2NWUxNDcwZDA2NjBjOWIzNTU0MDQzMjk5Mjg1ZTFjNGNhNWU4ZmJiZGY1ZjI0NXx7InJlbW90ZV9hZGRyZXNzIjoiMTI1LjEyMy4xNTcuOTQiLCJyZXF1ZXN0X2lkIjoiQjI0Njo1QTQyOjIzRUM5MDo0NDMxOTY6NUJCRDU0RTAiLCJ0aW1lc3RhbXAiOjE1MzkxMzQ2ODksImhvc3QiOiJnaXRodWIuY29tIn0=">
+    <meta name="js-proxy-site-detection-payload" content="Zjg0MDlhY2FhNjkyNjRhNWQ4YjFjYTUzMDA4OGYxNjU5ZTZjYTdkNGM1ZGM4YjU4MDZiMGQyOTBkODM3NGRhNnx7InJlbW90ZV9hZGRyZXNzIjoiMTA3LjE3Mi4xMDIuMjAyIiwicmVxdWVzdF9pZCI6IkEwODM6MUE0QTo0MkQzNkNDOjY0MEQ5MDM6NUMzNkY1NDkiLCJ0aW1lc3RhbXAiOjE1NDcxMDU2MDksImhvc3QiOiJnaXRodWIuY29tIn0=">
 
-    <meta name="enabled-features" content="DASHBOARD_V2_LAYOUT_OPT_IN,EXPLORE_DISCOVER_REPOSITORIES,UNIVERSE_BANNER,MARKETPLACE_PLAN_RESTRICTION_EDITOR,ISSUE_AND_PR_HOVERCARDS">
+    <meta name="enabled-features" content="DASHBOARD_V2_LAYOUT_OPT_IN,EXPLORE_DISCOVER_REPOSITORIES,UNIVERSE_BANNER,MARKETPLACE_PLAN_RESTRICTION_EDITOR,NOTIFY_ON_BLOCK,RELATED_ISSUES,MARKETPLACE_INSIGHTS_V2">
 
-  <meta name="html-safe-nonce" content="f4ed52e7f2fa3929781d173c7abeb6f8c3751fc0">
+  <meta name="html-safe-nonce" content="f02e0639b7191f8dea6dfad7b5f08d9fb4fa0ed3">
 
-  <meta http-equiv="x-pjax-version" content="400691ac941ca24e2b477072f13f7ee1">
+  <meta http-equiv="x-pjax-version" content="654c782fe4590efb4673befeb22a6d21">
   
 
       <link href="https://github.com/istvan-ujjmeszaros/bootstrap-autohidingnavbar/commits/master.atom" rel="alternate" title="Recent Commits to bootstrap-autohidingnavbar:master" type="application/atom+xml">
@@ -92,22 +94,23 @@
 
   <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
 
-  <link rel="mask-icon" href="https://assets-cdn.github.com/pinned-octocat.svg" color="#000000">
-  <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://assets-cdn.github.com/favicon.ico">
+  <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+  <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://github.githubassets.com/favicon.ico">
 
 <meta name="theme-color" content="#1e2327">
 
 
+  <meta name="u2f-support" content="true">
 
   <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials">
 
   </head>
 
-  <body class="logged-out env-production page-blob">
+  <body class="logged-in env-production page-blob">
     
 
   <div class="position-relative js-header-wrapper ">
-    <a href="#start-of-content" tabindex="1" class="px-2 py-4 bg-blue text-white show-on-focus js-skip-to-content">Skip to content</a>
+    <a href="#start-of-content" tabindex="1" class="p-3 bg-blue text-white show-on-focus js-skip-to-content">Skip to content</a>
     <div id="js-pjax-loader-bar" class="pjax-loader-bar"><div class="progress"></div></div>
 
     
@@ -115,48 +118,23 @@
     
 
 
-
         
-<header class="Header header-logged-out  position-relative f4 py-3" role="banner">
-  <div class="container-lg d-flex px-3">
-    <div class="d-flex flex-justify-between flex-items-center">
-      <a class="header-logo-invertocat my-0" href="https://github.com/" aria-label="Homepage" data-ga-click="(Logged out) Header, go to homepage, icon:logo-wordmark">
-        <svg height="32" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-      </a>
+<header class="Header  f5" role="banner">
+  <div class="d-flex flex-justify-between px-3 ">
+    <div class="d-flex flex-justify-between ">
+      <div class="">
+        <a class="header-logo-invertocat" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <svg height="32" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+</a>
+
+      </div>
 
     </div>
 
     <div class="HeaderMenu d-flex flex-justify-between flex-auto">
-        <nav class="mt-0">
-          <ul class="d-flex list-style-none">
-              <li class="ml-2">
-                <a class="js-selected-navigation-item HeaderNavlink px-0 py-2 m-0" data-ga-click="Header, click, Nav menu - item:features" data-selected-links="/features /features/project-management /features/code-review /features/project-management /features/integrations /features" href="/features">
-                  Features
-</a>              </li>
-              <li class="ml-4">
-                <a class="js-selected-navigation-item HeaderNavlink px-0 py-2 m-0" data-ga-click="Header, click, Nav menu - item:business" data-selected-links="/business /business/security /business/customers /business" href="/business">
-                  Business
-</a>              </li>
-
-              <li class="ml-4">
-                <a class="js-selected-navigation-item HeaderNavlink px-0 py-2 m-0" data-ga-click="Header, click, Nav menu - item:explore" data-selected-links="/explore /trending /trending/developers /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship showcases showcases_search showcases_landing /explore" href="/explore">
-                  Explore
-</a>              </li>
-
-              <li class="ml-4">
-                    <a class="js-selected-navigation-item HeaderNavlink px-0 py-2 m-0" data-ga-click="Header, click, Nav menu - item:marketplace" data-selected-links=" /marketplace" href="/marketplace">
-                      Marketplace
-</a>              </li>
-              <li class="ml-4">
-                <a class="js-selected-navigation-item HeaderNavlink px-0 py-2 m-0" data-ga-click="Header, click, Nav menu - item:pricing" data-selected-links="/pricing /pricing/developer /pricing/team /pricing/business-hosted /pricing/business-enterprise /pricing" href="/pricing">
-                  Pricing
-</a>              </li>
-          </ul>
-        </nav>
-
-      <div class="d-flex">
-          <div class="d-lg-flex flex-items-center mr-3">
-            <div class="header-search scoped-search site-scoped-search js-site-search position-relative js-jump-to"
+      <nav class="d-flex" aria-label="Global">
+            <div class="">
+              <div class="header-search scoped-search site-scoped-search js-site-search position-relative js-jump-to"
   role="combobox"
   aria-owns="jump-to-results"
   aria-label="Search or jump to"
@@ -171,80 +149,383 @@
           data-hotkey="s,/"
           name="q"
           value=""
-          placeholder="Search"
-          data-unscoped-placeholder="Search GitHub"
-          data-scoped-placeholder="Search"
+          placeholder="Search or jump to…"
+          data-unscoped-placeholder="Search or jump to…"
+          data-scoped-placeholder="Search or jump to…"
           autocapitalize="off"
           aria-autocomplete="list"
           aria-controls="jump-to-results"
-          data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations#csrf-token=G8Ud2l9ufd842jIftwqQVxhZgqij7CWewxkqJvwipf0zdR0gjk6fQP+EX6qOqZRDKGVtPVm2CgGZoVDNUTV4JA=="
+          aria-label="Search or jump to…"
+          data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations#csrf-token=FYTShqlCwbVJcPRJsFP4U/SE9ZOvV/9LSqdbVKL7r91tW8rkC7xf44KgaqJsjxwU+w1uSHXekSWi6PFfMMdbNA=="
           spellcheck="false"
           autocomplete="off"
           >
           <input type="hidden" class="js-site-search-type-field" name="type" >
-            <img src="https://assets-cdn.github.com/images/search-shortcut-hint.svg" alt="" class="mr-2 header-search-key-slash">
+            <img src="https://github.githubassets.com/images/search-key-slash.svg" alt="" class="mr-2 header-search-key-slash">
 
             <div class="Box position-absolute overflow-hidden d-none jump-to-suggestions js-jump-to-suggestions-container">
-              <ul class="d-none js-jump-to-suggestions-template-container">
-                <li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item" role="option">
-                  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center p-2 jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open" href="">
-                    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
-                      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
-                      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/></svg>
-                      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
-                    </div>
+              
+<ul class="d-none js-jump-to-suggestions-template-container">
+  
 
-                    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-suggestion" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+    </div>
 
-                    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
-                    </div>
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
 
-                    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
-                      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
-                        In this repository
-                      </span>
-                      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
-                        All GitHub
-                      </span>
-                      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
-                    </div>
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
 
-                    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
-                      Jump to
-                      <span class="d-inline-block ml-1 v-align-middle">↵</span>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-              <ul class="d-none js-jump-to-no-results-template-container">
-                <li class="d-flex flex-justify-center flex-items-center p-3 f5 d-none">
-                  <span class="text-gray">No suggested jump to results</span>
-                </li>
-              </ul>
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
 
-              <ul id="jump-to-results" role="listbox" class="js-navigation-container jump-to-suggestions-results-container js-jump-to-suggestions-results-container" >
-                <li class="d-flex flex-justify-center flex-items-center p-0 f5">
-                  <img src="https://assets-cdn.github.com/images/spinners/octocat-spinner-128.gif" alt="Octocat Spinner Icon" class="m-2" width="28">
-                </li>
-              </ul>
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+</ul>
+
+<ul class="d-none js-jump-to-no-results-template-container">
+  <li class="d-flex flex-justify-center flex-items-center f5 d-none js-jump-to-suggestion p-2">
+    <span class="text-gray">No suggested jump to results</span>
+  </li>
+</ul>
+
+<ul id="jump-to-results" role="listbox" class="p-0 m-0 js-navigation-container jump-to-suggestions-results-container js-jump-to-suggestions-results-container">
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-scoped-search d-none" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-global-search d-none" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h13a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1z"/></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0 0 13 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 0 0 0-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"/></svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+
+    <li class="d-flex flex-justify-center flex-items-center p-0 f5 js-jump-to-suggestion">
+      <img src="https://github.githubassets.com/images/spinners/octocat-spinner-128.gif" alt="Octocat Spinner Icon" class="m-2" width="28">
+    </li>
+</ul>
+
             </div>
       </label>
 </form>  </div>
 </div>
 
-          </div>
-
-        <span class="d-inline-block">
-            <div class="HeaderNavlink px-0 py-2 m-0">
-              <a class="text-bold text-white no-underline" href="/login?return_to=%2Fistvan-ujjmeszaros%2Fbootstrap-autohidingnavbar%2Fblob%2Fmaster%2Fsrc%2Fjquery.bootstrap-autohidingnavbar.js" data-ga-click="(Logged out) Header, clicked Sign in, text:sign-in">Sign in</a>
-                <span class="text-gray">or</span>
-                <a class="text-bold text-white no-underline" href="/join?source=header-repo" data-ga-click="(Logged out) Header, clicked Sign up, text:sign-up">Sign up</a>
             </div>
-        </span>
+
+          <ul class="d-flex pl-2 flex-items-center text-bold list-style-none">
+            <li>
+              <a class="js-selected-navigation-item HeaderNavlink px-2" data-hotkey="g p" data-ga-click="Header, click, Nav menu - item:pulls context:user" aria-label="Pull requests you created" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls" href="/pulls">
+                Pull requests
+</a>            </li>
+            <li>
+              <a class="js-selected-navigation-item HeaderNavlink px-2" data-hotkey="g i" data-ga-click="Header, click, Nav menu - item:issues context:user" aria-label="Issues you created" data-selected-links="/issues /issues/assigned /issues/mentioned /issues" href="/issues">
+                Issues
+</a>            </li>
+              <li class="position-relative">
+                <a class="js-selected-navigation-item HeaderNavlink px-2" data-ga-click="Header, click, Nav menu - item:marketplace context:user" data-octo-click="marketplace_click" data-octo-dimensions="location:nav_bar" data-selected-links=" /marketplace" href="/marketplace">
+                   Marketplace
+</a>                  
+              </li>
+            <li>
+              <a class="js-selected-navigation-item HeaderNavlink px-2" data-ga-click="Header, click, Nav menu - item:explore" data-selected-links="/explore /trending /trending/developers /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship showcases showcases_search showcases_landing /explore" href="/explore">
+                Explore
+</a>            </li>
+          </ul>
+      </nav>
+
+      <div class="d-flex">
+        
+<ul class="user-nav d-flex flex-items-center list-style-none" id="user-links">
+  <li class="dropdown">
+    <span class="d-inline-block  px-2">
+      
+    <a aria-label="You have unread notifications" class="notification-indicator tooltipped tooltipped-s  js-socket-channel js-notification-indicator" data-hotkey="g n" data-ga-click="Header, go to notifications, icon:unread" data-channel="notification-changed:10840733" href="/notifications">
+        <span class="mail-status unread"></span>
+        <svg class="octicon octicon-bell" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 12v1H0v-1l.73-.58c.77-.77.81-2.55 1.19-4.42C2.69 3.23 6 2 6 2c0-.55.45-1 1-1s1 .45 1 1c0 0 3.39 1.23 4.16 5 .38 1.88.42 3.66 1.19 4.42l.66.58H14zm-7 4c1.11 0 2-.89 2-2H5c0 1.11.89 2 2 2z"/></svg>
+</a>
+    </span>
+  </li>
+
+  <li class="dropdown">
+    <details class="details-overlay details-reset d-flex px-2 flex-items-center">
+      <summary class="HeaderNavlink"
+         aria-label="Create new…"
+         data-ga-click="Header, create new, icon:add">
+        <svg class="octicon octicon-plus float-left mr-1 mt-1" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"/></svg>
+        <span class="dropdown-caret mt-1"></span>
+      </summary>
+      <details-menu class="dropdown-menu dropdown-menu-sw">
+        
+<a role="menuitem" class="dropdown-item" href="/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+  <a role="menuitem" class="dropdown-item" href="/new/import" data-ga-click="Header, import a repository">
+    Import repository
+  </a>
+
+<a role="menuitem" class="dropdown-item" href="https://gist.github.com/" data-ga-click="Header, create new gist">
+  New gist
+</a>
+
+  <a role="menuitem" class="dropdown-item" href="/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+  <div class="dropdown-divider"></div>
+  <div class="dropdown-header">
+    <span title="istvan-ujjmeszaros/bootstrap-autohidingnavbar">This repository</span>
+  </div>
+    <a role="menuitem" class="dropdown-item" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/issues/new" data-ga-click="Header, create new issue">
+      New issue
+    </a>
+
+
+      </details-menu>
+    </details>
+  </li>
+
+  <li class="dropdown">
+
+    <details class="details-overlay details-reset d-flex pl-2 flex-items-center">
+      <summary class="HeaderNavlink name mt-1"
+        aria-label="View profile and more"
+        data-ga-click="Header, show menu, icon:avatar">
+        <img alt="@miaohf" class="avatar float-left mr-1" src="https://avatars3.githubusercontent.com/u/10840733?s=40&amp;v=4" height="20" width="20">
+        <span class="dropdown-caret"></span>
+      </summary>
+      <details-menu class="dropdown-menu dropdown-menu-sw">
+        <ul>
+          <li class="header-nav-current-user css-truncate"><a role="menuitem" class="no-underline user-profile-link px-3 pt-2 pb-2 mb-n2 mt-n1 d-block" href="/miaohf" data-ga-click="Header, go to profile, text:Signed in as">Signed in as <strong class="css-truncate-target">miaohf</strong></a></li>
+          <li class="dropdown-divider"></li>
+
+            <li class="px-3 f6 user-status-container js-user-status-context pb-1" data-url="/users/status?compact=1&amp;link_mentions=0&amp;truncate=1">
+              
+<div class="js-user-status-container user-status-compact" data-team-hovercards-enabled>
+  <details class="js-user-status-details details-reset details-overlay details-overlay-dark">
+    <summary class="btn-link no-underline js-toggle-user-status-edit toggle-user-status-edit width-full" aria-haspopup="dialog">
+      <div class="f6 d-inline-block v-align-middle  user-status-emoji-only-header pl-0 circle lh-condensed user-status-header " style="max-width: 29px">
+        <div class="user-status-emoji-container flex-shrink-0 mr-1">
+          <svg class="octicon octicon-smiley" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm4.81 12.81a6.72 6.72 0 0 1-2.17 1.45c-.83.36-1.72.53-2.64.53-.92 0-1.81-.17-2.64-.53-.81-.34-1.55-.83-2.17-1.45a6.773 6.773 0 0 1-1.45-2.17A6.59 6.59 0 0 1 1.21 8c0-.92.17-1.81.53-2.64.34-.81.83-1.55 1.45-2.17.62-.62 1.36-1.11 2.17-1.45A6.59 6.59 0 0 1 8 1.21c.92 0 1.81.17 2.64.53.81.34 1.55.83 2.17 1.45.62.62 1.11 1.36 1.45 2.17.36.83.53 1.72.53 2.64 0 .92-.17 1.81-.53 2.64-.34.81-.83 1.55-1.45 2.17zM4 6.8v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2H5.2C4.53 8 4 7.47 4 6.8zm5 0v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2h-.59C9.53 8 9 7.47 9 6.8zm4 3.2c-.72 1.88-2.91 3-5 3s-4.28-1.13-5-3c-.14-.39.23-1 .66-1h8.59c.41 0 .89.61.75 1z"/></svg>
+        </div>
       </div>
+      <div class="d-inline-block v-align-middle user-status-message-wrapper f6 lh-condensed ws-normal pt-1" style="margin-right: 29px">
+          Set your status
+      </div>
+    </summary>
+    <details-dialog class="anim-fade-in fast Box Box--overlay" role="dialog" tabindex="-1">
+      <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="position-relative flex-auto js-user-status-form" action="/users/status?compact=1&amp;link_mentions=0&amp;truncate=1" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="put" /><input type="hidden" name="authenticity_token" value="uXPNdPbgCuwDjnKqZrMsDuhT4iXLRsPTUFJHYMzyctqGc970t/Nk+CzoXSTJtlSSh1jCYrOYHwtABIGwT5bEpg==" />
+        <div class="Box-header">
+          <button class="Box-btn-octicon js-toggle-user-status-edit btn-octicon float-right" type="reset" aria-label="Close dialog" data-close-dialog>
+            <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
+          </button>
+          <h3 class="Box-title text-gray-dark">Edit status</h3>
+        </div>
+        <input type="hidden" name="emoji" class="js-user-status-emoji-field" value="">
+        <input type="hidden" name="organization_id" class="js-user-status-org-id-field" value="">
+        <div class="px-3 py-2 text-gray-dark">
+          <div class="js-characters-remaining-container js-suggester-container position-relative mt-2">
+            <div class="input-group">
+              <span class="input-group-button">
+                <button type="button" aria-label="Choose an emoji" class="btn-outline btn js-toggle-user-status-emoji-picker">
+                  <span class="js-user-status-original-emoji" hidden></span>
+                  <span class="js-user-status-custom-emoji"></span>
+                  <span class="js-user-status-no-emoji-icon" >
+                    <svg class="octicon octicon-smiley" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm4.81 12.81a6.72 6.72 0 0 1-2.17 1.45c-.83.36-1.72.53-2.64.53-.92 0-1.81-.17-2.64-.53-.81-.34-1.55-.83-2.17-1.45a6.773 6.773 0 0 1-1.45-2.17A6.59 6.59 0 0 1 1.21 8c0-.92.17-1.81.53-2.64.34-.81.83-1.55 1.45-2.17.62-.62 1.36-1.11 2.17-1.45A6.59 6.59 0 0 1 8 1.21c.92 0 1.81.17 2.64.53.81.34 1.55.83 2.17 1.45.62.62 1.11 1.36 1.45 2.17.36.83.53 1.72.53 2.64 0 .92-.17 1.81-.53 2.64-.34.81-.83 1.55-1.45 2.17zM4 6.8v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2H5.2C4.53 8 4 7.47 4 6.8zm5 0v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2h-.59C9.53 8 9 7.47 9 6.8zm4 3.2c-.72 1.88-2.91 3-5 3s-4.28-1.13-5-3c-.14-.39.23-1 .66-1h8.59c.41 0 .89.61.75 1z"/></svg>
+                  </span>
+                </button>
+              </span>
+              <input type="text" autocomplete="off" autofocus data-maxlength="80" class="js-suggester-field form-control js-user-status-message-field js-characters-remaining-field" placeholder="What's happening?" name="message" required value="" aria-label="What is your current status?">
+            </div>
+            <div class="suggester-container">
+              <div class="suggester js-suggester js-navigation-container" data-url="/autocomplete/user-suggestions" data-no-org-url="/autocomplete/user-suggestions" data-org-url="/suggestions" hidden>
+              </div>
+            </div>
+            <div style="margin-left: 53px" class="my-1 text-small label-characters-remaining js-characters-remaining" data-suffix="remaining" hidden>
+              80 remaining
+            </div>
+          </div>
+          <include-fragment class="js-user-status-emoji-picker" data-url="/users/status/emoji"></include-fragment>
+          <div class="overflow-auto" style="max-height: 33vh">
+            <div class="user-status-suggestions js-user-status-suggestions">
+              <h4 class="f6 text-normal my-3">Suggestions:</h4>
+              <div class="mx-3 mt-2 clearfix">
+                  <div class="float-left col-6">
+                      <button type="button" value=":palm_tree:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="palm_tree" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f334.png">🌴</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message" style="border-left: 1px solid transparent">
+                          On vacation
+                        </div>
+                      </button>
+                      <button type="button" value=":face_with_thermometer:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="face_with_thermometer" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f912.png">🤒</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message" style="border-left: 1px solid transparent">
+                          Out sick
+                        </div>
+                      </button>
+                  </div>
+                  <div class="float-left col-6">
+                      <button type="button" value=":house:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="house" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3e0.png">🏠</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message" style="border-left: 1px solid transparent">
+                          Working from home
+                        </div>
+                      </button>
+                      <button type="button" value=":dart:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="dart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3af.png">🎯</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message" style="border-left: 1px solid transparent">
+                          Focusing
+                        </div>
+                      </button>
+                  </div>
+              </div>
+            </div>
+            <div class="user-status-limited-availability-container">
+              <div class="form-checkbox my-0">
+                <input type="checkbox" name="limited_availability" value="1" class="js-user-status-limited-availability-checkbox" data-default-message="I may be slow to respond." aria-describedby="limited-availability-help-text-truncate-true" id="limited-availability-truncate-true">
+                <label class="d-block f5 text-gray-dark mb-1" for="limited-availability-truncate-true">
+                  Busy
+                </label>
+                <p class="note" id="limited-availability-help-text-truncate-true">
+                  When others mention you, assign you, or request your review,
+                  GitHub will let them know that you have limited availability.
+                </p>
+              </div>
+            </div>
+          </div>
+          <include-fragment class="js-user-status-org-picker" data-url="/users/status/organizations"></include-fragment>
+        </div>
+        <div class="d-flex flex-items-center flex-justify-between p-3 border-top">
+          <button type="submit" disabled class="width-full btn btn-primary mr-2 js-user-status-submit">
+            Set status
+          </button>
+          <button type="button" disabled class="width-full js-clear-user-status-button btn ml-2 ">
+            Clear status
+          </button>
+        </div>
+</form>    </details-dialog>
+  </details>
+
+</div>
+
+            </li>
+            <li class="dropdown-divider"></li>
+
+          <li><a role="menuitem" class="dropdown-item" href="/miaohf" data-ga-click="Header, go to profile, text:your profile">Your profile</a></li>
+          <li><a role="menuitem" class="dropdown-item" href="/miaohf?tab=repositories" data-ga-click="Header, go to repositories, text:your repositories">Your repositories</a></li>
+
+
+          <li><a role="menuitem" class="dropdown-item" href="/miaohf?tab=stars" data-ga-click="Header, go to starred repos, text:your stars">Your stars</a></li>
+            <li><a role="menuitem" class="dropdown-item" href="https://gist.github.com/" data-ga-click="Header, your gists, text:your gists">Your gists</a></li>
+          <li class="dropdown-divider"></li>
+          <li><a role="menuitem" class="dropdown-item" href="https://help.github.com" data-ga-click="Header, go to help, text:help">Help</a></li>
+          <li><a role="menuitem" class="dropdown-item" href="/settings/profile" data-ga-click="Header, go to settings, icon:settings">Settings</a></li>
+          <li>
+            <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="logout-form" action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="gCA3LS0+BKOjsZ9fc4xfDkkEv0OjsT5va4QtjSFoYtCT1es/pAtgAsGwlwjH90lcrkY2SsVC94KMiPizDtf0Vg==" />
+              
+              <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout" role="menuitem">
+                Sign out
+              </button>
+</form>          </li>
+        </ul>
+      </details-menu>
+    </details>
+  </li>
+</ul>
+
+
+
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="sr-only right-0" action="/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="9o0rTfxg/mSwHKV9HqDLor1on4s1ku7t51MTbja5YjflePdfdVWaxdIdrSqq293wWioWglNhJwAAX8ZQGQb0sQ==" />
+          <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout">
+            Sign out
+          </button>
+</form>      </div>
     </div>
   </div>
 </header>
+
+      
 
   </div>
 
@@ -252,18 +533,17 @@
 
     <div id="js-flash-container">
 
-
 </div>
 
 
 
-  <div role="main" class="application-main ">
+  <div role="main" class="application-main " data-commit-hovercards-enabled>
         <div itemscope itemtype="http://schema.org/SoftwareSourceCode" class="">
     <div id="js-repo-pjax-container" data-pjax-container >
       
 
 
-
+  
 
 
 
@@ -273,52 +553,135 @@
 
       <ul class="pagehead-actions">
   <li>
-      <a href="/login?return_to=%2Fistvan-ujjmeszaros%2Fbootstrap-autohidingnavbar"
-    class="btn btn-sm btn-with-count tooltipped tooltipped-s"
-    aria-label="You must be signed in to watch a repository" rel="nofollow">
-    <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
-    Watch
-  </a>
-  <a class="social-count" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/watchers"
-     aria-label="24 users are watching this repository">
-    24
-  </a>
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form data-remote="true" class="js-social-form js-social-container" action="/notifications/subscribe" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="N0nJMRfQrwdPsLeOFNz+j4r/TURDJl6pj1+UzWtpXdVdxpcM5kkUxByO8evOfZHjkP/RVtbgLcqow3XyFF3kQg==" />      <input type="hidden" name="repository_id" id="repository_id" value="17810036" class="form-control" />
 
-  </li>
+      <details class="details-reset details-overlay select-menu float-left">
+        <summary class="btn btn-sm btn-with-count select-menu-button" data-ga-click="Repository, click Watch settings, action:blob#show">
+          <span data-menu-button>
+              <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+              Watch
+          </span>
+        </summary>
+        <details-menu class="select-menu-modal position-absolute mt-5" style="z-index: 99;">
+          <div class="select-menu-header">
+            <span class="select-menu-title">Notifications</span>
+          </div>
+          <div class="select-menu-list">
+            <button type="submit" name="do" value="included" class="select-menu-item width-full" aria-checked="true" role="menuitemradio">
+              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+              <div class="select-menu-item-text">
+                <span class="select-menu-item-heading">Not watching</span>
+                <span class="description">Be notified only when participating or @mentioned.</span>
+                <span class="hidden-select-button-text" data-menu-button-contents>
+                  <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                  Watch
+                </span>
+              </div>
+            </button>
 
-  <li>
-      <a href="/login?return_to=%2Fistvan-ujjmeszaros%2Fbootstrap-autohidingnavbar"
-    class="btn btn-sm btn-with-count tooltipped tooltipped-s"
-    aria-label="You must be signed in to star a repository" rel="nofollow">
-    <svg class="octicon octicon-star v-align-text-bottom" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"/></svg>
-    Star
-  </a>
+            <button type="submit" name="do" value="release_only" class="select-menu-item width-full" aria-checked="false" role="menuitemradio">
+              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+              <div class="select-menu-item-text">
+                <span class="select-menu-item-heading">Releases only</span>
+                <span class="description">Be notified of new releases, and when participating or @mentioned.</span>
+                <span class="hidden-select-button-text" data-menu-button-contents>
+                  <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                  Unwatch releases
+                </span>
+              </div>
+            </button>
 
-    <a class="social-count js-social-count" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/stargazers"
-      aria-label="311 users starred this repository">
-      311
-    </a>
+            <button type="submit" name="do" value="subscribed" class="select-menu-item width-full" aria-checked="false" role="menuitemradio">
+              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+              <div class="select-menu-item-text">
+                <span class="select-menu-item-heading">Watching</span>
+                <span class="description">Be notified of all conversations.</span>
+                <span class="hidden-select-button-text" data-menu-button-contents>
+                  <svg class="octicon octicon-eye v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.06 2C3 2 0 8 0 8s3 6 8.06 6C13 14 16 8 16 8s-3-6-7.94-6zM8 12c-2.2 0-4-1.78-4-4 0-2.2 1.8-4 4-4 2.22 0 4 1.8 4 4 0 2.22-1.78 4-4 4zm2-4c0 1.11-.89 2-2 2-1.11 0-2-.89-2-2 0-1.11.89-2 2-2 1.11 0 2 .89 2 2z"/></svg>
+                  Unwatch
+                </span>
+              </div>
+            </button>
 
-  </li>
-
-  <li>
-      <a href="/login?return_to=%2Fistvan-ujjmeszaros%2Fbootstrap-autohidingnavbar"
-        class="btn btn-sm btn-with-count tooltipped tooltipped-s"
-        aria-label="You must be signed in to fork a repository" rel="nofollow">
-        <svg class="octicon octicon-repo-forked v-align-text-bottom" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
-        Fork
+            <button type="submit" name="do" value="ignore" class="select-menu-item width-full" aria-checked="false" role="menuitemradio">
+              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
+              <div class="select-menu-item-text">
+                <span class="select-menu-item-heading">Ignoring</span>
+                <span class="description">Never be notified.</span>
+                <span class="hidden-select-button-text" data-menu-button-contents>
+                  <svg class="octicon octicon-mute v-align-text-bottom" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 2.81v10.38c0 .67-.81 1-1.28.53L3 10H1c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h2l3.72-3.72C7.19 1.81 8 2.14 8 2.81zm7.53 3.22l-1.06-1.06-1.97 1.97-1.97-1.97-1.06 1.06L11.44 8 9.47 9.97l1.06 1.06 1.97-1.97 1.97 1.97 1.06-1.06L13.56 8l1.97-1.97z"/></svg>
+                  Stop ignoring
+                </span>
+              </div>
+            </button>
+          </div>
+        </details-menu>
+      </details>
+      <a class="social-count js-social-count"
+        href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/watchers"
+        aria-label="24 users are watching this repository">
+        24
       </a>
+</form>
+  </li>
 
+  <li>
+      <div class="js-toggler-container js-social-container starring-container ">
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="starred js-social-form" action="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/unstar" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="4cjdj43XDEcAcpeUghUU247EoIxLQzAou+l4E78jmYcAi9YotTAb5pfc2R18m+H07pxjBmimURTPhZA5T7Uzqg==" />
+      <input type="hidden" name="context" value="repository"></input>
+      <button
+        type="submit"
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Unstar this repository" title="Unstar istvan-ujjmeszaros/bootstrap-autohidingnavbar"
+        data-ga-click="Repository, click unstar button, action:blob#show; text:Unstar">
+        <svg class="octicon octicon-star v-align-text-bottom" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"/></svg>
+        Unstar
+      </button>
+        <a class="social-count js-social-count" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/stargazers"
+           aria-label="313 users starred this repository">
+          313
+        </a>
+</form>
+    <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="unstarred js-social-form" action="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/star" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="4VoKSVuBQEEpzhBTLEVNG9mTDSo7nTAQXLk3juarhUrCe6/IMOM/SBWx1pcJNo4qPQUqo+ZkzuTukb1clqyKyQ==" />
+      <input type="hidden" name="context" value="repository"></input>
+      <button
+        type="submit"
+        class="btn btn-sm btn-with-count js-toggler-target"
+        aria-label="Star this repository" title="Star istvan-ujjmeszaros/bootstrap-autohidingnavbar"
+        data-ga-click="Repository, click star button, action:blob#show; text:Star">
+        <svg class="octicon octicon-star v-align-text-bottom" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 6l-4.9-.64L7 1 4.9 5.36 0 6l3.6 3.26L2.67 14 7 11.67 11.33 14l-.93-4.74L14 6z"/></svg>
+        Star
+      </button>
+        <a class="social-count js-social-count" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/stargazers"
+           aria-label="313 users starred this repository">
+          313
+        </a>
+</form>  </div>
+
+  </li>
+
+  <li>
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="btn-with-count" action="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/fork" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="1Vf/esA/JeEtW2663U7/topfYKMB/XUTDxuoVeovMvjEjisn8P1iwMIikeO0NUFm2ay2WaiwkylR/9AlANKenQ==" />
+            <button
+                type="submit"
+                class="btn btn-sm btn-with-count"
+                data-ga-click="Repository, show fork modal, action:blob#show; text:Fork"
+                title="Fork your own copy of istvan-ujjmeszaros/bootstrap-autohidingnavbar to your account"
+                aria-label="Fork your own copy of istvan-ujjmeszaros/bootstrap-autohidingnavbar to your account">
+              <svg class="octicon octicon-repo-forked v-align-text-bottom" viewBox="0 0 10 16" version="1.1" width="10" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1a1.993 1.993 0 0 0-1 3.72V6L5 8 3 6V4.72A1.993 1.993 0 0 0 2 1a1.993 1.993 0 0 0-1 3.72V6.5l3 3v1.78A1.993 1.993 0 0 0 5 15a1.993 1.993 0 0 0 1-3.72V9.5l3-3V4.72A1.993 1.993 0 0 0 8 1zM2 4.2C1.34 4.2.8 3.65.8 3c0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3 10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2zm3-10c-.66 0-1.2-.55-1.2-1.2 0-.65.55-1.2 1.2-1.2.65 0 1.2.55 1.2 1.2 0 .65-.55 1.2-1.2 1.2z"/></svg>
+              Fork
+            </button>
+</form>
     <a href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/network/members" class="social-count"
-       aria-label="117 users forked this repository">
-      117
+       aria-label="118 users forked this repository">
+      118
     </a>
   </li>
 </ul>
 
       <h1 class="public ">
   <svg class="octicon octicon-repo" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"/></svg>
-  <span class="author" itemprop="author"><a class="url fn" rel="author" href="/istvan-ujjmeszaros">istvan-ujjmeszaros</a></span><!--
+  <span class="author" itemprop="author"><a class="url fn" rel="author" data-hovercard-type="user" data-hovercard-url="/hovercards?user_id=1273763" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/istvan-ujjmeszaros">istvan-ujjmeszaros</a></span><!--
 --><span class="path-divider">/</span><!--
 --><strong itemprop="name"><a data-pjax="#js-repo-pjax-container" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar">bootstrap-autohidingnavbar</a></strong>
 
@@ -329,11 +692,11 @@
 <nav class="reponav js-repo-nav js-sidenav-container-pjax container"
      itemscope
      itemtype="http://schema.org/BreadcrumbList"
-     role="navigation"
+    aria-label="Repository"
      data-pjax="#js-repo-pjax-container">
 
   <span itemscope itemtype="http://schema.org/ListItem" itemprop="itemListElement">
-    <a class="js-selected-navigation-item selected reponav-item" itemprop="url" data-hotkey="g c" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages /istvan-ujjmeszaros/bootstrap-autohidingnavbar" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar">
+    <a class="js-selected-navigation-item selected reponav-item" itemprop="url" data-hotkey="g c" aria-current="page" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages /istvan-ujjmeszaros/bootstrap-autohidingnavbar" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar">
       <svg class="octicon octicon-code" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M9.5 3L8 4.5 11.5 8 8 11.5 9.5 13 14 8 9.5 3zm-5 0L0 8l4.5 5L6 11.5 2.5 8 6 4.5 4.5 3z"/></svg>
       <span itemprop="name">Code</span>
       <meta itemprop="position" content="1">
@@ -343,7 +706,7 @@
       <a itemprop="url" data-hotkey="g i" class="js-selected-navigation-item reponav-item" data-selected-links="repo_issues repo_labels repo_milestones /istvan-ujjmeszaros/bootstrap-autohidingnavbar/issues" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/issues">
         <svg class="octicon octicon-issue-opened" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"/></svg>
         <span itemprop="name">Issues</span>
-        <span class="Counter">17</span>
+        <span class="Counter">18</span>
         <meta itemprop="position" content="2">
 </a>    </span>
 
@@ -362,10 +725,13 @@
       <span class="Counter" >0</span>
 </a>
 
-
-  <a class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors dependency_graph pulse alerts /istvan-ujjmeszaros/bootstrap-autohidingnavbar/pulse" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/pulse">
-    <svg class="octicon octicon-graph" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"/></svg>
-    Insights
+    <a class="js-selected-navigation-item reponav-item" data-hotkey="g w" data-selected-links="repo_wiki /istvan-ujjmeszaros/bootstrap-autohidingnavbar/wiki" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/wiki">
+      <svg class="octicon octicon-book" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M3 5h4v1H3V5zm0 3h4V7H3v1zm0 2h4V9H3v1zm11-5h-4v1h4V5zm0 2h-4v1h4V7zm0 2h-4v1h4V9zm2-6v9c0 .55-.45 1-1 1H9.5l-1 1-1-1H2c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h5.5l1 1 1-1H15c.55 0 1 .45 1 1zm-8 .5L7.5 3H2v9h6V3.5zm7-.5H9.5l-.5.5V12h6V3z"/></svg>
+      Wiki
+</a>
+    <a class="js-selected-navigation-item reponav-item" data-selected-links="repo_graphs repo_contributors dependency_graph pulse alerts security /istvan-ujjmeszaros/bootstrap-autohidingnavbar/pulse" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/pulse">
+      <svg class="octicon octicon-graph" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M16 14v1H0V0h1v14h15zM5 13H3V8h2v5zm4 0H7V3h2v10zm4 0h-2V6h2v7z"/></svg>
+      Insights
 </a>
 
 </nav>
@@ -377,170 +743,34 @@
   <div class="repository-content ">
 
     
+    
+
+
 
   
     <a class="d-none js-permalink-shortcut" data-hotkey="y" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/blob/0077987a05d68625d9198856a5eb0a83e361b34b/src/jquery.bootstrap-autohidingnavbar.js">Permalink</a>
 
     <!-- blob contrib key: blob_contributors:v21:9209772c7a04f260bfbbc68d73835745 -->
 
-        <div class="signup-prompt-bg rounded-1">
-      <div class="signup-prompt p-4 text-center mb-4 rounded-1">
-        <div class="position-relative">
-          <!-- '"` --><!-- </textarea></xmp> --></option></form><form action="/site/dismiss_signup_prompt" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="CzAcQtw4kImBbKwna+j/b4iRV+l2z1wOpiwFeLz8fM5DGaEgeSwMUSXYeQ39aEbdrz4cQKa9bsnSB9DmOYBwfw==" />
-            <button type="submit" class="position-absolute top-0 right-0 btn-link link-gray" data-ga-click="(Logged out) Sign up prompt, clicked Dismiss, text:dismiss">
-              Dismiss
-            </button>
-</form>          <h3 class="pt-2">Join GitHub today</h3>
-          <p class="col-6 mx-auto">GitHub is home to over 28 million developers working together to host and review code, manage projects, and build software together.</p>
-          <a class="btn btn-primary" href="/join?source=prompt-blob-show" data-ga-click="(Logged out) Sign up prompt, clicked Sign up, text:sign-up">Sign up</a>
-        </div>
-      </div>
-    </div>
-
+    
 
     <div class="file-navigation">
       
-<div class="select-menu branch-select-menu js-menu-container js-select-menu float-left">
-  <button class=" btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w"
+<div class="select-menu branch-select-menu js-menu-container js-select-menu float-left js-load-contents"
+  data-contents-url="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/ref-list/master/src/jquery.bootstrap-autohidingnavbar.js?source_action=show&amp;source_controller=blob">
+  <button class="btn btn-sm select-menu-button js-menu-target css-truncate" data-hotkey="w"
     
     type="button" aria-label="Switch branches or tags" aria-expanded="false" aria-haspopup="true">
-      <i>Branch:</i>
-      <span class="js-select-button css-truncate-target">master</span>
+    <i>Branch:</i>
+    <span class="js-select-button css-truncate-target">master</span>
   </button>
 
   <div class="select-menu-modal-holder js-menu-content js-navigation-container" data-pjax>
-
     <div class="select-menu-modal">
-      <div class="select-menu-header">
-        <svg class="octicon octicon-x js-menu-close" role="img" aria-label="Close" viewBox="0 0 12 16" version="1.1" width="12" height="16"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"/></svg>
-        <span class="select-menu-title">Switch branches/tags</span>
+      <div class="js-select-menu-deferred-content"></div>
+      <div class="select-menu-loading-overlay anim-pulse">
+        <svg height="32" class="octicon octicon-octoface" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M14.7 5.34c.13-.32.55-1.59-.13-3.31 0 0-1.05-.33-3.44 1.3-1-.28-2.07-.32-3.13-.32s-2.13.04-3.13.32c-2.39-1.64-3.44-1.3-3.44-1.3-.68 1.72-.26 2.99-.13 3.31C.49 6.21 0 7.33 0 8.69 0 13.84 3.33 15 7.98 15S16 13.84 16 8.69c0-1.36-.49-2.48-1.3-3.35zM8 14.02c-3.3 0-5.98-.15-5.98-3.35 0-.76.38-1.48 1.02-2.07 1.07-.98 2.9-.46 4.96-.46 2.07 0 3.88-.52 4.96.46.65.59 1.02 1.3 1.02 2.07 0 3.19-2.68 3.35-5.98 3.35zM5.49 9.01c-.66 0-1.2.8-1.2 1.78s.54 1.79 1.2 1.79c.66 0 1.2-.8 1.2-1.79s-.54-1.78-1.2-1.78zm5.02 0c-.66 0-1.2.79-1.2 1.78s.54 1.79 1.2 1.79c.66 0 1.2-.8 1.2-1.79s-.53-1.78-1.2-1.78z"/></svg>
       </div>
-
-      <div class="select-menu-filters">
-        <div class="select-menu-text-filter">
-          <input type="text" aria-label="Filter branches/tags" id="context-commitish-filter-field" class="form-control js-filterable-field js-navigation-enable" placeholder="Filter branches/tags">
-        </div>
-        <div class="select-menu-tabs">
-          <ul>
-            <li class="select-menu-tab">
-              <a href="#" data-tab-filter="branches" data-filter-placeholder="Filter branches/tags" class="js-select-menu-tab" role="tab">Branches</a>
-            </li>
-            <li class="select-menu-tab">
-              <a href="#" data-tab-filter="tags" data-filter-placeholder="Find a tag…" class="js-select-menu-tab" role="tab">Tags</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="branches" role="menu">
-
-        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
-
-
-            <a class="select-menu-item js-navigation-item js-navigation-open selected"
-               href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/blob/master/src/jquery.bootstrap-autohidingnavbar.js"
-               data-name="master"
-               data-skip-pjax="true"
-               rel="nofollow">
-              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
-              <span class="select-menu-item-text css-truncate-target js-select-menu-filter-text">
-                master
-              </span>
-            </a>
-        </div>
-
-          <div class="select-menu-no-results">Nothing to show</div>
-      </div>
-
-      <div class="select-menu-list select-menu-tab-bucket js-select-menu-tab-bucket" data-tab-filter="tags">
-        <div data-filterable-for="context-commitish-filter-field" data-filterable-type="substring">
-
-
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-              href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/tree/4.0.0/src/jquery.bootstrap-autohidingnavbar.js"
-              data-name="4.0.0"
-              data-skip-pjax="true"
-              rel="nofollow">
-              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
-              <span class="select-menu-item-text css-truncate-target" title="4.0.0">
-                4.0.0
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-              href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/tree/1.0.6/src/jquery.bootstrap-autohidingnavbar.js"
-              data-name="1.0.6"
-              data-skip-pjax="true"
-              rel="nofollow">
-              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
-              <span class="select-menu-item-text css-truncate-target" title="1.0.6">
-                1.0.6
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-              href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/tree/1.0.5/src/jquery.bootstrap-autohidingnavbar.js"
-              data-name="1.0.5"
-              data-skip-pjax="true"
-              rel="nofollow">
-              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
-              <span class="select-menu-item-text css-truncate-target" title="1.0.5">
-                1.0.5
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-              href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/tree/1.0.4/src/jquery.bootstrap-autohidingnavbar.js"
-              data-name="1.0.4"
-              data-skip-pjax="true"
-              rel="nofollow">
-              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
-              <span class="select-menu-item-text css-truncate-target" title="1.0.4">
-                1.0.4
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-              href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/tree/1.0.3/src/jquery.bootstrap-autohidingnavbar.js"
-              data-name="1.0.3"
-              data-skip-pjax="true"
-              rel="nofollow">
-              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
-              <span class="select-menu-item-text css-truncate-target" title="1.0.3">
-                1.0.3
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-              href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/tree/1.0.2/src/jquery.bootstrap-autohidingnavbar.js"
-              data-name="1.0.2"
-              data-skip-pjax="true"
-              rel="nofollow">
-              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
-              <span class="select-menu-item-text css-truncate-target" title="1.0.2">
-                1.0.2
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-              href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/tree/1.0.1/src/jquery.bootstrap-autohidingnavbar.js"
-              data-name="1.0.1"
-              data-skip-pjax="true"
-              rel="nofollow">
-              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
-              <span class="select-menu-item-text css-truncate-target" title="1.0.1">
-                1.0.1
-              </span>
-            </a>
-            <a class="select-menu-item js-navigation-item js-navigation-open "
-              href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/tree/1.0.0/src/jquery.bootstrap-autohidingnavbar.js"
-              data-name="1.0.0"
-              data-skip-pjax="true"
-              rel="nofollow">
-              <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"/></svg>
-              <span class="select-menu-item-text css-truncate-target" title="1.0.0">
-                1.0.0
-              </span>
-            </a>
-        </div>
-
-        <div class="select-menu-no-results">Nothing to show</div>
-      </div>
-
     </div>
   </div>
 </div>
@@ -631,9 +861,13 @@
 
 
 
+
     <div class="file ">
-      <div class="file-header">
+      
+<div class="file-header">
+
   <div class="file-actions">
+
 
     <div class="BtnGroup">
       <a id="raw-url" class="btn btn-sm BtnGroup-item" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/raw/master/src/jquery.bootstrap-autohidingnavbar.js">Raw</a>
@@ -641,16 +875,25 @@
       <a rel="nofollow" class="btn btn-sm BtnGroup-item" href="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/commits/master/src/jquery.bootstrap-autohidingnavbar.js">History</a>
     </div>
 
+        <a class="btn-octicon tooltipped tooltipped-nw"
+           href="x-github-client://openRepo/https://github.com/istvan-ujjmeszaros/bootstrap-autohidingnavbar?branch=master&amp;filepath=src%2Fjquery.bootstrap-autohidingnavbar.js"
+           aria-label="Open this file in GitHub Desktop"
+           data-ga-click="Repository, open with desktop, type:windows">
+            <svg class="octicon octicon-device-desktop" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M15 2H1c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1h5.34c-.25.61-.86 1.39-2.34 2h8c-1.48-.61-2.09-1.39-2.34-2H15c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm0 9H1V3h14v8z"/></svg>
+        </a>
 
-        <button type="button" class="btn-octicon disabled tooltipped tooltipped-nw"
-          aria-label="You must be signed in to make or propose changes">
-          <svg class="octicon octicon-pencil" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"/></svg>
-        </button>
-        <button type="button" class="btn-octicon btn-octicon-danger disabled tooltipped tooltipped-nw"
-          aria-label="You must be signed in to make or propose changes">
-          <svg class="octicon octicon-trashcan" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"/></svg>
-        </button>
-  </div>
+          <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form js-update-url-with-hash" action="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/edit/master/src/jquery.bootstrap-autohidingnavbar.js" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="EH1mshn61yGfy5jMqo0tLssJCINierXhi989YCxRcrrvlMwve6wUraqr8qz+aaQyxKI5r2chsPcZlzERYxx2Jg==" />
+            <button class="btn-octicon tooltipped tooltipped-nw" type="submit"
+              aria-label="Fork this project and edit the file" data-hotkey="e" data-disable-with>
+              <svg class="octicon octicon-pencil" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"/></svg>
+            </button>
+</form>
+        <!-- '"` --><!-- </textarea></xmp> --></option></form><form class="inline-form" action="/istvan-ujjmeszaros/bootstrap-autohidingnavbar/delete/master/src/jquery.bootstrap-autohidingnavbar.js" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="6itKmgKGa/ch9mgYFq3PJV55JD5UUBlPBNVSkqnZY5ncX/a/inD2ybSgKdOFpNZS8Wil2aQT3Ton8a6SZ+C17w==" />
+          <button class="btn-octicon btn-octicon-danger tooltipped tooltipped-nw" type="submit"
+            aria-label="Fork this project and delete the file" data-disable-with>
+            <svg class="octicon octicon-trashcan" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"/></svg>
+          </button>
+</form>  </div>
 
   <div class="file-info">
       214 lines (180 sloc)
@@ -662,7 +905,8 @@
       
 
   <div itemprop="text" class="blob-wrapper data type-javascript ">
-      <table class="highlight tab-size js-file-line-container" data-tab-size="2">
+      
+<table class="highlight tab-size js-file-line-container" data-tab-size="2">
       <tr>
         <td id="L1" class="blob-num js-line-number" data-line-number="1"></td>
         <td id="LC1" class="blob-code blob-code-inner js-file-line">;(<span class="pl-k">function</span>(<span class="pl-smi">$</span>, <span class="pl-c1">window</span>, <span class="pl-c1">document</span>, <span class="pl-c1">undefined</span>) {</td>
@@ -1580,6 +1824,7 @@
   </details>
 
 
+
   </div>
   <div class="modal-backdrop js-touch-events"></div>
 </div>
@@ -1593,11 +1838,11 @@
 <div class="footer container-lg px-3" role="contentinfo">
   <div class="position-relative d-flex flex-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
     <ul class="list-style-none d-flex flex-wrap ">
-      <li class="mr-3">&copy; 2018 <span title="0.28631s from unicorn-7bdd6788c6-pkv77">GitHub</span>, Inc.</li>
+      <li class="mr-3">&copy; 2019 <span title="0.23328s from unicorn-6dd587759d-cgs8p">GitHub</span>, Inc.</li>
         <li class="mr-3"><a data-ga-click="Footer, go to terms, text:terms" href="https://github.com/site/terms">Terms</a></li>
         <li class="mr-3"><a data-ga-click="Footer, go to privacy, text:privacy" href="https://github.com/site/privacy">Privacy</a></li>
-        <li class="mr-3"><a href="https://help.github.com/articles/github-security/" data-ga-click="Footer, go to security, text:security">Security</a></li>
-        <li class="mr-3"><a href="https://status.github.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li class="mr-3"><a href="/security" data-ga-click="Footer, go to security, text:security">Security</a></li>
+        <li class="mr-3"><a href="https://githubstatus.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
         <li><a data-ga-click="Footer, go to help, text:help" href="https://help.github.com">Help</a></li>
     </ul>
 
@@ -1630,10 +1875,10 @@
   </div>
 
 
-    <script crossorigin="anonymous" integrity="sha512-mal0oz3cFcr4OqIE2eo7Pmax6HtpOKvQfO4vqg9JuCb+iaf4H3KUP9Aryp4oP5mSMgEYUOwgBOAL6MTFaeCZ3w==" type="application/javascript" src="https://assets-cdn.github.com/assets/compat-3c69a4d015c4208bce7a9d5e4e15a914.js"></script>
-    <script crossorigin="anonymous" integrity="sha512-MvNlmXbTAwL0N0zMxw8W6vtjWLf0QFvwVzvN8rZIJNdzFy9OJp2d4LQD9WA2rDNcHewz0PB9x/0G0Z9FOuUWgw==" type="application/javascript" src="https://assets-cdn.github.com/assets/frameworks-a2f69f341e3df821fdcb56e335ef9920.js"></script>
     
-    <script crossorigin="anonymous" async="async" integrity="sha512-vOXZnkUHfPb4+R2aqzbMBU0uMqPHIZ5bXsIygUQ8VzECtG5/rG4h3giXuGjm9u10sVq+rsCw09ilIL1rKxU32Q==" type="application/javascript" src="https://assets-cdn.github.com/assets/github-94e80b5a5198bcc74bd2b5c0bb96a654.js"></script>
+    <script crossorigin="anonymous" integrity="sha512-e75uP9DbVCArqtvE9g/NIrHuHCZqowHgDXCnwC5YoiVb3Ihn8iFyr4qHpLRTRAFbi0qoIpBMHKDFegjBmaW+CQ==" type="application/javascript" src="https://github.githubassets.com/assets/frameworks-86a0354a63afd3be29a60890d0d96cb9.js"></script>
+    
+    <script crossorigin="anonymous" async="async" integrity="sha512-7v9Y68aiOoz10CvgdLtOhMTu9pMxR3uBGrksgCVo+tacoIAgJqaCHmoDfiX23TjQYrTneTls0THFsFguuWclJw==" type="application/javascript" src="https://github.githubassets.com/assets/github-ccaf3225c60771fd43ca704771528a8f.js"></script>
     
     
     
@@ -1673,6 +1918,7 @@
   Press h to open a hovercard with more details.
 </div>
 
+  <div aria-live="polite" class="js-global-screen-reader-notice sr-only"></div>
 
   </body>
 </html>

@@ -30,7 +30,7 @@
 <body>
     <div class="container-scroller">
         <!-- partial:../../partials/_navbar.html -->
-        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <nav class="navbar navbar-fixed-to default-layout col-lg-12 col-12 p-0 d-flex flex-row ">
             <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
                 <a class="navbar-brand brand-logo" href="{{ url_for('posts.dashboard') }}">
             <img src="{{ url_for('static', filename='assets/images/logo.png') }}" alt="logo" /> </a>
@@ -278,17 +278,33 @@
 <script src="{{ url_for('static', filename='assets/js/shared/form-repeater.js') }}"></script> -->
     <script src="{{ url_for('static', filename='assets/js/shared/data-table.js') }}"></script>
     <script src="{{ url_for('static', filename='assets/js/shared/owl-carousel.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/autohidenav/jquery.bootstrap-autohidingnavbar.min.js') }}"></script>
 
     <!-- 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnT63XUjqjPgXZ0lFTU_pdpfUX7swzTTM&callback=initMap"></script>
     <script async defer src="https://maps.google.cn/maps/api/js?key=AIzaSyCnT63XUjqjPgXZ0lFTU_pdpfUX7swzTTM&callback=initMap"></script>
-     
     <script async defer src="http://ditu.google.cn/maps/api/js?key=AIzaSyBY7shfo3d0u_3tkZXQMeX8KcD5gqiFRaQ&callback=initMap"></script>
     <script src="static/assets/js/shared/google-maps.js"></script>
-    <script>
-    $("div.navbar.fixed-top").autoHidingNavbar();
-    </script>
     End custom js for this page -->
+
+    <script>
+    $(".navbar-fixed-top").autoHidingNavbar({
+    // see next for specifications
+    });
+    </script>
+    <script>
+    $(".navbar-brand-wrapper").autoHidingNavbar({
+    // see next for specifications
+    });
+    </script>
+    <script>
+    $(".navbar-menu-wrapper").autoHidingNavbar({
+    // see next for specifications
+    });
+    </script>
+    
+    
+
 </body>
 
 </html>
