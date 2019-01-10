@@ -289,20 +289,22 @@
 
     <script>
     $(".navbar-fixed-top").autoHidingNavbar({
-    // see next for specifications
+    // disable auto-hide
+    disableAutohide: false,
+
+    // shows up when scrolling the page upwards
+    showOnUpscroll: true,
+
+    // shows up when scroll reaches the page's end.
+    showOnBottom: true,
+
+    // "auto" means the navbar height
+    hideOffset: 'auto',
+
+    // The duration of the show and hide animations
+    animationDuration: 200
     });
-    </script>
-    <script>
-    $(".navbar-brand-wrapper").autoHidingNavbar({
-    // see next for specifications
-    });
-    </script>
-    <script>
-    $(".navbar-menu-wrapper").autoHidingNavbar({
-    // see next for specifications
-    });
-    </script>
-    
+    </script>    
     
 
 </body>
