@@ -62,7 +62,7 @@ class UpdateHouseForm(FlaskForm):
     
 
 class CustomerForm(FlaskForm):
-    name = StringField('租户名称', validators=[DataRequired(), Length(min=2, max=20)], render_kw={"placeholder": '九色神鹿/嘉善九色鹿科技有限公司'})
+    name = StringField('租户名称', validators=[DataRequired(), Length(min=2, max=40)], render_kw={"placeholder": '九色神鹿/嘉善九色鹿科技有限公司'})
     # phone = StringField('联系电话', validators=[DataRequired(), Length(11)], render_kw={"data-inputmask": "'alias': 'phonebe'"})
     phone = StringField('联系电话', validators=[DataRequired(), Length(11)], render_kw={"placeholder": '13858003606'})
     address = StringField('联系地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '九色鹿庄园88幢1-401#'})
