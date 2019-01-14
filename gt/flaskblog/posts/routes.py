@@ -306,10 +306,9 @@ def update_house(house_id):
                 filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
                 f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
                 filenames.append(filename)
-            pictures_name = ','.join(str(x) for x in filenames)  
+            house.pictures = ','.join(str(x) for x in filenames)  
         house.area = form.area.data
         house.address = form.address.data
-        house.pictures = pictures_name
         house.note = form.note.data
         db.session.commit()
         flash('房源资料已更新!', 'success')

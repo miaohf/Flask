@@ -56,7 +56,7 @@ class UpdateHouseForm(FlaskForm):
     resource_id = StringField('资产编号', render_kw={'readonly': True})
     address = StringField('房源地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
     area =StringField('房源面积', validators=[DataRequired(), Length(min=2, max=9)], render_kw={"placeholder": '178'})
-    pictures = FileField('新增照片', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
+    pictures = FileField('新增照片', validators=[ FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
     note = StringField('备注信息', render_kw={"placeholder": '九色鹿网络技术'})
     submit = SubmitField('确定')
     
