@@ -267,24 +267,21 @@ def new_house():
     if form.validate_on_submit():
         # multi files upload
         filenames = []
-        all_pictures_name = ''
         for f in request.files.getlist('pictures'):
             filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
             f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
             filenames.append(filename)
-
-        for i in filenames:
-            all_pictures_name=all_pictures_name +'|' + i 
+        pictures_name = ','.join(str(x) for x in filenames)  
 
         # single file upload
         # f = form.pictures.data
         # filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
         # f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
 
-        post = House(address=form.address.data, \
-            resource_id=form.resource_id.data, \
-            area=form.area.data, \
-            pictures=all_pictures_name, \
+        post = House(address = form.address.data, \
+            resource_id = form.resource_id.data, \
+            area = form.area.data, \
+            pictures = pictures_name, \
             # pictures = photos.save(form.photo.data), \
             note=form.note.data)
         db.session.add(post)
@@ -303,26 +300,25 @@ def update_house(house_id):
     house = House.query.filter_by(id=house_id).first()
     # house = House.query.filter(House.id==house_id).first()
     if form.validate_on_submit():
-        filenames = []
-        all_pictures_name = ''
-        for f in request.files.getlist('pictures'):
-            filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
-            f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-            filenames.append(filename)
-        for i in filenames:
-            all_pictures_name=all_pictures_name +'|' + i 
-        house.area=form.area.data
-        house.pictures=house.pictures+all_pictures_name
-        house.note=form.note.data
+        if form.pictures.data:
+            filenames = house.pictures.split()
+            for f in request.files.getlist('pictures'):
+                filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+                f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+                filenames.append(filename)
+            pictures_name = ','.join(str(x) for x in filenames)  
+        house.area = form.area.data
+        house.address = form.address.data
+        house.pictures = pictures_name
+        house.note = form.note.data
         db.session.commit()
-        flash('房源信息已更新!', 'success')
+        flash('房源资料已更新!', 'success')
         return redirect(url_for('posts.house_list'))
     elif request.method == 'GET':
         form.resource_id.data = house.resource_id
         form.address.data = house.address
         form.area.data = house.area
         form.note.data = house.note
-        form.pictures.data = house.pictures
         return render_template('create_house.html', title='房源更新', form=form)
         
 
@@ -522,9 +518,24 @@ def renewal_contract(contract_id):
                 filenames.append(filename)
             for i in filenames:
                 all_pictures_name=all_pictures_name +'|' + i 
-            contract.contract_pics = all_pictures_name
         else:
             all_pictures_name = 'default_contract.jpg'
+
+        if form.approval_pics.data:
+            # single file upload
+            f = form.approval_pics.data
+            filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+            f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+            filename_approval_pics = filename
+        else:
+            filename_approval_pics = form.approval_pics.data
+
+
+        # single file upload
+        # f = form.pictures.data
+        # filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+        # f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+
         post = Contract(name=form.name.data, \
             house_id=form.house_id.data, \
             customer_id=form.customer_id.data, \
@@ -1052,7 +1063,16 @@ def resource_info(resource_id):
 @login_required
 def house_info(house_id):
     exist_or_not = House.query.get_or_404(house_id)
-    house = House.query.filter_by(id=house_id).first()
+    
+    house = House.query.filter_by(id=house_id).join(Resource,Resource.id==House.resource_id).\
+    with_entities(House.id, \
+        House.resource_id, \
+        House.address, \
+        House.area, \
+        House.pictures, \
+        House.note, \
+        Resource.cardid.label('resource_cardid')
+        ).first()
     # contracts = Contract.query.filter_by(house_id=house_id)
     contracts = Contract.query.filter_by(house_id=house_id).filter_by(status=0).join(House,Contract.house_id==House.id).join(Customer,Contract.customer_id==Customer.id).\
     with_entities(Contract.id, \
@@ -1087,7 +1107,7 @@ def house_info(house_id):
 
     pictures = house.pictures.split("|")[1:]
     # return pictures
-    return render_template('house_info.html', house=house, contracts=contracts, contracts_his=contracts_his, pictures=pictures, maintenancerecs=maintenancerecs, title='房源资料')
+    return render_template('house_info.html', house=house, contracts=contracts, contracts_his=contracts_his, maintenancerecs=maintenancerecs, title='房源资料')
 
 
 @posts.route("/post/customer_info/<int:customer_id>")

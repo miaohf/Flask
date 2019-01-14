@@ -49,7 +49,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>
-                                                                    <b> 资产编号 :</b><a href="{{ url_for('posts.resource_info', resource_id=house.resource_id) }}" > {{ house.resource_id }} </a></td>
+                                                                    <b> 不动产证编号 :</b><a href="{{ url_for('posts.resource_info', resource_id=house.resource_id) }}" > {{ house.resource_cardid }} </a></td>
                                                             </tr>
                                                         </table>
                                                     </div>
@@ -66,6 +66,7 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="owl-carousel owl-theme full-width">
+                                                    {% set pictures = house.pictures.split(',') %}
                                                     {% for picture in pictures %}
                                                     <div class="item">
                                                         <div class="card text-white">

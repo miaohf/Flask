@@ -54,7 +54,7 @@ class HouseForm(FlaskForm):
 
 class UpdateHouseForm(FlaskForm):
     resource_id = StringField('资产编号', render_kw={'readonly': True})
-    address = StringField('房源地址', render_kw={'readonly': True})
+    address = StringField('房源地址', validators=[DataRequired(), Length(min=4, max=40)], render_kw={"placeholder": '嘉善九色鹿大道888号'})
     area =StringField('房源面积', validators=[DataRequired(), Length(min=2, max=9)], render_kw={"placeholder": '178'})
     pictures = FileField('新增照片', validators=[FileRequired(), FileAllowed(['jpg', 'png'])], render_kw={'multiple': True})
     note = StringField('备注信息', render_kw={"placeholder": '九色鹿网络技术'})
@@ -160,7 +160,7 @@ class RenewalContractForm(FlaskForm):
     security_deposit = StringField('保证金', render_kw={"placeholder": '50000'}, validators=[DataRequired(), Length(min=4, max=20)])
     annual_rent = StringField('年租金',  render_kw={'readonly': True})
     contract_pics = FileField('合同附件', validators=[FileAllowed(['jpg', 'png', 'pdf'])], render_kw={'multiple': True})
-    approval_pics = StringField('出租审批表', render_kw={'readonly': True})
+    approval_pics = FileField('出租审批表', validators=[FileAllowed(['jpg', 'png', 'pdf'])], render_kw={'multiple': True})
     auction_announcement = StringField('拍卖公告', render_kw={'readonly': True})
     auction_confirmation = StringField('拍卖成交确认书', render_kw={'readonly': True})
     note = StringField('备注信息', render_kw={"placeholder": '九色鹿网络技术'})
