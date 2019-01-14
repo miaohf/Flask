@@ -105,11 +105,7 @@
                                                                     <p><a href="{{ url_for('static', filename ='uploads/'+contract.approval_pics) }}"> <i class="menu-icon mdi mdi-image-filter"></i> 出租审批表  </a> </p>
                                                                     <p><a href="{{ url_for('static', filename ='uploads/'+contract.auction_announcement) }}"><i class="menu-icon mdi mdi-image-filter"></i> 拍卖公告  </a> </p>
                                                                     <p><a href="{{ url_for('static', filename ='uploads/'+contract.auction_confirmation) }}"><i class="menu-icon mdi mdi-image-filter"></i> 拍卖成交确认书  </a> </p>
-                                                                    {% for picture in contract_pics %}
-                                                                    <div>
-                                                                        <a href="{{ url_for('static', filename ='uploads/'+picture) }}"><i class="menu-icon mdi mdi-image-filter"></i> 合同附件</a>
-                                                                    </div>
-                                                                    {% endfor %}
+                                                                    <p><a href="{{ url_for('static', filename ='uploads/'+contract.contract_pics) }}"><i class="menu-icon mdi mdi-image-filter"></i> 合同附件 </a> </p>
                                                                 </td>
                                                             </tr>
                                                         </table>

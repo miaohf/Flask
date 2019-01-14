@@ -413,9 +413,6 @@ def new_contract():
         choicesType.append((s[0], s[1])) 
     form.type.choices = choicesType
 
-    # form.house_id.choices = db.session.query(House.id, House.address).filter_by(status=0).all()
-    # form.customer_id.choices = db.session.query(Customer.id, Customer.name)
-    # form.type.choices = db.session.query(Contractype.id, Contractype.name)
     if form.validate_on_submit():     
         # f = request.form
         # for key in f.keys():
@@ -428,38 +425,45 @@ def new_contract():
         
         # multi files upload
         
+        # if form.contract_pics.data:
+        #     filenames = []
+        #     all_pictures_name = ''
+        #     for f in request.files.getlist('contract_pics'):
+        #         filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+        #         f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+        #         filenames.append(filename)
+        #     for i in filenames:
+        #         all_pictures_name=all_pictures_name +'|' + i 
+        # else:
+        #     all_pictures_name = 'default_contract.jpg'
+
         if form.contract_pics.data:
-            filenames = []
-            all_pictures_name = ''
-            for f in request.files.getlist('contract_pics'):
-                filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
-                f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-                filenames.append(filename)
-            for i in filenames:
-                all_pictures_name=all_pictures_name +'|' + i 
+            f = form.contract_pics.data
+            filename1 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+            f.save(os.path.join(app.config['UPLOAD_PATH'], filename1))
         else:
-            all_pictures_name = 'default_contract.jpg'
+            filename1 = ''
 
         if form.approval_pics.data:
             f = form.approval_pics.data
             filename2 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
             f.save(os.path.join(app.config['UPLOAD_PATH'], filename2))
         else:
-            filename2 = 'default_contract.jpg'
+            filename2 = ''
 
         if form.auction_announcement.data:
             f = form.auction_announcement.data
             filename3 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
             f.save(os.path.join(app.config['UPLOAD_PATH'], filename3))
         else:
-            filename3 = 'default_contract.jpg'
+            filename3 = ''
 
         if form.auction_confirmation.data:
             f = form.auction_confirmation.data
             filename4 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
             f.save(os.path.join(app.config['UPLOAD_PATH'], filename4))
         else:
-            filename4 = 'default_contract.jpg'
+            filename4 = ''
 
         post = Contract(name=form.name.data, \
             house_id=form.house_id.data, \
@@ -471,7 +475,7 @@ def new_contract():
             useof=form.useof.data, \
             security_deposit=form.security_deposit.data, \
             annual_rent=form.annual_rent.data, \
-            contract_pics=all_pictures_name, \
+            contract_pics=filename1, \
             approval_pics=filename2, \
             auction_announcement=filename3, \
             auction_confirmation=filename4, \
@@ -509,26 +513,18 @@ def renewal_contract(contract_id):
 
     if form.validate_on_submit():
         if form.contract_pics.data:
-            filenames = []
-            all_pictures_name = ''
-            for f in request.files.getlist('contract_pics'):
-                filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
-                f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-                filenames.append(filename)
-            for i in filenames:
-                all_pictures_name=all_pictures_name +'|' + i 
+            f = form.contract_pics.data
+            filename1 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+            f.save(os.path.join(app.config['UPLOAD_PATH'], filename1))
         else:
-            all_pictures_name = 'default_contract.jpg'
+            filename1 = ''
 
         if form.approval_pics.data:
-            # single file upload
             f = form.approval_pics.data
-            filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
-            f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-            filename_approval_pics = filename
+            filename2 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+            f.save(os.path.join(app.config['UPLOAD_PATH'], filename2))
         else:
-            filename_approval_pics = form.approval_pics.data
-
+            filename2 = ''
 
         # single file upload
         # f = form.pictures.data
@@ -546,8 +542,8 @@ def renewal_contract(contract_id):
             useof=form.useof.data, \
             security_deposit=form.security_deposit.data, \
             annual_rent=form.annual_rent.data, \
-            contract_pics=all_pictures_name, \
-            approval_pics=form.approval_pics.data, \
+            contract_pics=filename1, \
+            approval_pics=filename2, \
             auction_announcement=form.auction_announcement.data, \
             auction_confirmation=form.auction_confirmation.data, \
             origin_contract_id = contract_id, \
@@ -580,32 +576,57 @@ def renewal_contract(contract_id):
 @posts.route("/post/contract/<int:contract_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_contract(contract_id):
+
     contract = Contract.query.filter(Contract.id == contract_id).first()
-    if contract.contract_pics == 'default_contract.jpg':
+    house = House.query.filter(House.id == contract.house_id).first()
+
+    if contract.contract_pics == '':
         form = UpdateContractForm()
+        if form.contract_pics.data:
+            f = form.contract_pics.data
+            filename1 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+            f.save(os.path.join(app.config['UPLOAD_PATH'], filename1))
+        else:
+            filename1 = contract.contract_pics
+
+        if form.approval_pics.data:
+            f = form.approval_pics.data
+            filename2 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+            f.save(os.path.join(app.config['UPLOAD_PATH'], filename2))
+        else:
+            filename2 = contract.approval_pics
+
+        if form.auction_announcement.data:
+            f = form.auction_announcement.data
+            filename3 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+            f.save(os.path.join(app.config['UPLOAD_PATH'], filename3))
+        else:
+            filename3 = contract.auction_announcement
+
+        if form.auction_confirmation.data:
+            f = form.auction_confirmation.data
+            filename4 = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
+            f.save(os.path.join(app.config['UPLOAD_PATH'], filename4))
+        else:
+            filename4 = contract.auction_confirmation  
+
+        contract.contract_pics = filename1
+        contract.approval_pics = filename2
+        contract.auction_announcement = filename3
+        contract.auction_confirmation = filename4
+
     else:
         form = TerminateContractForm()
-        form.contract_pics.data = contract.contract_pics
-    house = House.query.filter(House.id == contract.house_id).first()
+        if form.status.data == '1':     # 合同终止     
+            house.status = 2            # 房源回收
+            contract.status = form.status.data      
+
     choices = [("0", "------请选择------ ")]
     for s in Contractype.query.with_entities(Contractype.id, Contractype.name).all():
         choices.append((s[0], s[1])) 
     form.type.choices = choices
 
-    if form.validate_on_submit():
-        if form.status.data == '1':           
-            house.status = 2
-        if form.contract_pics.data:
-            filenames = []
-            all_pictures_name = ''
-            for f in request.files.getlist('contract_pics'):
-                filename = uuid.uuid4().hex + os.path.splitext(f.filename)[1] 
-                f.save(os.path.join(app.config['UPLOAD_PATH'], filename))
-                filenames.append(filename)
-            for i in filenames:
-                all_pictures_name = all_pictures_name +'|' + i 
-            contract.contract_pics = all_pictures_name        
-        contract.status = form.status.data                  
+    if form.validate_on_submit():                    
         contract.name = form.name.data
         contract.house_id = form.house_id.data
         contract.customer_id = form.customer_id.data
@@ -621,6 +642,7 @@ def update_contract(contract_id):
         db.session.commit()
         flash('合同已经更新!', 'success')
         return redirect(url_for('posts.contract_normal'))
+
     elif request.method == 'GET':   
         form.name.data = contract.name
         form.house_id.data = contract.house_id
@@ -632,6 +654,7 @@ def update_contract(contract_id):
         form.security_deposit.data = contract.security_deposit
         form.useof.data = contract.useof
         form.annual_rent.data = contract.annual_rent
+        form.contract_pics.data = contract.contract_pics
         form.approval_pics.data = contract.approval_pics
         form.auction_announcement.data = contract.auction_announcement
         form.auction_confirmation.data = contract.auction_confirmation
