@@ -38,7 +38,8 @@
                     var marker = new BMap.Marker(new BMap.Point(p[0], p[1])); // 创建点
                     map.addOverlay(marker); //增加点
                     pointArray['{{loop.index0}}'] = new BMap.Point(p[0], p[1]);
-                    var content ='{{point.name}}'+': 共'+'{{point.count}}'+'套 '+'{{point.coordinate}}';
+                    // var content ='{{point.name}}'+': 共'+'{{point.count}}'+'套 '+'{{point.coordinate}}';
+                    var content ='<a href="{{ url_for('posts.garden_list', garden_id=point.id) }}" >{{point.name}}</a>'+': 共'+'{{point.count}}'+'套 '+'{{point.coordinate}}';
                     addClickHandler(content, marker);
                     i++;
                 {% endfor %}

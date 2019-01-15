@@ -1,0 +1,42 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-ribbon"></i> {{ title }}</legend>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <table id="order-listing" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>小区编号</th>
+                                    <th>小区名称</th>
+                                    <th>不动产证</th>
+                                    <th>小区坐标</th>
+                                    <th>备注信息</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for garden in gardens %}
+                                <tr role="row" class="odd">
+                                    <td>{{ garden.id }}</td>
+                                    <td>{{ garden.name }}</td>
+                                    <td class="sorting_1">
+                                        <a href="{{ url_for('posts.resource_info', resource_id=garden.resource_id) }}" >{{ garden.resource_cardid }}</a>
+                                    </td>
+                                    <td>{{ garden.coordinate }}</td>
+                                    <td>{{ garden.note }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='assets/js/exportcsv/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/exportcsv/jszip.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/exportcsv/shieldui-all.min.js') }}"></script>
+{% endblock content %}

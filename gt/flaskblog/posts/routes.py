@@ -108,7 +108,7 @@ def dashboard():
 @posts.route("/post/position")
 @login_required
 def position():
-    return render_template('position.html', title='获取坐标')
+    return render_template('position.html', title='百度坐标')
 
 
 @posts.route("/post/new", methods=['GET', 'POST'])
@@ -178,6 +178,20 @@ def new_garden():
         flash('新小区节点创建完成,请继续新增资产!', 'success')
         return redirect(url_for('posts.new_resource'))
     return render_template('create_garden.html', title='小区录入', form=form)
+
+
+@posts.route("/post/garden_list/<int:garden_id>")
+@login_required
+def garden_list(garden_id):
+    gardens = Garden.query.filter_by(id=garden_id).join(Resource, Resource.garden_id == Garden.id).\
+    with_entities(Garden.id, \
+        Garden.name, \
+        Garden.coordinate, \
+        Resource.id.label('resource_id'), \
+        Resource.cardid.label('resource_cardid'), \
+        Garden.note
+        ).all()
+    return render_template('garden_list.html', gardens=gardens, title='小区列表')
 
 
 @posts.route("/post/create_resource", methods=['GET', 'POST'])
@@ -1303,11 +1317,12 @@ def print_contract(contract_id):
 def map():
     points = Garden.query.group_by(Garden.name,Garden.coordinate).join(Resource,Resource.garden_id==Garden.id).join(House,House.resource_id==Resource.id).\
     with_entities(
+        Garden.id,\
         Garden.name,\
         Garden.coordinate,\
         func.count(Garden.name).label('count')
         )
-    return render_template('bdmap.html', title='房源分布', points=points)
+    return render_template('bdmap.html', title='房源地图', points=points)
     # points = json.dumps([ row._asdict() for row in query ])
     # return points
 
