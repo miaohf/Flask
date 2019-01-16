@@ -7,6 +7,8 @@ from flaskblog.models import Post, Garden, Resource, House, Customer, Landlord, 
 from flaskblog.posts.forms import PostForm, GardenForm, ResourceForm, UpdateResourceForm, HouseForm, UpdateHouseForm, CustomerForm, LandlordForm, ContractForm, ContractypeForm, UpdateContractForm, TerminateContractForm, MaintenanceunitForm, MaintenancerecForm, TerminateMaintenancerecForm, ContractbillForm, PaybillForm, RenewalContractForm
 from sqlalchemy import func, extract, desc, or_
 from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
+
 from flask import current_app as app
 
 
@@ -272,6 +274,11 @@ def update_resource(resource_id):
 @posts.route("/post/create_house", methods=['GET', 'POST'])
 @login_required
 def new_house():
+    
+    app.logger.warning('A warning occurred (%d apples)', 42)
+    app.logger.error('An error occurred')
+    app.logger.info('Info')
+
     form = HouseForm()
     choices = [("0", "------请选择------ ")]
     for s in Resource.query.with_entities(Resource.id, Resource.cardid+'*'+Resource.address).all():
@@ -743,37 +750,39 @@ def update_maintenancerec(maintenancerec_id):
     return render_template('create_maintenancerec.html', title='维修记录更新', form=form, maintenancerec_id=maintenancerec_id)
 
 
-@posts.route("/post/generate_bill", methods=['GET', 'POST'])
-@login_required
-def new_contractbill():
-    form = ContractbillForm()
-    contracts = Contract.query.filter_by(status=0).filter_by(bill_status=0)#.filter_by(Contract.start_time>form.start.data).filter_by(Contract.start_time<form.end.data)
-    if form.validate_on_submit():
-        for contract in contracts:
-            i=0
-            while (contract.start_time + timedelta(367*i)).strftime("%Y-%m-%d") < contract.end_time.strftime("%Y-%m-%d"):
-                isXuzu = Contractype.query.filter_by(id=contract.type).filter_by(name='续租').first() is not None
-                if isXuzu:
-                    billamount = contract.annual_rent*(1.03)**i
-                else:
-                    billamount = contract.annual_rent
-                post = Contractbill(contract_id=contract.id, \
-                    contract_type=contract.type, \
-                    contract_create=contract.create_time, \
-                    bill_sequence=contract.id*10+i+1, \
-                    bill_date=contract.start_time + timedelta(365*i), \
-                    bill_amount=billamount)
-                db.session.add(post)
-                # db.session.commit()
-                i+=1
-            # 修改Contract.bill_status
-            # contract = Contract.query.filter(Contract.id == contract.id).first()
-            contract.bill_status = '1'
-            db.session.commit()
-        flash('帐单生成成功!', 'success')
+# @posts.route("/post/generate_bill", methods=['GET', 'POST'])
+# @login_required
+# def new_contractbill():
+#     form = ContractbillForm()
+#     contracts = Contract.query.filter_by(status=0).filter_by(bill_status=0)#.filter_by(Contract.start_time>form.start.data).filter_by(Contract.start_time<form.end.data)
+#     if form.validate_on_submit():
+#         for contract in contracts:
+#             i=0
+#             # while (contract.start_time + timedelta(366*i)).strftime("%Y-%m-%d") < contract.end_time.strftime("%Y-%m-%d"):
+#             while (contract.start_time + relativedelta(years=i) + timedelta(1))  < contract.end_time:
+#                 isXuzu = Contractype.query.filter_by(id=contract.type).filter_by(name='续租').first() is not None
+#                 if isXuzu:
+#                     billamount = contract.annual_rent*(1.03)**i
+#                 else:
+#                     billamount = contract.annual_rent
+#                 post = Contractbill(contract_id=contract.id, \
+#                     contract_type=contract.type, \
+#                     contract_create=contract.create_time, \
+#                     bill_sequence=contract.id*10 + i + 1, \
+#                     bill_date=contract.start_time + relativedelta(years=i) + timedelta(13), \
+#                     bill_amount=billamount)
+#                 db.session.add(post)
+#                 # db.session.commit()
+#                 i+=1
+#             # 修改Contract.bill_status
+#             # contract = Contract.query.filter(Contract.id == contract.id).first()
+#             contract.bill_status = '1'
+#             db.session.commit()
+#         flash('帐单生成成功!', 'success')
+#     return 'ok'
         # return redirect(url_for('posts.new_contractbill'))
         # return isXuzu
-    return render_template('create_contractbill.html', form=form, title='生成帐单' )
+    # return render_template('create_contractbill.html', form=form, title='生成帐单' )
 
 
 @posts.route("/post/house_list")
@@ -1038,7 +1047,8 @@ def bills_all():
     if form.validate_on_submit():
         for contract in contracts:
             i=0
-            while (contract.start_time + timedelta(365*i)).strftime("%Y-%m-%d") < contract.end_time.strftime("%Y-%m-%d"):
+            # while (contract.start_time + timedelta(365*i)).strftime("%Y-%m-%d") < contract.end_time.strftime("%Y-%m-%d"):
+            while (contract.start_time + relativedelta(years=i))  < contract.end_time:
                 isXuzu = Contractype.query.filter_by(id=contract.type).filter_by(name='续租').first() is not None
                 if isXuzu:
                     billamount = contract.annual_rent*(1.03)**i
@@ -1048,7 +1058,7 @@ def bills_all():
                     contract_type=contract.type, \
                     contract_create=contract.create_time, \
                     bill_sequence=contract.id*10+i+1, \
-                    bill_date=contract.start_time + timedelta(365*i), \
+                    bill_date=contract.start_time + relativedelta(years=i), \
                     bill_amount=billamount)
                 db.session.add(post)
                 i+=1
