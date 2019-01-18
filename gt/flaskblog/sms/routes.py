@@ -30,17 +30,17 @@ def run_tasks():
         ).all()
 
     for bill in bills:
-    	if (datetime.today()+timedelta(days=7)).strftime('%Y-%m-%d')==bill.bill_date.strftime('%Y-%m-%d') or (datetime.today()+timedelta(days=41)).strftime('%Y-%m-%d')==bill.bill_date.strftime('%Y-%m-%d'):
+    	if (datetime.today()+timedelta(days=7)).strftime('%Y-%m-%d')==bill.bill_date.strftime('%Y-%m-%d') or (datetime.today()+timedelta(days=30)).strftime('%Y-%m-%d')==bill.bill_date.strftime('%Y-%m-%d'):
             text = '【拓展时代】尊敬的承租户' + str(bill.customer_name) + '，您所承租的（' + str(bill.house_address) + '）房屋，根据合同约定应于' + str(bill.bill_date.strftime("%Y-%m-%d")) + '前支付租金' + str(bill.bill_amount) +'元，请及时缴纳。详情咨询84111813。'
             # text = '【拓展时代】尊敬的承租户许跃伟，您所承租的（车站南路888号）房屋，根据合同约定应于2019年2月28日前支付租金23600元，请及时缴纳。详情咨询84111813。'
             message1 = {YC.MOBILE:'13819063105',YC.TEXT:text}  #接受号码固定
             message2 = {YC.MOBILE:'13605838464',YC.TEXT:text}  #接受号码固定
-            # message3 = {YC.MOBILE:'bill.customer_phone',YC.TEXT:text}  #接受号码固定
+            message3 = {YC.MOBILE:'bill.customer_phone',YC.TEXT:text}  #接受号码固定
             # app.apscheduler.add_job(func=scheduled_task, trigger='date', args=[message], id=str(bill.id)) # does work
             # app.apscheduler.add_job(func=scheduled_task, trigger='cron', args=[message], id=str(bill.id), hour='02', minute='48')  #not work
-            app.apscheduler.add_job(func=scheduled_task, trigger='interval', args=[message1], id=str(bill.id)+'1',  minutes=1)  
-            app.apscheduler.add_job(func=scheduled_task, trigger='interval', args=[message2], id=str(bill.id)+'2',  minutes=1) 
-            # app.apscheduler.add_job(func=scheduled_task, trigger='interval', args=[message3], id=str(bill.id)+'3',  hours=3) 
+            app.apscheduler.add_job(func=scheduled_task, trigger='interval', args=[message1], id=str(bill.id)+'1',  hours=24)  
+            app.apscheduler.add_job(func=scheduled_task, trigger='interval', args=[message2], id=str(bill.id)+'2',  hours=24) 
+            app.apscheduler.add_job(func=scheduled_task, trigger='interval', args=[message3], id=str(bill.id)+'3',  hours=24) 
     return '定时任务已经启动', 200
 
     
