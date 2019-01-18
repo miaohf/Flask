@@ -38,8 +38,8 @@ def run_tasks():
             # message3 = {YC.MOBILE:'bill.customer_phone',YC.TEXT:text}  #接受号码固定
             # app.apscheduler.add_job(func=scheduled_task, trigger='date', args=[message], id=str(bill.id)) # does work
             # app.apscheduler.add_job(func=scheduled_task, trigger='cron', args=[message], id=str(bill.id), hour='02', minute='48')  #not work
-            app.apscheduler.add_job(func=scheduled_task, trigger='interval', args=[message1], id=str(bill.id)+'1',  hours=3)  
-            app.apscheduler.add_job(func=scheduled_task, trigger='interval', args=[message2], id=str(bill.id)+'2',  hours=3) 
+            app.apscheduler.add_job(func=scheduled_task, trigger='interval', args=[message1], id=str(bill.id)+'1',  minutes=1)  
+            app.apscheduler.add_job(func=scheduled_task, trigger='interval', args=[message2], id=str(bill.id)+'2',  minutes=1) 
             # app.apscheduler.add_job(func=scheduled_task, trigger='interval', args=[message3], id=str(bill.id)+'3',  hours=3) 
     return '定时任务已经启动', 200
 
