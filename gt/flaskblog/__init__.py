@@ -11,7 +11,9 @@ import os
 # import logging
 # from logging.handlers import RotatingFileHandler
 from logging.config import dictConfig
-from flask_apscheduler import APScheduler
+# from flask_apscheduler import APScheduler
+# from apscheduler.schedulers.blocking import BlockingScheduler
+# from apscheduler.schedulers.background import BackgroundScheduler
 
 
 
@@ -65,10 +67,13 @@ def create_app(config_class=Config):
     login_manager.init_app(app)
     mail.init_app(app)
 
+    # scheduler = APScheduler()
+    # scheduler.init_app(app)
+    # scheduler.start()
 
-    scheduler = APScheduler()
-    scheduler.init_app(app)
-    scheduler.start()
+    # scheduler = BlockingScheduler()
+    # scheduler.add_jobstore('sqlalchemy', url=app.config['SQLALCHEMY_DATABASE_URI'])
+    
 
     from flaskblog.users.routes import users
     from flaskblog.posts.routes import posts

@@ -243,6 +243,21 @@ class Contractbill(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+
+
+
+class Sms(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    phone = db.Column(db.String(20))
+    bill_sequence = db.Column(db.Integer, nullable=False)
+    content = db.Column(db.String(400))
+    status = db.Column(db.Integer, nullable=False, default=0)
+    create_time = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    update_time = db.Column(db.DateTime, onupdate=datetime.now)
+    
+
+    def __repr__(self):
+        return f"Post('{self.title}', '{self.date_posted}')"
         
 
 event.listen(
