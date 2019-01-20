@@ -26,7 +26,7 @@ scheduler.start()
 
 
 @sms.route('/scheduler')
-@login_required
+# @login_required
 def run_scheduler():
     # scheduler.add_job(func=sms_generation_task, trigger='interval', hours=2, args=[], id='88123456')
     # scheduler.add_job(func=sms_generation_task, trigger='date', args=[], id='88123456')
