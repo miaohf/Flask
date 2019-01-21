@@ -86,16 +86,17 @@
                                     </td>
                                     
                                         {% if contractbill.sms_id %}
-                                        <td title={{ contractbill.sms_content }}>
-                                        <a href="{{ url_for('posts.sms_info', sms_id=contractbill.sms_id) }}" >
-                                        {% if contractbill.sms_status == 0 %}
-                                        等待下发
-                                        {% elif contractbill.sms_status == 1 %}
-                                        催缴完成
-                                        {% endif %}
-                                        </a>
-                                        </td>  
+                                            <td title={{ contractbill.sms_content }}>
+                                            <a href="{{ url_for('posts.sms_info', sms_id=contractbill.sms_id) }}" >
+                                            {% if contractbill.sms_status == 0 %}
+                                                短信下发中
+                                            {% elif contractbill.sms_status == 1 %}
+                                                催缴完成
+                                            {% endif %}
+                                            </a>
+                                            </td>  
                                         {% else %}
+                                            未催缴
                                         {% endif %}
                                     
                                     <td>
