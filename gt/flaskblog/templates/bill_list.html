@@ -40,10 +40,13 @@
                                         <font size="2" color="#4f565d"><b>合同起止</b></font>
                                     </th>
                                     <th>
-                                        <font size="2" color="#4f565d"><b>备注信息</b></font>
+                                        <font size="2" color="#4f565d"><b>缴费日期</b></font>
                                     </th>
                                     <th>
-                                        <font size="2" color="#4f565d"><b>缴费日期</b></font>
+                                        <font size="2" color="#4f565d"><b>催缴短信</b></font>
+                                    </th>
+                                    <th>
+                                        <font size="2" color="#4f565d"><b>备注信息</b></font>
                                     </th>
                                 </tr>
                             </thead>
@@ -74,16 +77,30 @@
                                     <td>{{ contractbill.customer_name }}</td>
                                     <td>{{ contractbill.contract_type }}</td>
                                     <td>{{ contractbill.contract_start_time.strftime("%Y-%m-%d")}}:{{ contractbill.contract_end_time.strftime("%Y-%m-%d")}}</td>
-                                    <td>
-                                        {% if contractbill.note %}
-                                        {{ contractbill.note }}
-                                        {% else %}                                        
-                                        {% endif %}
-                                    </td>
+
                                     <td>
                                         {% if contractbill.update_time is none %}
                                         {% else %}
                                         {{ contractbill.update_time.strftime("%Y-%m-%d") }}
+                                        {% endif %}
+                                    </td>
+                                    
+                                        {% if contractbill.sms_id %}
+                                        <td title={{ contractbill.sms_content }}>
+                                        <a href="{{ url_for('posts.sms_info', sms_id=contractbill.sms_id) }}" >
+                                        {% if contractbill.sms_status == 0 %}
+                                        等待下发
+                                        {% elif contractbill.sms_status == 1 %}
+                                        催缴完成
+                                        {% endif %}
+                                        </a>
+                                        </td>                                 
+                                        {% endif %}
+                                    
+                                    <td>
+                                        {% if contractbill.note %}
+                                        {{ contractbill.note }}
+                                        {% else %}                                        
                                         {% endif %}
                                     </td>
                                 </tr>

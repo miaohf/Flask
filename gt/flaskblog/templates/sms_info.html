@@ -1,0 +1,72 @@
+{% extends "layout.html" %} {% block content %}
+<div class="content-wrapper">
+    <div class="row profile-page">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <legend class="border-bottom mb-4"><i class="menu-icon mdi mdi-ribbon"></i> {{ title }}</legend>
+                    <div class="profile-header text-white">
+                        <div class="d-flex justify-content-around">
+                            <div class="profile-info d-flex align-items-center">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-body">
+                        <ul class="nav tab-switch" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="user-profile-info-tab" data-toggle="pill" href="#user-profile-info" role="tab" aria-controls="user-profile-info" aria-selected="true"><i class="menu-icon mdi mdi-ribbon"></i> 催缴记录</a>
+                            </li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tab-content tab-body" id="profile-log-switch">
+                                    <div class="tab-pane fade show active pr-3" id="user-profile-info" role="tabpanel" aria-labelledby="user-profile-info-tab">
+                                        <div class="row">
+                                            <div class="col-sm-12 grid-margin stretch-card">
+                                                <div class="card card-statistics">
+                                                    <div class="card-body">
+                                                        <table class="table table-borderless w-100 mt-4">
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 记录编号 :</b> {{ sms.id }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 手机号码 :</b> {{ sms.phone }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 帐单编号 :</b> {{ sms.bill_sequence }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><b> 短信内容 :</b> {{ sms.content }}</p></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 下发状态 :</b> {{ sms.status }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 创建时间 :</b> {{ sms.create_time }}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <b> 更新时间 :</b> {{ sms.update_time }}</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock content %}

@@ -325,3 +325,10 @@ event.listen(
     "after_create", 
     DDL("ALTER TABLE %(table)s AUTO_INCREMENT = 81100001;").execute_if(dialect=('postgresql', 'mysql'))
 ) 
+
+
+event.listen(
+    Sms.__table__, 
+    "after_create", 
+    DDL("ALTER TABLE %(table)s AUTO_INCREMENT = 81200001;").execute_if(dialect=('postgresql', 'mysql'))
+) 

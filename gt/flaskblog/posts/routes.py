@@ -3,7 +3,7 @@ from flask import (render_template, url_for, flash,
                    redirect, request, abort, Blueprint, Response) 
 from flask_login import current_user, login_required
 from flaskblog import db
-from flaskblog.models import Post, Garden, Resource, House, Customer, Landlord, Contract, Contractype, Maintenanceunit, Maintenancerec, Contractbill, User, Contractype
+from flaskblog.models import Post, Garden, Resource, House, Customer, Landlord, Contract, Contractype, Maintenanceunit, Maintenancerec, Contractbill, User, Contractype, Sms
 from flaskblog.posts.forms import PostForm, GardenForm, ResourceForm, UpdateResourceForm, HouseForm, UpdateHouseForm, CustomerForm, LandlordForm, ContractForm, ContractypeForm, UpdateContractForm, TerminateContractForm, MaintenanceunitForm, MaintenancerecForm, TerminateMaintenancerecForm, ContractbillForm, PaybillForm, RenewalContractForm
 from sqlalchemy import func, extract, desc, or_
 from datetime import datetime, timedelta
@@ -930,7 +930,7 @@ def maintenancerec_list():
 def bills_thismonth():
     form = ContractbillForm()
     contracts = Contract.query.filter_by(status=0).filter_by(bill_status=0)
-    contractbills_thisyear = Contractbill.query.filter(extract('year', Contractbill.bill_date) == datetime.today().year).filter(extract('month', Contractbill.bill_date) == datetime.today().month).join(Contractype, Contractype.id == Contractbill.contract_type).join(Contract, Contract.id==Contractbill.contract_id).join(House, House.id==Contract.house_id).join(Customer, Customer.id==Contract.customer_id).\
+    contractbills = Contractbill.query.filter(extract('year', Contractbill.bill_date) == datetime.today().year).filter(extract('month', Contractbill.bill_date) == datetime.today().month).join(Contractype, Contractype.id == Contractbill.contract_type).join(Contract, Contract.id==Contractbill.contract_id).join(House, House.id==Contract.house_id).join(Customer, Customer.id==Contract.customer_id).\
         with_entities(Contractbill.id, \
         Contractbill.contract_id, \
         Contractype.name.label('contract_type'), \
@@ -970,7 +970,7 @@ def bills_thismonth():
         flash('帐单已经更新!', 'success')
         return redirect(url_for('posts.bills_thisyear'))
     elif request.method == 'GET':
-        return render_template('bill_list.html', contractbills=contractbills_thisyear, form=form, title='当月帐单')
+        return render_template('bill_list.html', contractbills=contractbills, form=form, title='当月帐单')
 
 
 @posts.route("/post/bills/thisYear", methods=['GET', 'POST'])
@@ -978,7 +978,9 @@ def bills_thismonth():
 def bills_thisyear():
     form = ContractbillForm()
     contracts = Contract.query.filter_by(status=0).filter_by(bill_status=0)
-    contractbills_thisyear = Contractbill.query.filter(extract('year', Contractbill.bill_date) == datetime.today().year).join(Contractype, Contractype.id == Contractbill.contract_type).join(Contract, Contract.id==Contractbill.contract_id).join(House, House.id==Contract.house_id).join(Customer, Customer.id==Contract.customer_id).\
+    contractbills = Contractbill.query.filter(extract('year', Contractbill.bill_date) == datetime.today().year).\
+    join(Contractype, Contractype.id == Contractbill.contract_type).join(Contract, Contract.id==Contractbill.contract_id).\
+    join(House, House.id==Contract.house_id).join(Customer, Customer.id==Contract.customer_id).outerjoin(Sms, Sms.bill_sequence==Contractbill.bill_sequence).\
         with_entities(Contractbill.id, \
         Contractbill.contract_id, \
         Contractype.name.label('contract_type'), \
@@ -991,9 +993,12 @@ def bills_thisyear():
         Contractbill.update_time, \
         Contract.start_time.label('contract_start_time'), \
         Contract.end_time.label('contract_end_time'), \
-        House.address.label('house_address'),
-        House.area.label('house_area'),
-        Customer.name.label('customer_name')
+        House.address.label('house_address'), \
+        House.area.label('house_area'), \
+        Customer.name.label('customer_name'), \
+        Sms.id.label('sms_id'), \
+        Sms.content.label('sms_content'), \
+        Sms.status.label('sms_status')
         )
    
     if form.validate_on_submit():
@@ -1018,7 +1023,7 @@ def bills_thisyear():
         flash('帐单已经更新!', 'success')
         return redirect(url_for('posts.bills_thisyear'))
     elif request.method == 'GET':
-        return render_template('bill_list.html', contractbills=contractbills_thisyear, form=form, title='年度帐单')
+        return render_template('bill_list.html', contractbills=contractbills, form=form, title='年度帐单')
 
 
 @posts.route("/post/bills/AllofThem",  methods=['GET', 'POST'])
@@ -1026,8 +1031,8 @@ def bills_thisyear():
 def bills_all():
     form = ContractbillForm()
     contracts = Contract.query.filter_by(status=0).filter_by(bill_status=0)
-    contractbills_all = Contractbill.query.join(Contractype, Contractype.id == Contractbill.contract_type).join(Contract, Contract.id==Contractbill.contract_id).\
-    join(House, House.id==Contract.house_id).join(Customer, Customer.id==Contract.customer_id).\
+    contractbills = Contractbill.query.join(Contractype, Contractype.id == Contractbill.contract_type).join(Contract, Contract.id==Contractbill.contract_id).\
+    join(House, House.id==Contract.house_id).join(Customer, Customer.id==Contract.customer_id).outerjoin(Sms, Sms.bill_sequence==Contractbill.bill_sequence).\
         with_entities(Contractbill.id, \
         Contractbill.contract_id, \
         Contractype.name.label('contract_type'), \
@@ -1040,9 +1045,12 @@ def bills_all():
         Contractbill.update_time, \
         Contract.start_time.label('contract_start_time'), \
         Contract.end_time.label('contract_end_time'), \
-        House.address.label('house_address'),
-        House.area.label('house_area'),
-        Customer.name.label('customer_name')
+        House.address.label('house_address'), \
+        House.area.label('house_area'), \
+        Customer.name.label('customer_name'), \
+        Sms.id.label('sms_id'), \
+        Sms.content.label('sms_content'), \
+        Sms.status.label('sms_status')
         )
     if form.validate_on_submit():
         for contract in contracts:
@@ -1067,7 +1075,7 @@ def bills_all():
         flash('帐单已经更新!', 'success')
         return redirect(url_for('posts.bills_all'))
     elif request.method == 'GET':
-        return render_template('bill_list.html', contractbills=contractbills_all, form=form, title='所有帐单')
+        return render_template('bill_list.html', contractbills=contractbills, form=form, title='所有帐单')
 
 
 @posts.route("/post/account_list")
@@ -1164,6 +1172,15 @@ def customer_info(customer_id):
     contracts = Contract.query.filter_by(customer_id=customer_id).filter_by(status=0)
     contracts_his = Contract.query.filter_by(customer_id=customer_id).filter_by(status=1)
     return render_template('customer_info.html', title='租户资料', customer=customer, contracts=contracts, contracts_his=contracts_his)
+
+
+@posts.route("/post/sms_info/<int:sms_id>")
+@login_required
+def sms_info(sms_id):
+    exist_or_not = Sms.query.get_or_404(sms_id)
+    sms = Sms.query.filter_by(id=sms_id).first()
+
+    return render_template('sms_info.html', title='短信记录', sms=sms)
 
 
 @posts.route("/post/contract_info/<int:contract_id>")
