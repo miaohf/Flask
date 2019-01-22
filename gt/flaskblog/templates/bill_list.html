@@ -84,14 +84,13 @@
                                         {{ contractbill.update_time.strftime("%Y-%m-%d") }}
                                         {% endif %}
                                     </td>
-                                    
-                                    <td title={{ contractbill.sms_content }}>
+                                    <td >
                                         {% if contractbill.sms_id %}
-                                            <a href="{{ url_for('posts.sms_info', sms_id=contractbill.sms_id) }}" >
+                                            <a href="{{ url_for('posts.sms_info', sms_id=contractbill.sms_id) }}" title='{{ contractbill.sms_content }}'>
                                             {% if contractbill.sms_status == 0 %}
                                                 短信下发中
                                             {% elif contractbill.sms_status == 1 %}
-                                                催缴完成
+                                                完成
                                             {% endif %}
                                             </a>
                                         {% else %}
