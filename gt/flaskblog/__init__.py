@@ -51,7 +51,7 @@ def create_app(config_class=Config):
 
     app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
     #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/tuozhanrms'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost/tuozhanrms01'
 
     #app.config['WTF_I18N_ENABLED'] = False 
     app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
