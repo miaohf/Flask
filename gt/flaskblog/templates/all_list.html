@@ -131,15 +131,15 @@ jQuery(function($) {
             schema: {
                 type: "table",
                 fields: {
-                    所属单位: { type: String },
-                    不动产证编号: { type: String },
+                    权利人: { type: String },
+                    不动产权证号: { type: String },
                     房源地址: { type: String },
                     房源面积: { type: String },
                     状态: { type: String },
                     租户名称: { type: String },
                     联系电话: { type: String },
                     合同编号: { type: String },
-                    类型: { type: String },
+                    合同类型: { type: String },
                     合同起止日期: { type: String },
                     账单编号: { type: String },
                     年租金: { type: String },
@@ -152,9 +152,9 @@ jQuery(function($) {
         // when parsing is done, export the data to Excel
         dataSource.read().then(function(data) {
             new shield.exp.OOXMLWorkbook({
-                author: "PrepBootstrap",
+                author: "TuozhanRMS",
                 worksheets: [{
-                    name: "PrepBootstrap Table",
+                    name: "综合查询列表",
                     rows: [{
                         cells: [{
                                 style: {
@@ -217,7 +217,7 @@ jQuery(function($) {
                                     bold: true
                                 },
                                 type: String,
-                                value: "类型"
+                                value: "合同类型"
                             },
                             {
                                 style: {
@@ -259,15 +259,15 @@ jQuery(function($) {
                     }].concat($.map(data, function(item) {
                         return {
                             cells: [
-                                { type: String, value: item.所属单位 },
-                                { type: String, value: item.不动产证编号 },
+                                { type: String, value: item.权利人 },
+                                { type: String, value: item.不动产权证号 },
                                 { type: String, value: item.房源地址 },
                                 { type: String, value: item.房源面积 },
                                 { type: String, value: item.状态 },
                                 { type: String, value: item.租户名称 },
                                 { type: String, value: item.联系电话 },
                                 { type: String, value: item.合同编号 },
-                                { type: String, value: item.类型 },
+                                { type: String, value: item.合同类型 },
                                 { type: String, value: item.合同起止日期 },
                                 { type: String, value: item.账单编号 },
                                 { type: String, value: item.年租金 },

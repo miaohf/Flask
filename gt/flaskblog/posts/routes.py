@@ -835,7 +835,8 @@ def landlord_list():
 @posts.route("/post/normal_contract")
 @login_required
 def contract_normal():
-    contracts = Contract.query.filter_by(status=0).join(House,Contract.house_id==House.id).join(Customer,Contract.customer_id==Customer.id).join(Contractype,Contractype.id==Contract.type).\
+    contracts = Contract.query.filter_by(status=0).join(House,Contract.house_id==House.id).join(Customer,Contract.customer_id==Customer.id).\
+    join(Contractype,Contractype.id==Contract.type).join(Resource,Resource.id==House.resource_id).join(Landlord,Landlord.id==Resource.landlord_id).\
     with_entities(Contract.id, \
         House.id.label('house_id'), \
         House.address, \
@@ -844,7 +845,8 @@ def contract_normal():
         Contractype.name.label('contractype_name'), \
         Contract.annual_rent, \
         Contract.start_time, \
-        Contract.end_time \
+        Contract.end_time, \
+        Landlord.name.label('landlord_name')\
         ).order_by(desc(Contract.end_time))
     current_time  = datetime.now()
     return render_template('contract_list.html', contracts=contracts, current_time=current_time, title='生效租赁')
@@ -853,7 +855,8 @@ def contract_normal():
 @posts.route("/post/terminated_contract")
 @login_required
 def contract_isTerminated():
-    contracts = Contract.query.filter_by(status=1).join(House,Contract.house_id==House.id).join(Customer,Contract.customer_id==Customer.id).join(Contractype,Contractype.id==Contract.type).\
+    contracts = Contract.query.filter_by(status=1).join(House,Contract.house_id==House.id).join(Customer,Contract.customer_id==Customer.id).\
+    join(Contractype,Contractype.id==Contract.type).join(Resource,Resource.id==House.resource_id).join(Landlord,Landlord.id==Resource.landlord_id).\
     with_entities(Contract.id, \
         House.id.label('house_id'), \
         House.address, \
@@ -862,10 +865,31 @@ def contract_isTerminated():
         Contractype.name.label('contractype_name'), \
         Contract.annual_rent, \
         Contract.start_time, \
-        Contract.end_time \
+        Contract.end_time, \
+        Landlord.name.label('landlord_name')\
         ).order_by(desc(Contract.end_time))
     current_time  = datetime.now()
     return render_template('contract_list.html', contracts=contracts, current_time=current_time, title='历史租赁')
+
+
+@posts.route("/post/all_contract")
+@login_required
+def contract_all():
+    contracts = Contract.query.join(House,Contract.house_id==House.id).join(Customer,Contract.customer_id==Customer.id).\
+    join(Contractype,Contractype.id==Contract.type).join(Resource,Resource.id==House.resource_id).join(Landlord,Landlord.id==Resource.landlord_id).\
+    with_entities(Contract.id, \
+        House.id.label('house_id'), \
+        House.address, \
+        Customer.id.label('customer_id'), \
+        Customer.name.label('customer_name'), \
+        Contractype.name.label('contractype_name'), \
+        Contract.annual_rent, \
+        Contract.start_time, \
+        Contract.end_time, \
+        Landlord.name.label('landlord_name')\
+        ).order_by(desc(Contract.end_time))
+    current_time  = datetime.now()
+    return render_template('contract_list.html', contracts=contracts, current_time=current_time, title='所有租赁')
 
 
 @posts.route("/post/all_list")

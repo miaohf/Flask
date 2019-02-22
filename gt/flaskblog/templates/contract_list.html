@@ -6,36 +6,20 @@
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
-                        <table id="order-listing" class="table">
+                        <table id="order-listing" class="table table-hover">
                             <thead>
-                                <tr role="row">
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>合同编号</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>房源编号</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>房源地址</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>租户编号</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>租户名称</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>合同类型</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>年 租 金</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>开始日期</b></font>
-                                    </th>
-                                    <th>
-                                        <font size="2" color="#4f565d"><b>合同到期</b></font>
-                                    </th>
+                                <tr>
+                                    <th>合同编号</th>
+                                    <th>房源编号</th>
+                                    <th>房源地址</th>
+                                    <th>租户编号</th>
+                                    <th>租户名称</th>
+                                    <th>合同类型</th>
+                                    <th>年租金</th>
+                                    <th>开始日期</th>
+                                    <th>合同到期</th>
+                                    <th>权利人</th>
+                                </tr>
                             </thead>
                             <tbody>
                                 {% for contract in contracts %}
@@ -56,14 +40,145 @@
                                     {% else %}
                                     <td> {{ contract.end_time.strftime('%Y-%m-%d') }} </td>
                                     {% endif %}
+                                    <td>{{ contract.landlord_name }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
                     </div>
+                    <button id="exportButton" class="btn btn-outline-primary">导出记录</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="{{ url_for('static', filename='assets/js/exportcsv/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/exportcsv/jszip.min.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/js/exportcsv/shieldui-all.min.js') }}"></script>
+<script type="text/javascript">
+jQuery(function($) {
+    $("#exportButton").click(function() {
+        // parse the HTML table element having an id=order-listing
+        var dataSource = shield.DataSource.create({
+            data: "#order-listing",
+            schema: {
+                type: "table",
+                fields: {
+                    合同编号: { type: String },
+                    房源编号: { type: String },
+                    房源地址: { type: String },
+                    租户编号: { type: String },
+                    租户名称: { type: String },
+                    合同类型: { type: String },
+                    年租金: { type: String },
+                    开始日期: { type: String },
+                    合同到期: { type: String },
+                    权利人: { type: String }
+                }
+            }
+        });
+
+        // when parsing is done, export the data to Excel
+        dataSource.read().then(function(data) {
+            new shield.exp.OOXMLWorkbook({
+                author: "PrepBootstrap",
+                worksheets: [{
+                    name: "PrepBootstrap Table",
+                    rows: [{
+                        cells: [{
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "合同编号"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "房源编号"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "房源地址"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "租户编号"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "租户名称"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "合同类型"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "年租金"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "开始日期"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "合同到期"
+                            },
+                            {
+                                style: {
+                                    bold: true
+                                },
+                                type: String,
+                                value: "权利人"
+                            }
+                        ]
+                    }].concat($.map(data, function(item) {
+                        return {
+                            cells: [
+                                { type: String, value: item.合同编号 },
+                                { type: String, value: item.房源编号 },
+                                { type: String, value: item.房源地址 },
+                                { type: String, value: item.租户编号 },
+                                { type: String, value: item.租户名称 },
+                                { type: String, value: item.合同类型 },
+                                { type: String, value: item.年租金 },
+                                { type: String, value: item.开始日期 },
+                                { type: String, value: item.合同到期 },
+                                { type: String, value: item.权利人 }
+                            ]
+                        };
+                    }))
+                }]
+            }).saveAs({
+                fileName: "合同列表"
+            });
+        });
+    });
+});
+</script>
 {% endblock content %}
