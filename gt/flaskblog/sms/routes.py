@@ -28,10 +28,6 @@ scheduler.start()
 @sms.route('/scheduler')
 # @login_required
 def run_scheduler():
-    # scheduler.add_job(func=sms_generation_task, trigger='interval', hours=2, args=[], id='88123456')
-    # scheduler.add_job(func=sms_generation_task, trigger='date', args=[], id='88123456')
-    # scheduler.add_job(func=sms_generation_task, trigger='interval', args=[], id='88123456', seconds=5)
-
 
     bills = Contractbill.query.filter(Contractbill.status==0).join(Contract, Contract.id==Contractbill.contract_id).join(House, House.id==Contract.house_id).join(Customer, Customer.id==Contract.customer_id).\
     with_entities(Contractbill.bill_sequence, \
@@ -43,8 +39,9 @@ def run_scheduler():
         ).all()
 
     for bill in bills:
-        if (datetime.today()+timedelta(days=7)).strftime('%Y-%m-%d')==bill.bill_date.strftime('%Y-%m-%d') or (datetime.today()+timedelta(days=30)).strftime('%Y-%m-%d')==bill.bill_date.strftime('%Y-%m-%d'):
+        # if (datetime.today()+timedelta(days=7)).strftime('%Y-%m-%d')==bill.bill_date.strftime('%Y-%m-%d') or (datetime.today()+timedelta(days=30)).strftime('%Y-%m-%d')==bill.bill_date.strftime('%Y-%m-%d'):
         # if bill.bill_date.strftime('%Y-%m-%d') < (datetime.today()+timedelta(days=600)).strftime('%Y-%m-%d'):
+        if (datetime.today()+timedelta(days=30)).strftime('%Y-%m-%d')==bill.bill_date.strftime('%Y-%m-%d'):
             content = '【拓展时代】尊敬的承租户' + str(bill.customer_name) + '，您所承租的（' + str(bill.house_address) + '）房屋，根据合同约定应于' + str(bill.bill_date.strftime("%Y-%m-%d")) + '前支付租金' + str(bill.bill_amount) +'元，请及时缴纳。详情咨询84111813。'
             sms = Sms(phone = bill.customer_phone, \
                 bill_sequence = bill.bill_sequence, \
@@ -56,7 +53,7 @@ def run_scheduler():
     for sms in smses:
         scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:sms.phone,YC.TEXT:sms.content} ], id=str(sms.bill_sequence))
         scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:'13605838464',YC.TEXT:sms.content} ], id='13605838464')
-        scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:13819063105,YC.TEXT:sms.content} ], id='13819063105')
+        # scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:13819063105,YC.TEXT:sms.content} ], id='13819063105')
         sms.status = 1
         db.session.commit()
         time.sleep(15)
