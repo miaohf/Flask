@@ -10,9 +10,7 @@
                             <thead>
                                 <tr>
                                     <th>合同编号</th>
-                                    <th>房源编号</th>
                                     <th>房源地址</th>
-                                    <th>租户编号</th>
                                     <th>租户名称</th>
                                     <th>合同类型</th>
                                     <th>年租金</th>
@@ -27,9 +25,7 @@
                                     <td class="sorting_1">
                                         <a href="{{ url_for('posts.contract_info', contract_id=contract.id) }}" >{{ contract.id }}</a>
                                     </td>
-                                    <td>{{ contract.house_id }}</td>
                                     <td>{{ contract.address }}</td>
-                                    <td>{{ contract.customer_id }}</td>
                                     <td>{{ contract.customer_name }}</td>
                                     <td>{{ contract.contractype_name }}</td>
                                     <td>{{ contract.annual_rent }}元</td>
