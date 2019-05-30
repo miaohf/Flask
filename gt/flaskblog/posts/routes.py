@@ -11,6 +11,8 @@ from dateutil.relativedelta import relativedelta
 
 from flask import current_app as app
 
+from pypinyin import lazy_pinyin
+
 
 
 posts = Blueprint('posts', __name__)
@@ -417,14 +419,24 @@ def new_landlord():
 @login_required
 def new_contract():
     form = ContractForm()
+
+    def takeSecond(elem):
+        return lazy_pinyin(elem[1])
+ 
     choicesHouseid = [("0", "------请选择------ ")]
     for s in House.query.with_entities(House.id, House.address).filter(House.status!=1).all():
         choicesHouseid.append((s[0], s[1])) 
     form.house_id.choices = choicesHouseid
 
     choicesCustomerid = [("0", "------请选择------ ")]
-    for s in Customer.query.with_entities(Customer.id, Customer.name).order_by(lazy_pinyin(Customer.name)).all():
+
+    customers = Customer.query.with_entities(Customer.id, Customer.name).all()
+    customers.sort(key=takeSecond)
+    
+    for s in customers:
         choicesCustomerid.append((s[0], s[1])) 
+
+
     form.customer_id.choices = choicesCustomerid
 
     choicesType = [("0", "------请选择------ ")]
