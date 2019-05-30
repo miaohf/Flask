@@ -423,7 +423,7 @@ def new_contract():
     form.house_id.choices = choicesHouseid
 
     choicesCustomerid = [("0", "------请选择------ ")]
-    for s in Customer.query.with_entities(Customer.id, Customer.name).order_by(Customer.name).all():
+    for s in Customer.query.with_entities(Customer.id, Customer.name).order_by(lazy_pinyin(Customer.name)).all():
         choicesCustomerid.append((s[0], s[1])) 
     form.customer_id.choices = choicesCustomerid
 
