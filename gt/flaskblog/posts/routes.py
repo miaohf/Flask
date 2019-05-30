@@ -67,7 +67,7 @@ def dashboard():
     # resourcePrices = Resource.query.with_entities(Resource.price).all() 
 
     # resource_statistics = Resource.query.with_entities(sum(Resource.area1), sum(Resource.area1), Resource.landlord).group_by(Resource.landlord).all() 
-    resource_statistics = Resource.query.join(Landlord, Resource.landlord_id == Landlord.id).with_entities(func.sum(Resource.area1), func.sum(Resource.area1), Landlord.name).group_by(Landlord.name).all()
+    resource_statistics = Resource.query.join(Landlord, Resource.landlord_id == Landlord.id).with_entities(func.sum(Resource.area1), func.sum(Resource.area2), Landlord.name).group_by(Landlord.name).all()
 
         
     return render_template('dashboard.html', contract_counts=contract_counts, 
