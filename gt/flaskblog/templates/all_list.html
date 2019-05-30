@@ -23,7 +23,7 @@
                                     <th>账单日期</th>
                                     <th>年租金</th>
                                     <th>缴费状态</th>
-                                    <th>缴费时间</th>
+                                    <th>支付时间</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -100,8 +100,8 @@
                                         {% elif allResult.bill_status == 1%}
                                         已缴
                                         {% endif %}</td>
-                                    <td>{% if allResult.paid_date %}
-                                        {{allResult.paid_date.strftime("%Y-%m-%d %H:%M") }}
+                                    <td>{% if allResult.pay_date %}
+                                        {{allResult.pay_date.strftime("%Y-%m-%d %H:%M") }}
                                         {% else %}
                                         -
                                         {% endif %}</td>

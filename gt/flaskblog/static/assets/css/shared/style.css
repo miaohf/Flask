@@ -13139,7 +13139,7 @@ ul {
   .table th, .jsgrid .jsgrid-table th {
     vertical-align: middle;
     font-size: 0.875rem;
-    line-height: 1;
+    line-height: 0.5;
     white-space: nowrap;
     height: 35px;
     padding: 18px 15px; }

@@ -40,7 +40,7 @@
                                         <font size="2" color="#4f565d"><b>合同起止</b></font>
                                     </th>
                                     <th>
-                                        <font size="2" color="#4f565d"><b>缴费日期</b></font>
+                                        <font size="2" color="#4f565d"><b>支付时间</b></font>
                                     </th>
                                     <th>
                                         <font size="2" color="#4f565d"><b>催缴短信</b></font>
@@ -79,9 +79,9 @@
                                     <td>{{ contractbill.contract_start_time.strftime("%Y-%m-%d")}}:{{ contractbill.contract_end_time.strftime("%Y-%m-%d")}}</td>
 
                                     <td>
-                                        {% if contractbill.update_time is none %}
+                                        {% if contractbill.pay_date is none %}
                                         {% else %}
-                                        {{ contractbill.update_time.strftime("%Y-%m-%d") }}
+                                        {{ contractbill.pay_date.strftime("%Y-%m-%d") }}
                                         {% endif %}
                                     </td>
                                     <td >

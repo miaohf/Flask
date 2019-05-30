@@ -239,6 +239,7 @@ class Contractbill(db.Model):
     note = db.Column(db.String(200))
     create_time = db.Column(db.DateTime, nullable=False, default=datetime.now)
     update_time = db.Column(db.DateTime, onupdate=datetime.now)
+    pay_date = db.Column(db.DateTime)
     
 
     def __repr__(self):

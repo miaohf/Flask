@@ -74,20 +74,20 @@ def dashboard():
         house_counts = house_counts,
         user_counts=user_counts, 
 
-        billamounts_thisyear=str(sum([sum(i) for i in billamounts_thisyear])/10000),
-        unpaid_lastyear=str(sum([sum(i) for i in unpaid_lastyear])/10000),
-        paid_lastyear=str(sum([sum(i) for i in paid_lastyear])/10000),
+        billamounts_thisyear=str(sum([sum(i) for i in billamounts_thisyear])),
+        unpaid_lastyear=str(sum([sum(i) for i in unpaid_lastyear])),
+        paid_lastyear=str(sum([sum(i) for i in paid_lastyear])),
 
-        billamounts_lastyear=str(sum([sum(i) for i in billamounts_lastyear])/10000),
-        unpaid_thisyear=str(sum([sum(i) for i in unpaid_thisyear])/10000),
-        paid_thisyear=str(sum([sum(i) for i in paid_thisyear])/10000),
+        billamounts_lastyear=str(sum([sum(i) for i in billamounts_lastyear])),
+        unpaid_thisyear=str(sum([sum(i) for i in unpaid_thisyear])),
+        paid_thisyear=str(sum([sum(i) for i in paid_thisyear])),
 
-        billamounts_thismonth=str(sum([sum(i) for i in billamounts_thismonth])/10000), 
-        paid_billamounts_thismonth=str(sum([sum(i) for i in paid_billamounts_thismonth])/10000),
-        paid_billamounts_notthismonth=str(sum([sum(i) for i in paid_billamounts_notthismonth])/10000),
-        unpaid_billamounts_thismonth=str(sum([sum(i) for i in unpaid_billamounts_thismonth])/10000),
+        billamounts_thismonth=str(sum([sum(i) for i in billamounts_thismonth])), 
+        paid_billamounts_thismonth=str(sum([sum(i) for i in paid_billamounts_thismonth])),
+        paid_billamounts_notthismonth=str(sum([sum(i) for i in paid_billamounts_notthismonth])),
+        unpaid_billamounts_thismonth=str(sum([sum(i) for i in unpaid_billamounts_thismonth])),
          
-        security_deposits=str(sum([sum(i) for i in security_deposits])/10000), 
+        security_deposits=str(sum([sum(i) for i in security_deposits])), 
         users_recently_visited=users_recently_visited,
         
         maintenanceRecs=maintenanceRecs,
@@ -99,7 +99,7 @@ def dashboard():
         lastYear = lastYear,
         lastMonth = lastMonth,
 
-        resourcePriceSum=str(sum([sum(i) for i in resourcePrices])),
+        resourcePriceSum=str(10000 * sum([sum(i) for i in resourcePrices])),
         resourceArea1Sum=str(sum([sum(i) for i in resourceArea1s])),
         resourceArea2Sum=str(sum([sum(i) for i in resourceArea2s])),
         title='我的黑板')
@@ -913,7 +913,7 @@ def all_list():
         Contractbill.bill_date.label('bill_date'), \
         Contractbill.bill_amount.label('bill_amount'), \
         Contractbill.status.label('bill_status'), \
-        Contractbill.update_time.label('paid_date')
+        Contractbill.pay_date.label('pay_date')
         )
     return render_template('all_list.html', allResults=allResults, title='综合查询')
 
@@ -1013,6 +1013,7 @@ def bills_thisyear():
         Contractbill.note, \
         Contractbill.create_time, \
         Contractbill.update_time, \
+        Contractbill.pay_date, \
         Contract.start_time.label('contract_start_time'), \
         Contract.end_time.label('contract_end_time'), \
         House.address.label('house_address'), \
@@ -1065,6 +1066,7 @@ def bills_all():
         Contractbill.note, \
         Contractbill.create_time, \
         Contractbill.update_time, \
+        Contractbill.pay_date, \
         Contract.start_time.label('contract_start_time'), \
         Contract.end_time.label('contract_end_time'), \
         House.address.label('house_address'), \
@@ -1246,6 +1248,7 @@ def pay_bill(bill_id):
     form = PaybillForm()
     if form.validate_on_submit():
         bill.status=1
+        bill.pay_date=form.pay_date.data
         bill.note=form.note.data
         bill.opid=current_user.id
         db.session.commit()
