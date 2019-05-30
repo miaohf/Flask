@@ -9,12 +9,12 @@
                             <i class="mdi mdi-cube text-danger icon-lg"></i>
                         </div>
                         <div class="float-right">
-                            <h5 class="mb-5 >合同总计: <b>{{contract_counts}}</b></h5>
+                            <h5 class="mb-5 text-left">合同总计: <b>{{contract_counts}}</b></h5>
                             <div class="fluid-container">
-                                <p class="mb-0">已逾期：<font color="red"><b>{{contract_expired}} </b></font> </p>
-                                <p class="mb-0">7天内逾期：<b>{{contract_expired_7d}}</b></p>
-                                <p class="mb-0">30天内逾期：<b>{{contract_expired_30d}}</b></p>
-                                <p class="font-weight-medium mb-0">-</p>
+                                <p class="text-left mb-0">已逾期：<font color="red"><b>{{contract_expired}} </b></font> </p>
+                                <p class="text-left mb-0">7天内逾期：<b>{{contract_expired_7d}}</b></p>
+                                <p class="text-left mb-0">30天内逾期：<b>{{contract_expired_30d}}</b></p>
+                                <p class="font-weight-medium text-left mb-0">-</p>
                             </div>
                         </div>
                     </div>               
@@ -31,12 +31,12 @@
                             <i class="mdi mdi-receipt text-warning icon-lg"></i>
                         </div>
                         <div class="float-right">
-                            <h5 class="mb-5 >房源统计：<b>{{house_counts}}</b></h5>
+                            <h5 class="mb-5 text-left">房源统计：<b>{{house_counts}}</b></h5>
                             <div class="fluid-container">
-                                <p class="font-weight-medium mb-0">已租：<b>{{contract_counts}}</b> </p>
-                                <p class="font-weight-medium mb-0">空置：<b>{{house_free_counts}}</b> </p>
-                                <p class="mb-0">-</p>
-                                <p class="mb-0">-</p>   
+                                <p class="font-weight-medium text-left mb-0">已租：<b>{{contract_counts}}</b> </p>
+                                <p class="font-weight-medium text-left mb-0">空置：<b>{{house_free_counts}}</b> </p>
+                                <p class="text-left mb-0">-</p>
+                                <p class="text-left mb-0">-</p>   
                             </div>
                         </div>
                     </div>
@@ -53,12 +53,12 @@
                             <i class="mdi mdi-poll-box text-success icon-lg"></i>
                         </div>
                         <div class="float-right">
-                            <h5 class="mb-5 >维修记录</h5>
+                            <h5 class="mb-5 text-left">维修记录</h5>
                             <div class="fluid-container">
-                                <p class="mb-0">待修：<b>{{maintenanceRecs}}</b> </p>
-                                <p class="mb-0">结单：<b>{{maintenancedRecs}}</b> </p>
-                                <p class="mb-0">支出：<b>{{maintenancedRecFee}}</b> </p>
-                                <p class="mb-0">-</p>
+                                <p class="text-left mb-0">待修：<b>{{maintenanceRecs}}</b> </p>
+                                <p class="text-left mb-0">结单：<b>{{maintenancedRecs}}</b> </p>
+                                <p class="text-left mb-0">支出：<b>{{maintenancedRecFee}}</b> </p>
+                                <p class="text-left mb-0">-</p>
                             </div>
                         </div>
                     </div>
@@ -75,12 +75,12 @@
                             <i class="mdi mdi-bank text-success icon-lg"></i>
                         </div>
                         <div class="float-right">
-                            <h5 class="mb-5 >资源总计</h5>
+                            <h5 class="mb-5 text-left">资源总计</h5>
                             <div class="fluid-container">
                                 {% for resource_statistic in resource_statistics %}
-                                <p class="mb-0">{{resource_statistic[2]}}：<b>{{resource_statistic[0]}}㎡, {{resource_statistic[1]}}㎡</b> </p>
+                                <p class="text-left mb-0">{{resource_statistic[2]}}：<b>{{resource_statistic[0]}}㎡, {{resource_statistic[1]}}㎡</b> </p>
                                 {% endfor %}
-                                <p class="mb-0">-</p>                             
+                                <p class="text-left mb-0">-</p>                             
                             </div>
                         </div>
                     </div>
