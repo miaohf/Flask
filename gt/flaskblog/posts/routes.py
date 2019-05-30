@@ -64,9 +64,11 @@ def dashboard():
     maintenancedRecs = Maintenancerec.query.filter_by(status=1).count()
     maintenancedRecFee = Maintenancerec.query.filter_by(status=1).with_entities(Maintenancerec.price).all()
 
-    resourcePrices = Resource.query.with_entities(Resource.price).all() 
-    resourceArea1s = Resource.query.with_entities(Resource.area1).all() 
-    resourceArea2s = Resource.query.with_entities(Resource.area2).all() 
+    # resourcePrices = Resource.query.with_entities(Resource.price).all() 
+
+    # resource_statistics = Resource.query.with_entities(sum(Resource.area1), sum(Resource.area1), Resource.landlord).group_by(Resource.landlord).all() 
+    resource_statistics = Resource.query.join(Landlord, Resource.landlord_id == Landlord.id).with_entities(func.sum(Resource.area1), func.sum(Resource.area1), Landlord.name).group_by(Landlord.name).all()
+
         
     return render_template('dashboard.html', contract_counts=contract_counts, 
         contract_expired_30d=contract_expired_30d,
@@ -101,9 +103,7 @@ def dashboard():
         lastYear = lastYear,
         lastMonth = lastMonth,
 
-        resourcePriceSum=str(10000 * sum([sum(i) for i in resourcePrices])),
-        resourceArea1Sum=str(sum([sum(i) for i in resourceArea1s])),
-        resourceArea2Sum=str(sum([sum(i) for i in resourceArea2s])),
+        resource_statistics = resource_statistics,
         title='我的黑板')
 
 

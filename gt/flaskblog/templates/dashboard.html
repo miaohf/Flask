@@ -77,9 +77,9 @@
                         <div class="float-right">
                             <h5 class="mb-5 text-right">资源总计</h5>
                             <div class="fluid-container">
-                                <p class="font-weight-medium text-left mb-0">资产评估: <b>{{resourcePriceSum}}</b> ￥</p>
-                                <p class="font-weight-medium text-left mb-0">建筑面积: <b>{{resourceArea1Sum}}</b> ㎡</p>
-                                <p class="font-weight-medium text-left mb-0">土地使用权: <b>{{resourceArea2Sum}}</b> ㎡</p>
+                                {% for resource_statistic in resource_statistics %}
+                                <p class="font-weight-medium text-left mb-0">{{resource_statistic[2]}} {{resource_statistic[0]}} ㎡, {{resource_statistic[1]}} ㎡ </p>
+                                {% endfor %}
                                 <p class="text-right mb-0">-</p>                             
                             </div>
                         </div>

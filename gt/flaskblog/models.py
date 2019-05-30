@@ -6,6 +6,8 @@ from flask_login import UserMixin
 from sqlalchemy import event
 from sqlalchemy import DDL
 
+from sqlalchemy.ext.hybrid import hybrid_property
+
 
 
 @login_manager.user_loader
@@ -60,7 +62,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.name}'"
 
 
 
@@ -72,16 +74,16 @@ class Garden(db.Model):
     note = db.Column(db.String(200))
     create_time = db.Column(db.DateTime, nullable=False, default=datetime.now)
     update_time = db.Column(db.DateTime, onupdate=datetime.now)
-    
+
+
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.name}'"
 
 
 
 class Resource(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    landlord_id = db.Column(db.Integer,  nullable=False)
     garden_id = db.Column(db.Integer,  nullable=False)
     address = db.Column(db.String(200), nullable=False)
     price = db.Column(db.NUMERIC(8,3),  nullable=False)
@@ -93,10 +95,13 @@ class Resource(db.Model):
     note = db.Column(db.String(200))
     create_time = db.Column(db.DateTime, nullable=False, default=datetime.now)
     update_time = db.Column(db.DateTime, onupdate=datetime.now)
+
+    landlord_id = db.Column(db.Integer, db.ForeignKey('landlord.id'))
     
     
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return "{}.{}.{}".format(self.id, self.garden_id, self.address)
+
 
 
 
@@ -113,7 +118,7 @@ class House(db.Model):
     
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.name}'"
 
 
 
@@ -132,7 +137,7 @@ class Customer(db.Model):
     
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.name}'"
 
 
 class Landlord(db.Model):
@@ -146,10 +151,12 @@ class Landlord(db.Model):
     note = db.Column(db.String(200))
     create_time = db.Column(db.DateTime, nullable=False, default=datetime.now)
     update_time = db.Column(db.DateTime, onupdate=datetime.now)
+
+    resources = db.relationship('Resource', backref='landlord', lazy=True)
     
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return "{}".format(self.name)
 
 
 class Contract(db.Model):
@@ -180,7 +187,7 @@ class Contract(db.Model):
     
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.name}'"
 
 
 class Contractype(db.Model):
@@ -193,7 +200,7 @@ class Contractype(db.Model):
     
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.name}'"
 
 
 class Maintenanceunit(db.Model):
@@ -207,7 +214,7 @@ class Maintenanceunit(db.Model):
     
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.name}'"
 
 
 class Maintenancerec(db.Model):
@@ -223,7 +230,7 @@ class Maintenancerec(db.Model):
     
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.name}'"
 
 
 class Contractbill(db.Model):
@@ -243,7 +250,7 @@ class Contractbill(db.Model):
     
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.name}'"
 
 
 
@@ -258,7 +265,7 @@ class Sms(db.Model):
     
 
     def __repr__(self):
-        return f"Post('{self.title}', '{self.date_posted}')"
+        return f"Post('{self.name}'"
         
 
 event.listen(
