@@ -850,6 +850,7 @@ def contract_normal():
     with_entities(Contract.id, \
         House.id.label('house_id'), \
         House.address, \
+        House.area, \
         Customer.id.label('customer_id'), \
         Customer.name.label('customer_name'), \
         Contractype.name.label('contractype_name'), \
@@ -1014,7 +1015,8 @@ def bills_thisyear():
     contracts = Contract.query.filter_by(status=0).filter_by(bill_status=0)
     contractbills = Contractbill.query.filter(extract('year', Contractbill.bill_date) == datetime.today().year).\
     join(Contractype, Contractype.id == Contractbill.contract_type).join(Contract, Contract.id==Contractbill.contract_id).\
-    join(House, House.id==Contract.house_id).join(Customer, Customer.id==Contract.customer_id).outerjoin(Sms, Sms.bill_sequence==Contractbill.bill_sequence).\
+    join(House, House.id==Contract.house_id).join(Resource, Resource.id==House.resource_id).\
+    join(Landlord, Landlord.id==Resource.landlord_id).join(Customer, Customer.id==Contract.customer_id).outerjoin(Sms, Sms.bill_sequence==Contractbill.bill_sequence).\
         with_entities(Contractbill.id, \
         Contractbill.contract_id, \
         Contractype.name.label('contract_type'), \
@@ -1030,6 +1032,7 @@ def bills_thisyear():
         Contract.end_time.label('contract_end_time'), \
         House.address.label('house_address'), \
         House.area.label('house_area'), \
+        Landlord.name.label('landlord_name'), \
         Customer.name.label('customer_name'), \
         Sms.id.label('sms_id'), \
         Sms.content.label('sms_content'), \
