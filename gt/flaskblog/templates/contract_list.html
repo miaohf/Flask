@@ -11,7 +11,7 @@
                                 <tr>
                                     <th>合同编号</th>
                                     <th>房源地址</th>
-                                    <th>房源面积㎡</th>
+                                    <th>房源面积</th>
                                     <th>租户名称</th>
                                     <th>合同类型</th>
                                     <th>年租金</th>
@@ -64,9 +64,8 @@ jQuery(function($) {
                 type: "table",
                 fields: {
                     合同编号: { type: String },
-                    房源编号: { type: String },
                     房源地址: { type: String },
-                    租户编号: { type: String },
+                    房源面积: { type: String },
                     租户名称: { type: String },
                     合同类型: { type: String },
                     年租金: { type: String },
@@ -96,13 +95,6 @@ jQuery(function($) {
                                     bold: true
                                 },
                                 type: String,
-                                value: "房源编号"
-                            },
-                            {
-                                style: {
-                                    bold: true
-                                },
-                                type: String,
                                 value: "房源地址"
                             },
                             {
@@ -110,7 +102,7 @@ jQuery(function($) {
                                     bold: true
                                 },
                                 type: String,
-                                value: "租户编号"
+                                value: "房源面积"
                             },
                             {
                                 style: {
@@ -159,9 +151,8 @@ jQuery(function($) {
                         return {
                             cells: [
                                 { type: String, value: item.合同编号 },
-                                { type: String, value: item.房源编号 },
                                 { type: String, value: item.房源地址 },
-                                { type: String, value: item.租户编号 },
+                                { type: String, value: item.房源面积 },
                                 { type: String, value: item.租户名称 },
                                 { type: String, value: item.合同类型 },
                                 { type: String, value: item.年租金 },
