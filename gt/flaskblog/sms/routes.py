@@ -53,7 +53,7 @@ def run_scheduler():
     for sms in smses:
         scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:sms.phone,YC.TEXT:sms.content} ], id=str(sms.bill_sequence))
         scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:'13605838464',YC.TEXT:sms.content} ], id='13605838464')
-        # scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:13819063105,YC.TEXT:sms.content} ], id='13819063105')
+        scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:'18858337933',YC.TEXT:sms.content} ], id='18858337933')
         sms.status = 1
         db.session.commit()
         time.sleep(15)
