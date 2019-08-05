@@ -209,6 +209,7 @@ class PaybillForm(FlaskForm):
     bill_amount = StringField('帐单金额', render_kw={'readonly': True})
     bill_sequence = StringField('帐单期号', render_kw={'readonly': True})
     bill_date = StringField('帐单日期', render_kw={'readonly': True})
+    paid_amount = StringField('实际到帐')
     pay_date = DateField('支付时间', id="auction-datepicker", format='%m/%d/%Y', validators=(DataRequired(),)) 
-    note = StringField('备注信息', validators=[DataRequired(message=u"缴费备注信息为必填字段"), Length(min=4, max=40)], render_kw={"placeholder": '确认到帐金额正确'})
+    note = StringField('备注信息', validators=[DataRequired(message=u"缴费备注信息为必填字段"), Length(min=4, max=40)], render_kw={"placeholder": '此处填写到帐情况等备注信息'})
     submit = SubmitField('缴费提交')

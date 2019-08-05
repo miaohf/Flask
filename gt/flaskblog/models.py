@@ -241,6 +241,7 @@ class Contractbill(db.Model):
     bill_sequence = db.Column(db.Integer, nullable=False)
     bill_date = db.Column(db.DateTime)
     bill_amount = db.Column(db.Integer, nullable=False)
+    paid_amount = db.Column(db.Integer, nullable=False)
     status = db.Column(db.Integer, nullable=False, default=0)
     opid = db.Column(db.Integer, nullable=False, default=0)
     note = db.Column(db.String(200))

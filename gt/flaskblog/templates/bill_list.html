@@ -19,6 +19,9 @@
                                         <font size="2" color="#4f565d"><b>租金(元/年)</b></font>
                                     </th>
                                     <th>
+                                        <font size="2" color="#4f565d"><b>实际到帐</b></font>
+                                    </th>
+                                    <th>
                                         <font size="2" color="#4f565d"><b>缴费状态</b></font>
                                     </th>
                                     <th>
@@ -65,6 +68,12 @@
                                     </td>
                                     <td>{{ contractbill.bill_date.strftime("%Y-%m-%d") }}</td>
                                     <td>{{ contractbill.bill_amount }}</td>
+                                    <td>
+                                        {% if contractbill.bill_amount %}
+                                        {% else %}
+                                        {{contractbill.bill_amount}}
+                                        {% endif %}
+                                    </td>
                                     <td>
                                         {% if contractbill.status == 0 %}
                                         未缴费

@@ -1023,6 +1023,7 @@ def bills_thisyear():
         Contractbill.bill_sequence, \
         Contractbill.bill_date, \
         Contractbill.bill_amount, \
+        Contractbill.paid_amount, \
         Contractbill.status, \
         Contractbill.note, \
         Contractbill.create_time, \
@@ -1077,6 +1078,7 @@ def bills_all():
         Contractbill.bill_sequence, \
         Contractbill.bill_date, \
         Contractbill.bill_amount, \
+        Contractbill.paid_amount, \
         Contractbill.status, \
         Contractbill.note, \
         Contractbill.create_time, \
@@ -1264,6 +1266,7 @@ def pay_bill(bill_id):
     if form.validate_on_submit():
         bill.status=1
         bill.pay_date=form.pay_date.data
+        bill.paid_amount=form.paid_amount.data
         bill.note=form.note.data
         bill.opid=current_user.id
         db.session.commit()
