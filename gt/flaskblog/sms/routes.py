@@ -48,12 +48,14 @@ def run_scheduler():
                 content = content )
             db.session.add(sms)
             db.session.commit()
+            
 
     smses = Sms.query.filter(Sms.status==0).all()
     for sms in smses:
         scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:sms.phone,YC.TEXT:sms.content} ], id=str(sms.bill_sequence))
         scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:'13605838464',YC.TEXT:sms.content} ], id='13605838464')
         scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:'18858337933',YC.TEXT:sms.content} ], id='18858337933')
+        scheduler.add_job(func=sms_send_task, trigger='date', args=[ {YC.MOBILE:'13666761503',YC.TEXT:sms.content} ], id='13666761503')
         sms.status = 1
         db.session.commit()
         time.sleep(15)
